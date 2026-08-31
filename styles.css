@@ -159,6 +159,10 @@
   gap: var(--space-4);
 }
 
+.home-header__brand .workspace-header__home {
+  color: var(--text-secondary);
+}
+
 .home-header__title {
   font-size: var(--text-xl);
   font-weight: var(--font-bold);
@@ -257,6 +261,47 @@
 
 .year-card__link:hover {
   color: var(--accent-primary-hover);
+}
+
+/* Index choice buttons */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+  max-width: 44rem;
+}
+
+.choice-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 180px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-fast);
+}
+
+.choice-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.choice-card__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+}
+
+.choice-card__text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  flex: 1;
 }
 
 .loading-state,
@@ -769,6 +814,7 @@
   }
 
   .workspace-header__home .btn-label,
+  .home-header .workspace-header__home .btn-label,
   .btn-theme .btn-label {
     display: none;
   }

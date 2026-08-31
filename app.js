@@ -4,6 +4,16 @@ let currentQuestionData = null;
 let currentFolderName = '';
 let currentQuestionNumber = 1;
 const questionStatuses = {};
+let topicTreeCache = null;
+let currentSession = {
+  questions: [],
+  title: '',
+  backHash: '#/'
+};
+
+function sessionLength() {
+  return currentSession.questions.length;
+}
 
 // --- THEME ---
 function initTheme() {
@@ -54,14 +64,93 @@ function fixAssetPaths(html) {
   return html.replace(/(src|href)="\//g, `$1="${BASE_URL}/`);
 }
 
+function parseHashParts() {
+  const hash = window.location.hash || '#/';
+  const path = hash.replace(/^#\/?/, '');
+  return path.split('/').filter(Boolean).map(part => decodeURIComponent(part));
+}
+
 function router() {
-  const hash = window.location.hash;
-  if (!hash || hash === '#/') {
-    renderHomePage();
-  } else if (hash.startsWith('#/paper/')) {
-    const folderName = decodeURIComponent(hash.replace('#/paper/', ''));
-    renderWorkspacePage(folderName);
+  const parts = parseHashParts();
+
+  if (parts.length === 0) {
+    renderIndexPage();
+    return;
   }
+  if (parts[0] === 'year' && parts.length === 1) {
+    renderYearHomePage();
+    return;
+  }
+  if (parts[0] === 'subject' && parts.length === 1) {
+    renderSubjectHomePage();
+    return;
+  }
+  if (parts[0] === 'subject' && parts.length === 2) {
+    renderSubtopicHomePage(parts[1]);
+    return;
+  }
+  if (parts[0] === 'paper' && parts.length >= 2) {
+    renderYearWorkspace(parts.slice(1).join('/'));
+    return;
+  }
+  if (parts[0] === 'topic' && parts.length >= 3) {
+    renderTopicWorkspace(parts[1], parts.slice(2).join('/'));
+    return;
+  }
+
+  renderIndexPage();
+}
+
+function listingHeaderHTML(showHome) {
+  const homeLink = showHome
+    ? `<a href="#/" class="workspace-header__home">
+         <i data-lucide="arrow-left"></i> <span class="btn-label">Home</span>
+       </a>
+       <span class="workspace-header__divider"></span>`
+    : '';
+
+  return `
+    <header class="home-header glass">
+      <div class="home-header__brand">
+        ${homeLink}
+        <h1 class="home-header__title">GATECS.IO</h1>
+        <span class="badge badge-live">
+          <span class="badge-live-dot"></span>
+          LIVE DATABASE ACTIVE
+        </span>
+      </div>
+      <div class="home-header__actions">
+        ${themeToggleHTML()}
+      </div>
+    </header>
+  `;
+}
+
+async function getTopicTree() {
+  if (topicTreeCache) return topicTreeCache;
+
+  const response = await fetch('./topic_wise_manifest.json');
+  if (!response.ok) throw new Error('topic_wise_manifest.json not found');
+  const entries = await response.json();
+
+  const tree = new Map();
+  for (const q of entries) {
+    const main = (q.topics && q.topics[0] && String(q.topics[0]).trim()) || 'Uncategorized';
+    const sub = (q.topics && q.topics[1] && String(q.topics[1]).trim()) || 'General';
+    if (!tree.has(main)) tree.set(main, new Map());
+    const subs = tree.get(main);
+    if (!subs.has(sub)) subs.set(sub, []);
+    subs.get(sub).push(q);
+  }
+
+  topicTreeCache = tree;
+  return tree;
+}
+
+function countQuestions(subMap) {
+  let total = 0;
+  subMap.forEach(list => { total += list.length; });
+  return total;
 }
 
 window.addEventListener('hashchange', router);
@@ -94,7 +183,8 @@ function updatePaletteButton(qNumber) {
 }
 
 function updateAllPaletteButtons() {
-  for (let i = 1; i <= 65; i++) updatePaletteButton(i);
+  const n = sessionLength();
+  for (let i = 1; i <= n; i++) updatePaletteButton(i);
 }
 
 function setQuestionStatus(qNumber, status) {
@@ -105,16 +195,18 @@ function setQuestionStatus(qNumber, status) {
 // --- NAVIGATION ---
 function navigateQuestion(delta) {
   const newNum = currentQuestionNumber + delta;
-  if (newNum >= 1 && newNum <= 65) {
-    loadQuestion(currentFolderName, newNum);
+  const n = sessionLength();
+  if (newNum >= 1 && newNum <= n) {
+    loadQuestion(newNum);
   }
 }
 
 function updateNavButtons() {
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
+  const n = sessionLength();
   if (prevBtn) prevBtn.disabled = currentQuestionNumber <= 1;
-  if (nextBtn) nextBtn.disabled = currentQuestionNumber >= 65;
+  if (nextBtn) nextBtn.disabled = currentQuestionNumber >= n;
 }
 
 function toggleQuestionPanel() {
@@ -150,8 +242,49 @@ document.addEventListener('click', (event) => {
   }
 });
 
-// --- HOME PAGE VIEW ---
-async function renderHomePage() {
+// --- INDEX PAGE ---
+function renderIndexPage() {
+  appDiv.innerHTML = `
+    ${listingHeaderHTML(false)}
+    <main class="home-main">
+      <section class="home-hero">
+        <h2 class="home-hero__title">Crack the GATE CS Gateway</h2>
+        <p class="home-hero__subtitle">Interactive testing environment with real-time answer verification and step-by-step logic sheets.</p>
+      </section>
+      <div class="choice-grid">
+        <a href="#/year" class="choice-card">
+          <span class="year-card__tag">Practice</span>
+          <h3 class="choice-card__title">Year wise PYQ</h3>
+          <p class="choice-card__text">Full GATE papers organised by year and set.</p>
+          <span class="year-card__link">Open <i data-lucide="arrow-right"></i></span>
+        </a>
+        <a href="#/subject" class="choice-card">
+          <span class="year-card__tag">Practice</span>
+          <h3 class="choice-card__title">Subject wise PYQ</h3>
+          <p class="choice-card__text">Questions grouped by subject and sub-topic.</p>
+          <span class="year-card__link">Open <i data-lucide="arrow-right"></i></span>
+        </a>
+      </div>
+    </main>
+  `;
+  lucide.createIcons();
+}
+
+function yearCardHTML(title, count, href, tag) {
+  return `
+    <article class="year-card">
+      <span class="year-card__tag">${tag}</span>
+      <h3 class="year-card__title">${title}</h3>
+      <p class="year-card__count">${count} Questions</p>
+      <a href="${href}" class="year-card__link">
+        Launch <i data-lucide="arrow-right"></i>
+      </a>
+    </article>
+  `;
+}
+
+// --- YEAR WISE HOME ---
+async function renderYearHomePage() {
   appDiv.innerHTML = `<div class="loading-state">Loading PYQ Hub...</div>`;
 
   try {
@@ -161,35 +294,14 @@ async function renderHomePage() {
     let cardsHTML = '';
     papers.forEach(paper => {
       const routeUrl = `#/paper/${encodeURIComponent(paper.folderName)}`;
-      cardsHTML += `
-        <article class="year-card">
-          <span class="year-card__tag">Simulator</span>
-          <h3 class="year-card__title">${paper.title}</h3>
-          <p class="year-card__count">${paper.questionCount || 65} Questions</p>
-          <a href="${routeUrl}" class="year-card__link">
-            Launch <i data-lucide="arrow-right"></i>
-          </a>
-        </article>
-      `;
+      cardsHTML += yearCardHTML(paper.title, paper.questionCount || 65, routeUrl, 'Simulator');
     });
 
     appDiv.innerHTML = `
-      <header class="home-header glass">
-        <div class="home-header__brand">
-          <h1 class="home-header__title">GATECS.IO</h1>
-          <span class="badge badge-live">
-            <span class="badge-live-dot"></span>
-            LIVE DATABASE ACTIVE
-          </span>
-        </div>
-        <div class="home-header__actions">
-          ${themeToggleHTML()}
-        </div>
-      </header>
-
+      ${listingHeaderHTML(true)}
       <main class="home-main">
         <section class="home-hero">
-          <h2 class="home-hero__title">Crack the GATE CS Gateway</h2>
+          <h2 class="home-hero__title">Year wise PYQ Practice</h2>
           <p class="home-hero__subtitle">Interactive testing environment with real-time answer verification and step-by-step logic sheets.</p>
         </section>
         <div class="year-grid">
@@ -204,16 +316,121 @@ async function renderHomePage() {
   }
 }
 
-// --- WORKSPACE PAGE VIEW (4-Tier Stack) ---
-function renderWorkspacePage(folderName) {
-  currentFolderName = folderName;
+// --- SUBJECT WISE HOME ---
+async function renderSubjectHomePage() {
+  appDiv.innerHTML = `<div class="loading-state">Loading PYQ Hub...</div>`;
+
+  try {
+    const tree = await getTopicTree();
+    const subjects = [...tree.keys()].sort((a, b) => a.localeCompare(b));
+
+    let cardsHTML = '';
+    subjects.forEach(subject => {
+      const count = countQuestions(tree.get(subject));
+      const routeUrl = `#/subject/${encodeURIComponent(subject)}`;
+      cardsHTML += yearCardHTML(subject, count, routeUrl, 'Subject');
+    });
+
+    appDiv.innerHTML = `
+      ${listingHeaderHTML(true)}
+      <main class="home-main">
+        <section class="home-hero">
+          <h2 class="home-hero__title">Subject wise PYQ Practice</h2>
+          <p class="home-hero__subtitle">Interactive testing environment with real-time answer verification and step-by-step logic sheets.</p>
+        </section>
+        <div class="year-grid">
+          ${cardsHTML}
+        </div>
+      </main>
+    `;
+
+    lucide.createIcons();
+  } catch (err) {
+    appDiv.innerHTML = `<div class="error-state">Error loading topic manifest: ${err.message}</div>`;
+  }
+}
+
+async function renderSubtopicHomePage(subject) {
+  appDiv.innerHTML = `<div class="loading-state">Loading PYQ Hub...</div>`;
+
+  try {
+    const tree = await getTopicTree();
+    const subs = tree.get(subject);
+    if (!subs) throw new Error(`No topics found for "${subject}"`);
+
+    const subNames = [...subs.keys()].sort((a, b) => a.localeCompare(b));
+    let cardsHTML = '';
+    subNames.forEach(sub => {
+      const count = subs.get(sub).length;
+      const routeUrl = `#/topic/${encodeURIComponent(subject)}/${encodeURIComponent(sub)}`;
+      cardsHTML += yearCardHTML(sub, count, routeUrl, 'Topic');
+    });
+
+    appDiv.innerHTML = `
+      ${listingHeaderHTML(true)}
+      <main class="home-main">
+        <section class="home-hero">
+          <h2 class="home-hero__title">${subject}</h2>
+          <p class="home-hero__subtitle">Interactive testing environment with real-time answer verification and step-by-step logic sheets.</p>
+        </section>
+        <div class="year-grid">
+          ${cardsHTML}
+        </div>
+      </main>
+    `;
+
+    lucide.createIcons();
+  } catch (err) {
+    appDiv.innerHTML = `<div class="error-state">Error loading topics: ${err.message}</div>`;
+  }
+}
+
+function startSession(questions, title, backHash) {
+  currentSession = { questions, title, backHash };
   currentQuestionNumber = 1;
   Object.keys(questionStatuses).forEach(k => delete questionStatuses[k]);
+  renderWorkspacePage();
+}
+
+function renderYearWorkspace(folderName) {
+  const questions = [];
+  for (let i = 1; i <= 65; i++) {
+    questions.push({
+      paperFolder: folderName,
+      filePath: `Previous Year Questions/${folderName}/questions/question${i}.json`
+    });
+  }
+  startSession(questions, folderName, '#/year');
+}
+
+async function renderTopicWorkspace(subject, subtopic) {
+  appDiv.innerHTML = `<div class="loading-state">Loading questions...</div>`;
+  try {
+    const tree = await getTopicTree();
+    const questions = tree.get(subject) && tree.get(subject).get(subtopic);
+    if (!questions || !questions.length) {
+      throw new Error(`No questions for ${subject} / ${subtopic}`);
+    }
+    startSession(
+      questions,
+      `${subject} — ${subtopic}`,
+      `#/subject/${encodeURIComponent(subject)}`
+    );
+  } catch (err) {
+    appDiv.innerHTML = `<div class="error-state">${err.message}</div>`;
+  }
+}
+
+// --- WORKSPACE PAGE VIEW (4-Tier Stack) ---
+function renderWorkspacePage() {
+  const n = sessionLength();
+  const folderName = currentSession.questions[0] ? currentSession.questions[0].paperFolder : '';
+  currentFolderName = folderName;
 
   let paletteHTML = '';
-  for (let i = 1; i <= 65; i++) {
+  for (let i = 1; i <= n; i++) {
     paletteHTML += `
-      <button type="button" id="p-btn-${i}" onclick="loadQuestion('${folderName}', ${i})" class="palette-btn">
+      <button type="button" id="p-btn-${i}" onclick="loadQuestion(${i})" class="palette-btn">
         ${i}
       </button>`;
   }
@@ -223,11 +440,11 @@ function renderWorkspacePage(folderName) {
       <!-- Tier 1: Sticky Top Header -->
       <header class="workspace-header glass">
         <div class="workspace-header__left">
-          <a href="#/" class="workspace-header__home">
+          <a href="${currentSession.backHash}" class="workspace-header__home">
             <i data-lucide="arrow-left"></i> <span class="btn-label">Home</span>
           </a>
           <span class="workspace-header__divider"></span>
-          <h1 class="workspace-header__paper">${folderName}</h1>
+          <h1 class="workspace-header__paper">${currentSession.title}</h1>
         </div>
         <div class="workspace-header__right">
           ${themeToggleHTML()}
@@ -248,7 +465,7 @@ function renderWorkspacePage(folderName) {
         <!-- Tier 3: Collapsible Question Panel -->
         <div id="question-panel" class="question-panel">
           <button type="button" id="panel-toggle" class="panel-toggle" onclick="toggleQuestionPanel()" aria-expanded="false" aria-controls="question-grid">
-            <span>Question Palette (1–65)</span>
+            <span>Question Palette (1–${n})</span>
             <i data-lucide="chevron-down" class="panel-toggle__icon"></i>
           </button>
           <div id="question-grid">
@@ -269,7 +486,7 @@ function renderWorkspacePage(folderName) {
             </div>
 
             <div id="action-footer" class="hidden">
-              <button type="button" id="check-btn" class="btn btn-primary" onclick="checkAnswer('${folderName}')" disabled>
+              <button type="button" id="check-btn" class="btn btn-primary" onclick="checkAnswer()" disabled>
                 Check Answer
               </button>
             </div>
@@ -280,11 +497,15 @@ function renderWorkspacePage(folderName) {
   `;
 
   lucide.createIcons();
-  loadQuestion(folderName, 1);
+  loadQuestion(1);
 }
 
 // --- QUESTION FETCHER ---
-async function loadQuestion(folderName, qNumber) {
+async function loadQuestion(qNumber) {
+  const entry = currentSession.questions[qNumber - 1];
+  if (!entry) return;
+
+  const folderName = entry.paperFolder;
   currentFolderName = folderName;
   currentQuestionNumber = qNumber;
 
@@ -303,7 +524,7 @@ async function loadQuestion(folderName, qNumber) {
   actionFooter.classList.add('hidden');
 
   try {
-    const filePath = `./Previous Year Questions/${folderName}/questions/question${qNumber}.json`;
+    const filePath = `./${entry.filePath}`;
     const response = await fetch(filePath);
     if (!response.ok) throw new Error("Question JSON file not found");
 
@@ -426,7 +647,7 @@ function handleInputChange() {
 }
 
 // --- CHECK ANSWER & GRADING ENGINE ---
-function checkAnswer(folderName) {
+function checkAnswer() {
   const qData = currentQuestionData;
   const checkBtn = document.getElementById('check-btn');
   checkBtn.disabled = true; // Freeze button
