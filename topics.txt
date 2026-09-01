@@ -1,0 +1,162 @@
+**General Aptitude**
+
+* Quantitative Aptitude (Calculation)
+* Analytical Aptitude (Analysis)
+* Spatial Aptitude (Image)
+* Verbal Aptitude (English)
+
+
+**Linear Algebra**
+
+* System of linear equations
+* Determinant
+* Eigen values and eigen vectors
+* Matrices (Types, diagonalization)
+
+**Calculus**
+
+* Limit
+* Differentiation
+* Integration
+* Maxima, Minima
+
+**Probability**
+
+* Basic probability
+* Conditional probability
+* Random variable
+* Bernoulli, Binomial, Poisson
+* Normal distribution
+* Statistics
+
+
+**Digital Logic**
+
+* Number System
+* Boolean algebra
+* Logic gates
+* K-map
+* Combinational circuits
+* Flip-flop
+* Counter
+
+
+**Discrete Mathematics**
+
+* Propositional logic
+* Predicate logic
+* Set theory (Set and Relation)
+* Functions
+* Lattice and Group
+* Graph theory
+* Combinatorics
+
+
+**Programming**
+
+* Datatypes and operators
+* Control flow statements
+* Function
+* Storage classes
+* Recursion
+* Pointers
+
+
+**Data Structure**
+
+* Strings
+* Array
+* Linked list
+* Stack and Queues
+* Tree
+* Binary search Tree
+
+
+**Algorithms**
+
+* Asymptotic analysis
+* Divide and Conquer
+* Greedy techniques
+* Graph
+* Dynamic programming
+
+
+**Computer Organization and Architecture**
+
+* Basic COA
+* Machine instruction
+* Instruction Set Architecture 
+* Addressing mode
+* ALU
+* Control unit
+* Instruction Pipeline
+* Memory hierarchy
+* I/O interface
+
+
+**Operating System**
+
+* Process management
+* CPU scheduling
+* Process synchronisation
+* Dead lock
+* Resource Allocation graph
+* Memory management
+* Virtual memory
+* Paging concept
+* File system
+* Disk scheduling
+
+
+**Theory of Computation**
+
+* Finite automata
+* Transducers (Mealy, Moore)
+* Regular expression
+* Regular language and grammar
+* Context free grammar
+* Context free language
+* Turing Machine
+* Undecidability
+
+
+**Compiler Design**
+
+* Basics of compiler
+* Lexical analysis
+* Syntax analysis
+* Syntax Directed Translation
+* Intermediate code generation
+* Code optimisation
+* Runtime environment
+
+
+**Database Management System**
+
+* ER model
+* Foreign key
+* Concept of key
+* Functional Dependency
+* Normal Form
+* Decomposition
+* Concept of transaction
+* Serializable schedule
+* Concurrency control protocols
+* Relational algebra
+* Structured Query Language
+* Tuple Relational Calculus (TRC)
+* File organization and Indexing
+* B-tree and B+ tree
+
+
+**Computer Networks**
+
+* IPv4
+* Data-Link Layer
+* CSMA / CSMA-CD
+* IP header
+* Routing algorithm
+* TCP
+* UDP
+* Transport layer flow control
+* Application layer
