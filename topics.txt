@@ -70,6 +70,7 @@
 * Stack and Queues
 * Tree
 * Binary search Tree
+* Hashing
 
 
 **Algorithms**
@@ -117,7 +118,7 @@
 * Context free grammar
 * Context free language
 * Turing Machine
-* Undecidability
+* Decidability-Undecidability
 
 
 **Compiler Design**

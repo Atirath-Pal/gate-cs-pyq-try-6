@@ -4,7 +4,7 @@
   "set": 2,
   "topics": [
     "Theory of Computation",
-    "Decidability"
+    "Turing Machine"
   ],
   "type": "MCQ",
   "correct marks": 1,

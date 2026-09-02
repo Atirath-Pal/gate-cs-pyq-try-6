@@ -3,8 +3,8 @@
   "year": 2026,
   "set": 2,
   "topics": [
-    "Digital Logic",
-    "Computer Organization"
+    "Computer Organization and Architecture",
+    "ALU"
   ],
   "type": "MSQ",
   "correct marks": 1,
