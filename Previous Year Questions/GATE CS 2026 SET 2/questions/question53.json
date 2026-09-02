@@ -2,7 +2,7 @@
   "id": 53,
   "year": 2026,
   "set": 2,
-  "topics": ["Operating Systems", "File Systems"],
+  "topics": ["Operating System", "File system"],
   "type": "NAT",
   "correct marks": 2,
   "negative marks": "0",

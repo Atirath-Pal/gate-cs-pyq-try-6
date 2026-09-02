@@ -3,8 +3,8 @@
   "year": 2026,
   "set": 2,
   "topics": [
-    "Computer Organization",
-    "Cache Memory"
+    "Computer Organization and Architecture",
+    "Memory hierarchy"
   ],
   "type": "MSQ",
   "correct marks": 2,

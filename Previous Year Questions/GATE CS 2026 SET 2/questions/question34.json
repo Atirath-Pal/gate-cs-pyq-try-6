@@ -3,8 +3,8 @@
   "year": 2026,
   "set": 2,
   "topics": [
-    "Computer Organization",
-    "Floating Point Representation"
+    "Computer Organization and Architecture",
+    "ALU"
   ],
   "type": "NAT",
   "correct marks": 1,
