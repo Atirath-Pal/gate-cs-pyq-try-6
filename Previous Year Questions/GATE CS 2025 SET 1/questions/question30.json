@@ -2,9 +2,8 @@
   "id": 30,
   "year": 2025,
   "set": 1,
-  "topics": [
-    "Combinatorics",
-    "Discrete Mathematics"
+  "topics": ["Discrete Mathematics",
+    "Combinatorics"
   ],
   "type": "NAT",
   "correct marks": 1,

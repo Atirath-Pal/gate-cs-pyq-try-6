@@ -2,7 +2,7 @@
   "id": 10,
   "year": 2025,
   "set": 1,
-  "topics": ["General Aptitude", "Combinatorics"],
+  "topics": ["General Aptitude", "Quantitative Aptitude"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

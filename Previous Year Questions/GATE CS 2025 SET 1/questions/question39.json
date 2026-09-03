@@ -1,8 +1,9 @@
 {
   "id": 39,
   "year": "2025",
-  "set": "CS-1",
-  "topics": ["Databases", "Relational Calculus"],
+  "set": 1,
+  "topics": ["Database Management System", 
+  "Tuple Relational Calculus"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

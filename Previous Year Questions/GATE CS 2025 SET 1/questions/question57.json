@@ -4,7 +4,7 @@
   "set": "CS-1",
   "topics": [
     "Computer Networks",
-    "IP Fragmentation"
+    "IP header"
   ],
   "type": "NAT",
   "correct marks": 2,

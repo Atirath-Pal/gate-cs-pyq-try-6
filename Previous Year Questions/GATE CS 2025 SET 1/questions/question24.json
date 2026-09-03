@@ -2,7 +2,7 @@
   "id": 24,
   "year": "2025",
   "set": "1",
-  "topics": ["Digital Logic", "Boolean Algebra"],
+  "topics": ["Digital Logic", "Boolean algebra"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

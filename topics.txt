@@ -11,7 +11,7 @@
 * System of linear equations
 * Determinant
 * Eigen values and eigen vectors
-* Matrices (Types, diagonalization)
+* Matrices        (Types, diagonalization)
 
 **Calculus**
 
@@ -47,7 +47,7 @@
 * Predicate logic
 * Set theory (Set and Relation)
 * Functions
-* Lattice and Group
+* Group theory
 * Graph theory
 * Combinatorics
 
@@ -145,7 +145,7 @@
 * Concurrency control protocols
 * Relational algebra
 * Structured Query Language
-* Tuple Relational Calculus (TRC)
+* Tuple Relational Calculus
 * File organization and Indexing
 * B-tree and B+ tree
 

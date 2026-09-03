@@ -2,7 +2,7 @@
   "id": 11,
   "year": 2025,
   "set": 1,
-  "topics": ["Computer Organization and Architecture", "Interrupts"],
+  "topics": ["Computer Organization and Architecture", "I/O interface"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

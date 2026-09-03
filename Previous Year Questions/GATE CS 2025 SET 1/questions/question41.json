@@ -3,8 +3,8 @@
   "year": "2025",
   "set": "1",
   "topics": [
-    "Engineering Mathematics",
-    "Linear Algebra"
+    "Linear Algebra",
+    "Eigen values and eigen vectors"
   ],
   "type": "MCQ",
   "correct marks": 2,
