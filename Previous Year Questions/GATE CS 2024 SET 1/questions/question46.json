@@ -3,8 +3,8 @@
   "year": "2024",
   "set": "1",
   "topics": [
-    "Database Management Systems",
-    "Transactions and Concurrency Control"
+    "Database Management System",
+    "Serializable schedule"
   ],
   "type": "MSQ",
   "correct marks": 2,

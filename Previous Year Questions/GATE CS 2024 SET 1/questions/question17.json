@@ -2,7 +2,7 @@
   "id": 17,
   "year": 2024,
   "set": 1,
-  "topics": ["Algorithms", "Asymptotic Analysis"],
+  "topics": ["Algorithms", "Asymptotic analysis"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

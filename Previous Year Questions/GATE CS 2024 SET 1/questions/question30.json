@@ -4,7 +4,7 @@
   "set": 1,
   "topics": [
     "Computer Organization and Architecture",
-    "Pipelining"
+    "Instruction Pipeline"
   ],
   "type": "MSQ",
   "correct marks": 1,

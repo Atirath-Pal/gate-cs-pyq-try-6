@@ -3,8 +3,8 @@
   "year": 2024,
   "set": 1,
   "topics": [
-    "Operating Systems",
-    "System Calls"
+    "Operating System",
+    "Process management"
   ],
   "type": "NAT",
   "correct marks": 2,

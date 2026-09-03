@@ -4,7 +4,7 @@
   "set": 1,
   "topics": [
     "Computer Networks",
-    "IP Addressing"
+    "IPv4"
   ],
   "type": "NAT",
   "correct marks": 2,
