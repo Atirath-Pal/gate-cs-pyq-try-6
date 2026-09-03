@@ -3,8 +3,8 @@
   "year": 2025,
   "set": 2,
   "topics": [
-    "Database Management Systems",
-    "Transactions and Concurrency Control"
+    "Database Management System",
+    "Concept of transaction"
   ],
   "type": "MSQ",
   "correct marks": 1,

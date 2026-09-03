@@ -3,8 +3,8 @@
   "year": 2025,
   "set": 2,
   "topics": [
-    "Data Structures",
-    "Algorithms"
+    "Algorithms",
+    "Asymptotic analysis"
   ],
   "type": "MCQ",
   "correct marks": 2,

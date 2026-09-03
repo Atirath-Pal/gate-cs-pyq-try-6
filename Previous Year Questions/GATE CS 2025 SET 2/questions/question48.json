@@ -2,7 +2,7 @@
   "id": 48,
   "year": "2025",
   "set": "2",
-  "topics": ["Operating Systems", "Deadlocks"],
+  "topics": ["Operating System", "Deadlock"],
   "type": "MSQ",
   "correct marks": 2,
   "negative marks": "0",
