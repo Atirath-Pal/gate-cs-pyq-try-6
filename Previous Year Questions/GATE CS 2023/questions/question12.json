@@ -2,7 +2,7 @@
   "id": 12,
   "year": 2023,
   "set": null,
-  "topics": ["Data Structures", "Heaps"],
+  "topics": ["Data Structure", "Tree"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

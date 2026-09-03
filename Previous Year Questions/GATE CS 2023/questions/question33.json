@@ -3,8 +3,8 @@
   "year": 2023,
   "set": null,
   "topics": [
-    "Computer Organization",
-    "Pipelining"
+    "Computer Organization and Architecture",
+    "Instruction Pipeline"
   ],
   "type": "NAT",
   "correct marks": 1,

@@ -3,8 +3,8 @@
   "year": 2023,
   "set": null,
   "topics": [
-    "Formal Languages",
-    "Computability Theory"
+    "Theory of Computation",
+    "Decidability-Undecidability"
   ],
   "type": "MSQ",
   "correct marks": 1,
