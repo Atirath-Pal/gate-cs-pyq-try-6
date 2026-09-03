@@ -2,7 +2,7 @@
   "id": 15,
   "year": 2024,
   "set": 2,
-  "topics": ["Algorithms", "Recurrence Relations"],
+  "topics": ["Algorithms", "Asymptotic analysis"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

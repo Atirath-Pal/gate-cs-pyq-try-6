@@ -3,8 +3,8 @@
   "year": 2024,
   "set": 2,
   "topics": [
-    "Operating Systems",
-    "Disk Management"
+    "Operating System",
+    "Disk scheduling"
   ],
   "type": "NAT",
   "correct marks": 2,

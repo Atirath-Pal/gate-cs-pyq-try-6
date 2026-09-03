@@ -2,7 +2,7 @@
   "id": 47,
   "year": 2024,
   "set": 2,
-  "topics": ["Linear Algebra"],
+  "topics": ["Linear Algebra","Determinant"],
   "type": "MSQ",
   "correct marks": 2,
   "negative marks": "0",

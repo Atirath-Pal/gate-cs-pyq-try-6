@@ -4,7 +4,7 @@
   "set": 2,
   "topics": [
     "Compiler Design",
-    "LL(1) Parsing"
+    "Syntax analysis"
   ],
   "type": "MCQ",
   "correct marks": 2,

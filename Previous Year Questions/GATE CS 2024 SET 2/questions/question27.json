@@ -3,8 +3,8 @@
   "year": 2024,
   "set": 2,
   "topics": [
-    "Database Management Systems",
-    "Concurrency Control"
+    "Database Management System",
+    "Concurrency control protocols"
   ],
   "type": "MSQ",
   "correct marks": 1,

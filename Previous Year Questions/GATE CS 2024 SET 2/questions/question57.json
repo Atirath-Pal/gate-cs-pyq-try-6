@@ -4,7 +4,7 @@
   "set": 2,
   "topics": [
     "Theory of Computation",
-    "Automata Theory"
+    "Finite automata"
   ],
   "type": "NAT",
   "correct marks": 2,

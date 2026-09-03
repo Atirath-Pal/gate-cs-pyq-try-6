@@ -3,8 +3,8 @@
   "year": 2024,
   "set": 2,
   "topics": [
-    "Computer Architecture",
-    "Pipelining"
+    "Computer Organization and Architecture",
+    "Instruction Pipeline"
   ],
   "type": "NAT",
   "correct marks": 2,
