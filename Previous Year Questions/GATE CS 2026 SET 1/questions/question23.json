@@ -2,7 +2,7 @@
   "id": 23,
   "year": 2026,
   "set": 1,
-  "topics": ["Data Structures", "Heaps"],
+  "topics": ["Data Structure", "Tree"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

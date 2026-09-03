@@ -2,7 +2,7 @@
   "id": 32,
   "year": 2026,
   "set": 1,
-  "topics": ["Engineering Mathematics", "Calculus"],
+  "topics": ["Calculus", "Limit"],
   "type": "NAT",
   "correct marks": 1,
   "negative marks": "0",

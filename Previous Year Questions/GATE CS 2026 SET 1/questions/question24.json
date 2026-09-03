@@ -2,7 +2,7 @@
   "id": 24,
   "year": 2026,
   "set": 1,
-  "topics": ["Data Structures", "Hashing"],
+  "topics": ["Data Structure", "Hashing"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

@@ -86,7 +86,7 @@
 
 * Basic COA
 * Machine instruction
-* Instruction Set Architecture 
+* Instruction Set Architecture
 * Addressing mode
 * ALU
 * Control unit
@@ -100,7 +100,7 @@
 * Process management
 * CPU scheduling
 * Process synchronisation
-* Dead lock
+* Deadlock
 * Resource Allocation graph
 * Memory management
 * Virtual memory

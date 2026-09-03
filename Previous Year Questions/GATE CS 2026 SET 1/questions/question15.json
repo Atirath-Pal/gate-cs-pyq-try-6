@@ -2,7 +2,7 @@
   "id": 15,
   "year": 2026,
   "set": 1,
-  "topics": ["Computer Organization", "Instruction Set Architecture"],
+  "topics": ["Computer Organization and Architecture", "Instruction Set Architecture"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

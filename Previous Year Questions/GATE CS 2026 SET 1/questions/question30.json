@@ -2,7 +2,7 @@
   "id": 30,
   "year": 2026,
   "set": 1,
-  "topics": ["Databases", "Functional Dependencies"],
+  "topics": ["Database Management System", "Functional Dependency"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

@@ -2,7 +2,7 @@
   "id": 28,
   "year": 2026,
   "set": 1,
-  "topics": ["Compiler Design", "Parsing"],
+  "topics": ["Compiler Design", "Syntax analysis"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

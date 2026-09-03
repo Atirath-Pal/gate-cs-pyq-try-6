@@ -2,7 +2,7 @@
   "id": 27,
   "year": 2026,
   "set": 1,
-  "topics": ["C Programming", "Compiler Design"],
+  "topics": ["Compiler Design", "Basics of compiler"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

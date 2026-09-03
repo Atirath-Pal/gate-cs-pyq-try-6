@@ -3,8 +3,8 @@
   "year": 2026,
   "set": 1,
   "topics": [
-    "Computer Organization",
-    "Operating Systems"
+    "Computer Organization and Architecture",
+    "I/O interface"
   ],
   "type": "NAT",
   "correct marks": 2,

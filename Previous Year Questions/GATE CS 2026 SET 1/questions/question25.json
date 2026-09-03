@@ -2,7 +2,7 @@
   "id": 25,
   "year": 2026,
   "set": 1,
-  "topics": ["Theory of Computation", "Context Free Grammars"],
+  "topics": ["Theory of Computation", "Context free grammar"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

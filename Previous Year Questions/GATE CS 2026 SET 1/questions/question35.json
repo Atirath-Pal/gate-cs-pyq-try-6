@@ -2,7 +2,7 @@
   "id": 35,
   "year": 2026,
   "set": 1,
-  "topics": ["Operating Systems", "Deadlocks"],
+  "topics": ["Operating System", "Deadlock"],
   "type": "NAT",
   "correct marks": 1,
   "negative marks": "0",

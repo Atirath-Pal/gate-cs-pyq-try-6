@@ -2,7 +2,7 @@
   "id": 19,
   "year": 2026,
   "set": 1,
-  "topics": ["Computer Networks", "Application Layer"],
+  "topics": ["Computer Networks", "Application layer"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

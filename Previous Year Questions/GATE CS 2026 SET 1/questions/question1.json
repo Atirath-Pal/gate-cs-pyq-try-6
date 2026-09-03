@@ -2,7 +2,7 @@
   "id": 1,
   "year": 2026,
   "set": 1,
-  "topics": ["General Aptitude", "Verbal Ability"],
+  "topics": ["General Aptitude", "Verbal Aptitude"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

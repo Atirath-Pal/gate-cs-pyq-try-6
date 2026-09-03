@@ -2,7 +2,7 @@
   "id": 38,
   "year": 2026,
   "set": 1,
-  "topics": ["Computer Organization", "Cache Memory"],
+  "topics": ["Computer Organization and Architecture", "Memory hierarchy"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

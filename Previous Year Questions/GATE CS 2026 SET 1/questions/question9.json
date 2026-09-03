@@ -2,7 +2,7 @@
   "id": 9,
   "year": 2026,
   "set": 1,
-  "topics": ["General Aptitude", "Analytical Reasoning"],
+  "topics": ["General Aptitude", "Analytical Aptitude"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

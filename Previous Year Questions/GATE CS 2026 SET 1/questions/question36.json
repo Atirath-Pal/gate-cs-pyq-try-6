@@ -2,7 +2,7 @@
   "id": 36,
   "year": 2026,
   "set": 1,
-  "topics": ["Computer Organization", "Data Representation"],
+  "topics": ["Computer Organization and Architecture", "ALU"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

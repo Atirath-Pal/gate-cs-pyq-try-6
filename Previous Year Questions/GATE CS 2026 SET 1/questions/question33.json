@@ -2,7 +2,7 @@
   "id": 33,
   "year": 2026,
   "set": 1,
-  "topics": ["Data Structures", "Trees"],
+  "topics": ["Data Structure", "Tree"],
   "type": "NAT",
   "correct marks": 1,
   "negative marks": "0",

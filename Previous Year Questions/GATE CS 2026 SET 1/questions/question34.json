@@ -2,7 +2,7 @@
   "id": 34,
   "year": 2026,
   "set": 1,
-  "topics": ["C Programming", "Scope & Storage Classes"],
+  "topics": ["Programming", "Storage classes"],
   "type": "NAT",
   "correct marks": 1,
   "negative marks": "0",

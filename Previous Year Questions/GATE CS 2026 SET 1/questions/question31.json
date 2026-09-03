@@ -2,7 +2,7 @@
   "id": 31,
   "year": 2026,
   "set": 1,
-  "topics": ["Databases", "Normalization"],
+  "topics": ["Database Management System", "Decomposition"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

@@ -2,7 +2,7 @@
   "id": 20,
   "year": 2026,
   "set": 1,
-  "topics": ["Engineering Mathematics", "Linear Algebra"],
+  "topics": ["Linear Algebra", "System of linear equations"],
   "type": "MSQ",
   "correct marks": 1,
   "negative marks": "0",

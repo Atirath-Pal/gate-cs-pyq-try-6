@@ -2,7 +2,7 @@
   "id": 39,
   "year": 2026,
   "set": 1,
-  "topics": ["Programming", "Data Structures"],
+  "topics": ["Data Structure", "Linked list"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

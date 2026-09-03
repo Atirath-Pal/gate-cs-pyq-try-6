@@ -2,7 +2,7 @@
   "id": 14,
   "year": 2026,
   "set": 1,
-  "topics": ["Computer Organization", "Addressing Modes"],
+  "topics": ["Computer Organization and Architecture", "Addressing mode"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",
