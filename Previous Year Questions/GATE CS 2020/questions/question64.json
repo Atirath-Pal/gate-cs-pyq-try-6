@@ -3,8 +3,8 @@
   "year": 2020,
   "set": null,
   "topics": [
-    "Database Management Systems",
-    "B+ Trees"
+    "Database Management System",
+    "B-tree and B+ tree"
   ],
   "type": "NAT",
   "correct marks": 2,

@@ -2,7 +2,7 @@
   "id": 48,
   "year": 2020,
   "set": null,
-  "topics": ["Computer Networks", "IP Addressing"],
+  "topics": ["Computer Networks", "IPv4"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

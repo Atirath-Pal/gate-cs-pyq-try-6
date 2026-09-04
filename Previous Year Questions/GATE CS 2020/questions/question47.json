@@ -3,8 +3,8 @@
   "year": 2020,
   "set": null,
   "topics": [
-    "DBMS",
-    "Transactions and Concurrency Control"
+    "Database Management System",
+    "Serializable schedule"
   ],
   "type": "MCQ",
   "correct marks": 2,
