@@ -4,7 +4,7 @@
   "set": 1,
   "topics": [
     "Database Management System",
-    "Transactions & Concurrency Control"
+    "Serializable schedule"
   ],
   "type": "MCQ",
   "correct marks": 2,

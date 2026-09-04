@@ -4,7 +4,7 @@
   "set": 1,
   "topics": [
     "Theory of Computation",
-    "Pushdown Automata"
+    "Context free language"
   ],
   "type": "NAT",
   "correct marks": 2,
