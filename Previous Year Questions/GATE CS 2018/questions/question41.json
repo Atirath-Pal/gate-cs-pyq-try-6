@@ -2,7 +2,10 @@
   "id": 41,
   "year": "2018",
   "set": null,
-  "topics": ["Algorithms", "Dynamic Programming"],
+  "topics": [
+    "Algorithms", 
+    "Dynamic programming"
+  ],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

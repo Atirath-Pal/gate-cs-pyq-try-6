@@ -2,7 +2,7 @@
   "id": 30,
   "year": 2018,
   "set": null,
-  "topics": ["Data Structures", "Binary Trees"],
+  "topics": ["Data Structure", "Tree"],
   "type": "NAT",
   "correct marks": 1,
   "negative marks": "0",

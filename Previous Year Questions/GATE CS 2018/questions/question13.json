@@ -2,7 +2,7 @@
   "id": 13,
   "year": 2018,
   "set": null,
-  "topics": ["Data Structures", "Linked List"],
+  "topics": ["Data Structure", "Linked list"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",
