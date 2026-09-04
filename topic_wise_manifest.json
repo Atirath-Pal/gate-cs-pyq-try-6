@@ -5,7 +5,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -61,7 +61,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Analytical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -75,7 +75,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -117,7 +117,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Analytical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -131,7 +131,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -144,8 +144,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Conditional probability"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -158,7 +158,7 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
+      "Discrete Mathematics",
       "Combinatorics"
     ],
     "type": "MCQ",
@@ -172,8 +172,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -186,8 +186,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Addressing Modes"
+      "Computer Organization and Architecture",
+      "Addressing mode"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -200,7 +200,7 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
+      "Computer Organization and Architecture",
       "Instruction Set Architecture"
     ],
     "type": "MCQ",
@@ -214,8 +214,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -229,7 +229,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -243,7 +243,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -257,7 +257,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Application Layer"
+      "Application layer"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -270,8 +270,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "System of linear equations"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -285,7 +285,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -299,7 +299,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Computer Organization"
+      "Number System"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -312,8 +312,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -326,7 +326,7 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Data Structures",
+      "Data Structure",
       "Hashing"
     ],
     "type": "MSQ",
@@ -341,7 +341,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context Free Grammars"
+      "Context free grammar"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -355,7 +355,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -368,8 +368,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "C Programming",
-      "Compiler Design"
+      "Compiler Design",
+      "Basics of compiler"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -383,7 +383,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -396,8 +396,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -410,8 +410,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Databases",
-      "Functional Dependencies"
+      "Database Management System",
+      "Functional Dependency"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -424,8 +424,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Databases",
-      "Normalization"
+      "Database Management System",
+      "Decomposition"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -438,8 +438,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Limit"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -452,8 +452,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -466,8 +466,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "C Programming",
-      "Scope & Storage Classes"
+      "Programming",
+      "Storage classes"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -480,8 +480,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -494,8 +494,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Data Representation"
+      "Computer Organization and Architecture",
+      "ALU"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -509,7 +509,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Sequential Circuits"
+      "Counter"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -522,8 +522,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -536,8 +536,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Programming",
-      "Data Structures"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -550,8 +550,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -565,7 +565,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -579,7 +579,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -592,8 +592,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Databases",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -607,7 +607,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "TCP Congestion Control"
+      "TCP"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -621,7 +621,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Sliding Window Protocol"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -634,8 +634,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Differentiation"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -649,7 +649,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -663,7 +663,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -677,7 +677,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -691,7 +691,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Algorithms"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -705,7 +705,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -719,7 +719,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -746,8 +746,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -761,7 +761,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Algorithms"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -775,7 +775,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -789,7 +789,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -802,8 +802,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Random variable"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -816,8 +816,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Operating Systems"
+      "Computer Organization and Architecture",
+      "I/O interface"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -830,8 +830,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -844,7 +844,7 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "NAT",
@@ -858,8 +858,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -872,8 +872,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Process Management"
+      "Operating System",
+      "Process management"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -886,8 +886,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -900,8 +900,8 @@
     "year": 2026,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Relational Database Design"
+      "Database Management System",
+      "Concept of key"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -915,7 +915,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -943,7 +943,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -971,7 +971,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Logical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -985,7 +985,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1040,8 +1040,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "General Aptitude",
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1054,8 +1054,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Mathematical Logic",
-      "Predicate Logic"
+      "Discrete Mathematics",
+      "Predicate logic"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1068,8 +1068,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1083,7 +1083,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Decidability"
+      "Turing Machine"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1096,8 +1096,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Normal distribution"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1110,8 +1110,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "DBMS Architecture"
+      "Database Management System",
+      "File organization and Indexing"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1125,7 +1125,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1138,8 +1138,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Storage classes"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1153,7 +1153,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "I/O Organization"
+      "I/O interface"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1166,8 +1166,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Storage classes"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1180,8 +1180,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Concurrency Control"
+      "Database Management System",
+      "Concurrency control protocols"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1195,7 +1195,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Delay and Throughput"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1209,7 +1209,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Application Layer Protocols"
+      "Application layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1222,8 +1222,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1237,7 +1237,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1251,7 +1251,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -1265,7 +1265,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Relations"
+      "Set theory (Set and Relation)"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -1278,8 +1278,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Integration"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -1292,8 +1292,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Digital Logic",
-      "Computer Organization"
+      "Computer Organization and Architecture",
+      "ALU"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -1307,7 +1307,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -1320,7 +1320,7 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Data Structures",
+      "Data Structure",
       "Hashing"
     ],
     "type": "NAT",
@@ -1334,8 +1334,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "System of linear equations"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -1349,7 +1349,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Sorting"
+      "Divide and Conquer"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -1363,7 +1363,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -1376,8 +1376,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Computer Organization",
-      "Floating Point Representation"
+      "Computer Organization and Architecture",
+      "ALU"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -1391,7 +1391,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Lexical Analysis"
+      "Lexical analysis"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -1404,8 +1404,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1419,7 +1419,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Algorithms"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1433,7 +1433,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1447,7 +1447,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Dynamic Programming"
+      "Dynamic programming"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1461,7 +1461,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1475,7 +1475,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1488,8 +1488,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Functional Dependencies"
+      "Database Management System",
+      "Functional Dependency"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1503,7 +1503,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Error Detection"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1531,7 +1531,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1544,8 +1544,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Indexing"
+      "Database Management System",
+      "File organization and Indexing"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1559,7 +1559,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -1573,7 +1573,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Context Free Languages"
+      "Context free language"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -1586,8 +1586,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -1600,8 +1600,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Stacks and Queues"
+      "Data Structure",
+      "Stack and Queues"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -1614,8 +1614,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -1628,8 +1628,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -1642,8 +1642,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "File Systems"
+      "Operating System",
+      "File system"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1656,8 +1656,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1670,8 +1670,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1685,7 +1685,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1698,8 +1698,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Computer Organization",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1713,7 +1713,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "TCP Congestion Control"
+      "TCP"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1727,7 +1727,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Combinational Circuits"
+      "Combinational circuits"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1740,8 +1740,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1754,7 +1754,7 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "NAT",
@@ -1768,8 +1768,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "Determinant"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1782,8 +1782,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Conditional probability"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1796,8 +1796,8 @@
     "year": 2026,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Limit"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1811,7 +1811,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Data Link Layer"
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -1825,7 +1825,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1839,7 +1839,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1867,7 +1867,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Blood Relations"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1881,7 +1881,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Combinatorics"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -1895,7 +1895,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Interrupts"
+      "I/O interface"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1909,7 +1909,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Symbol Table"
+      "Basics of compiler"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1923,7 +1923,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1936,8 +1936,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1950,8 +1950,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Databases",
-      "Transactions and Concurrency Control"
+      "Database Management System",
+      "Concept of transaction"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1965,7 +1965,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "OSI Layers"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -1993,7 +1993,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -2007,7 +2007,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -2021,7 +2021,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -2034,8 +2034,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Databases",
-      "B+ Trees"
+      "Database Management System",
+      "B-tree and B+ tree"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2049,7 +2049,7 @@
     "set": "1",
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2063,7 +2063,7 @@
     "set": 1,
     "topics": [
       "Linear Algebra",
-      "System of Linear Equations"
+      "System of linear equations"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2077,7 +2077,7 @@
     "set": "1",
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2091,7 +2091,7 @@
     "set": "1",
     "topics": [
       "Digital Logic",
-      "Number Representations"
+      "Number System"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2104,8 +2104,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2119,7 +2119,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Datapath and Control Unit"
+      "Control unit"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2133,7 +2133,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -2146,8 +2146,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Process Management"
+      "Operating System",
+      "Process management"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2160,8 +2160,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Combinatorics",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Combinatorics"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2174,8 +2174,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Differentiation"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2188,8 +2188,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Conditional probability"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2203,7 +2203,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Sorting"
+      "Asymptotic analysis"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2216,8 +2216,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2230,8 +2230,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2244,8 +2244,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2259,7 +2259,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Instruction Architecture"
+      "Instruction Set Architecture"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2272,8 +2272,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2284,10 +2284,10 @@
   {
     "id": 39,
     "year": "2025",
-    "set": "CS-1",
+    "set": 1,
     "topics": [
-      "Databases",
-      "Relational Calculus"
+      "Database Management System",
+      "Tuple Relational Calculus"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2301,7 +2301,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2314,8 +2314,8 @@
     "year": "2025",
     "set": "1",
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2329,7 +2329,7 @@
     "set": "1",
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2343,7 +2343,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2357,7 +2357,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2371,7 +2371,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2385,7 +2385,7 @@
     "set": "1",
     "topics": [
       "Theory of Computation",
-      "Context-Free Languages"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2399,7 +2399,7 @@
     "set": "1",
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2412,8 +2412,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Normalization"
+      "Database Management System",
+      "Decomposition"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2426,8 +2426,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Mathematical Logic",
-      "Predicate Logic"
+      "Discrete Mathematics",
+      "Predicate logic"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2441,7 +2441,7 @@
     "set": "1",
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2497,7 +2497,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2510,8 +2510,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "File Systems"
+      "Operating System",
+      "File system"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2525,7 +2525,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Intermediate Code Generation"
+      "Intermediate code generation"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2539,7 +2539,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2552,8 +2552,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2566,8 +2566,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "SQL"
+      "Database Management System",
+      "Structured Query Language"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2581,7 +2581,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Probability"
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2595,7 +2595,7 @@
     "set": "CS-1",
     "topics": [
       "Computer Networks",
-      "IP Fragmentation"
+      "IP header"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2608,8 +2608,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability and Statistics"
+      "Probability",
+      "Random variable"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2623,7 +2623,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2637,7 +2637,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Sequential Circuits"
+      "Counter"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2650,8 +2650,8 @@
     "year": "2025",
     "set": "1",
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Recursion"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2664,8 +2664,8 @@
     "year": "2025",
     "set": "1",
     "topics": [
-      "Data Structures",
-      "Linked List"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2678,8 +2678,8 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "C Programming",
-      "Control Structures"
+      "Programming",
+      "Control flow statements"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2693,7 +2693,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -2706,7 +2706,7 @@
     "year": 2025,
     "set": 1,
     "topics": [
-      "Data Structures",
+      "Data Structure",
       "Hashing"
     ],
     "type": "NAT",
@@ -2721,7 +2721,7 @@
     "set": "1",
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2735,7 +2735,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -2749,7 +2749,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -2805,7 +2805,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2819,7 +2819,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2832,8 +2832,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Control flow statements"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2847,7 +2847,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Counters"
+      "Counter"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2860,8 +2860,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -2875,7 +2875,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Flow and Error Control"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2889,7 +2889,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Algorithms"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2902,8 +2902,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Algorithms"
+      "Algorithms",
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2917,7 +2917,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2931,7 +2931,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2945,7 +2945,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Searching and Sorting"
+      "Divide and Conquer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -2959,7 +2959,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory & Algebra"
+      "Set theory (Set and Relation)"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2973,7 +2973,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Karnaugh Maps"
+      "K-map"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -2986,8 +2986,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "System of linear equations"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3000,8 +3000,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Stacks"
+      "Data Structure",
+      "Stack and Queues"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3014,8 +3014,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Normalization"
+      "Database Management System",
+      "Normal Form"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3028,8 +3028,8 @@
     "year": "2025",
     "set": "2",
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3042,8 +3042,8 @@
     "year": "2025",
     "set": "2",
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3057,7 +3057,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Data Representation"
+      "ALU"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3071,7 +3071,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3085,7 +3085,7 @@
     "set": "2",
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3141,7 +3141,7 @@
     "set": 2,
     "topics": [
       "Linear Algebra",
-      "Matrix Theory"
+      "Matrices"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3155,7 +3155,7 @@
     "set": 2,
     "topics": [
       "Calculus",
-      "Engineering Mathematics"
+      "Integration"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3168,8 +3168,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3183,7 +3183,7 @@
     "set": 2,
     "topics": [
       "Linear Algebra",
-      "Matrix Theory"
+      "Matrices"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3196,8 +3196,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Mathematical Logic",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Predicate logic"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3211,7 +3211,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3225,7 +3225,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Routing Algorithms"
+      "Routing algorithm"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3239,7 +3239,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Network Layer"
+      "IP header"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3252,7 +3252,7 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Programming in C",
+      "Programming",
       "Pointers"
     ],
     "type": "MCQ",
@@ -3267,7 +3267,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Sorting & Searching"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3281,7 +3281,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Intermediate Code Generation"
+      "Intermediate code generation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3309,7 +3309,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "IP Fragmentation"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3323,7 +3323,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Pushdown Automata"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3337,7 +3337,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Decidability"
+      "Decidability-Undecidability"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3350,8 +3350,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3364,8 +3364,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Transactions and Concurrency Control"
+      "Database Management System",
+      "Concept of transaction"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3393,7 +3393,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Algorithms"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3407,7 +3407,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Closure Properties"
+      "Context free language"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3421,7 +3421,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3435,7 +3435,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Computer Arithmetic"
+      "ALU"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -3449,7 +3449,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3462,8 +3462,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Transaction and Concurrency Control"
+      "Database Management System",
+      "Serializable schedule"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3476,8 +3476,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "SQL"
+      "Database Management System",
+      "Structured Query Language"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -3491,7 +3491,7 @@
     "set": "2",
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3505,7 +3505,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3518,8 +3518,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Databases",
-      "B+ Trees"
+      "Database Management System",
+      "B-tree and B+ tree"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3532,8 +3532,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Paging"
+      "Operating System",
+      "Paging concept"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3547,7 +3547,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3561,7 +3561,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3575,7 +3575,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "CPU Performance"
+      "Basic COA"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3588,8 +3588,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3602,8 +3602,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Function"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3616,8 +3616,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Basic probability"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3630,8 +3630,8 @@
     "year": 2025,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability and Statistics"
+      "Probability",
+      "Random variable"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -3645,7 +3645,7 @@
     "set": "1",
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3673,7 +3673,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Ratio and Proportion"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3701,7 +3701,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -3728,8 +3728,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Differentiation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3742,8 +3742,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3757,7 +3757,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Computer Arithmetic"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3771,7 +3771,7 @@
     "set": 1,
     "topics": [
       "Probability",
-      "Combinatorics"
+      "Basic probability"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3785,7 +3785,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "I/O Interface"
+      "I/O interface"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3799,7 +3799,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Application Layer"
+      "Application layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3813,7 +3813,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3826,8 +3826,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "C Programming",
-      "Control Structures"
+      "Programming",
+      "Control flow statements"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3840,7 +3840,7 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "C Programming",
+      "Programming",
       "Recursion"
     ],
     "type": "MCQ",
@@ -3855,7 +3855,7 @@
     "set": 1,
     "topics": [
       "Database Management System",
-      "ER Diagrams"
+      "ER model"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3868,8 +3868,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Databases",
-      "B+ Trees"
+      "Database Management System",
+      "B-tree and B+ tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -3882,8 +3882,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Normalization"
+      "Database Management System",
+      "Decomposition"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3897,7 +3897,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3910,8 +3910,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Threads"
+      "Operating System",
+      "Process management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3924,8 +3924,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Process Management"
+      "Operating System",
+      "Process management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3939,7 +3939,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3952,8 +3952,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Basic probability"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3967,7 +3967,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Combinational Circuits"
+      "Combinational circuits"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -3981,7 +3981,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4009,7 +4009,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4023,7 +4023,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Network Address Translation"
+      "IP header"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4037,7 +4037,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory & Algebra"
+      "Set theory (Set and Relation)"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -4051,7 +4051,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "C Programming"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -4064,8 +4064,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -4078,8 +4078,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -4093,7 +4093,7 @@
     "set": "1",
     "topics": [
       "Computer Networks",
-      "Packet Switching"
+      "Routing algorithm"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4121,7 +4121,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Syntax Analysis"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4135,7 +4135,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4148,8 +4148,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4162,8 +4162,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4177,7 +4177,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4190,8 +4190,8 @@
     "year": "2024",
     "set": "1",
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4204,8 +4204,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Functional Dependencies"
+      "Database Management System",
+      "Functional Dependency"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4219,7 +4219,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4232,8 +4232,8 @@
     "year": "2024",
     "set": "1",
     "topics": [
-      "Database Management Systems",
-      "Transactions and Concurrency Control"
+      "Database Management System",
+      "Serializable schedule"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4247,7 +4247,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4260,8 +4260,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Control flow statements"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4275,7 +4275,7 @@
     "set": 1,
     "topics": [
       "Linear Algebra",
-      "Systems of Linear Equations"
+      "System of linear equations"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4289,7 +4289,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4303,7 +4303,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4316,7 +4316,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Group theory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4329,8 +4330,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4343,8 +4344,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Secondary Storage"
+      "Operating System",
+      "Disk scheduling"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4358,7 +4359,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipeline and Multicore"
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4372,7 +4373,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4385,8 +4386,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "System Calls"
+      "Operating System",
+      "Process management"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4400,7 +4401,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4414,7 +4415,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4442,7 +4443,7 @@
     "set": "1",
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4456,7 +4457,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Data Interpretation"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4484,7 +4485,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Regular Expressions"
+      "Regular expression"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4497,8 +4498,8 @@
     "year": "2024",
     "set": "1",
     "topics": [
-      "Operating Systems",
-      "Paging and Memory Management"
+      "Operating System",
+      "Paging concept"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4511,8 +4512,8 @@
     "year": 2024,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Conditional probability"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4526,7 +4527,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Combinational Circuits"
+      "Combinational circuits"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4540,7 +4541,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "IP Fragmentation"
+      "IPv4"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -4554,7 +4555,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4568,7 +4569,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Permutations and Combinations"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4582,7 +4583,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Set Theory"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4610,7 +4611,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4637,8 +4638,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Stack"
+      "Data Structure",
+      "Stack and Queues"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4652,7 +4653,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Number Systems"
+      "Number System"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4666,7 +4667,7 @@
     "set": "2",
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -4694,7 +4695,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Data Interpretation"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -4736,7 +4737,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Input-Output Organization"
+      "I/O interface"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4749,8 +4750,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Mathematical Logic",
-      "Propositional Logic"
+      "Discrete Mathematics",
+      "Propositional logic"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4763,8 +4764,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Function"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4778,7 +4779,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Data Representation"
+      "Basic COA"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4792,7 +4793,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4805,8 +4806,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Integration"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4820,7 +4821,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4833,8 +4834,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Basic probability"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4847,8 +4848,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Databases",
-      "Transactions"
+      "Database Management System",
+      "Concept of transaction"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4862,7 +4863,7 @@
     "set": 2,
     "topics": [
       "Database Management System",
-      "ER Diagram"
+      "ER model"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4876,7 +4877,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Phases of Compiler"
+      "Basics of compiler"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4890,7 +4891,7 @@
     "set": "2",
     "topics": [
       "Theory of Computation",
-      "Regular Expressions"
+      "Regular expression"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -4904,7 +4905,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4917,8 +4918,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4931,8 +4932,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Process Management"
+      "Operating System",
+      "Process management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4945,8 +4946,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Databases",
-      "File Organization"
+      "Database Management System",
+      "File organization and Indexing"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4959,8 +4960,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Concurrency Control"
+      "Database Management System",
+      "Concurrency control protocols"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -4974,7 +4975,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5002,7 +5003,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5016,7 +5017,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5030,7 +5031,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "IPv4 Header"
+      "IP header"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5043,7 +5044,7 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "C Programming",
+      "Programming",
       "Pointers"
     ],
     "type": "MSQ",
@@ -5058,7 +5059,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory & Algebra"
+      "Set theory (Set and Relation)"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5072,7 +5073,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Dynamic Programming"
+      "Dynamic programming"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5085,8 +5086,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5099,8 +5100,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5114,7 +5115,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5127,8 +5128,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5142,7 +5143,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "LL(1) Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5156,7 +5157,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5169,8 +5170,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Data Structure",
+      "Array"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5184,7 +5185,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Intermediate Code Generation"
+      "Intermediate code generation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5198,7 +5199,7 @@
     "set": 2,
     "topics": [
       "Probability",
-      "Random Variables"
+      "Random variable"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5211,8 +5212,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5225,8 +5226,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -5239,7 +5240,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Linear Algebra"
+      "Linear Algebra",
+      "Determinant"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -5252,8 +5254,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Graph Theory",
-      "Algorithms"
+      "Algorithms",
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -5267,7 +5269,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -5280,8 +5282,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Disk Management"
+      "Operating System",
+      "Disk scheduling"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5295,7 +5297,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "TCP Congestion Control"
+      "TCP"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5309,7 +5311,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "CSMA/CD"
+      "CSMA / CSMA-CD"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5323,7 +5325,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Sliding Window Protocol"
+      "Transport layer flow control"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5337,7 +5339,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Automata Theory"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5350,8 +5352,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Computer Architecture",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5365,7 +5367,7 @@
     "set": "2",
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5379,7 +5381,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5393,7 +5395,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Instruction Format"
+      "Instruction Set Architecture"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5407,7 +5409,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Regular Expressions"
+      "Regular expression"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5421,7 +5423,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5434,8 +5436,8 @@
     "year": 2024,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5449,7 +5451,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -5463,7 +5465,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5491,7 +5493,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5546,7 +5548,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Compiler Design"
+      "Compiler Design",
+      "Basics of compiler"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5559,8 +5562,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5573,8 +5576,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Linked List"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5588,7 +5591,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5602,7 +5605,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Recurrence Relations"
+      "Combinatorics"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5616,7 +5619,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "Relational Model"
+      "Relational algebra"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5630,7 +5633,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Flow Control"
+      "Transport layer flow control"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5644,7 +5647,7 @@
     "set": null,
     "topics": [
       "Linear Algebra",
-      "Engineering Mathematics"
+      "Determinant"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5658,7 +5661,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Theory of Computation"
+      "Lexical analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5671,7 +5674,7 @@
     "year": "2023",
     "set": null,
     "topics": [
-      "Algorithms",
+      "Data Structure",
       "Hashing"
     ],
     "type": "MCQ",
@@ -5685,7 +5688,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Digital Logic"
+      "Digital Logic",
+      "Flip-flop"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -5698,8 +5702,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Threads"
+      "Operating System",
+      "Process management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5712,8 +5716,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "System Calls"
+      "Operating System",
+      "Process management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5726,8 +5730,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Formal Languages",
-      "Computability Theory"
+      "Theory of Computation",
+      "Decidability-Undecidability"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5741,7 +5745,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Routing Protocols"
+      "Routing algorithm"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5755,7 +5759,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Mathematical Logic"
+      "Predicate logic"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5768,8 +5772,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5782,8 +5786,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Maxima, Minima"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5797,7 +5801,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -5810,8 +5814,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5824,8 +5828,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Integration"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5839,7 +5843,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Number Representations"
+      "Number System"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5852,8 +5856,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5866,8 +5870,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "I/O Management"
+      "Operating System",
+      "Process management"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5880,8 +5884,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Storage classes"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -5894,7 +5898,7 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "C Programming",
+      "Programming",
       "Recursion"
     ],
     "type": "MCQ",
@@ -5909,7 +5913,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5922,8 +5926,8 @@
     "year": "2023",
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5937,7 +5941,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5951,7 +5955,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Pushdown Automata"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5965,7 +5969,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Assembly Language"
+      "Machine instruction"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5978,8 +5982,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Memory Organization"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -5993,7 +5997,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Sequential Circuits"
+      "Counter"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6007,7 +6011,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Multiplexers"
+      "Combinational circuits"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6021,7 +6025,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Floating Point Representation"
+      "ALU"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6034,8 +6038,8 @@
     "year": "2023",
     "set": null,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6048,8 +6052,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Recursion"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6077,7 +6081,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory & Algebra"
+      "Set theory (Set and Relation)"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6091,7 +6095,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6105,7 +6109,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6119,7 +6123,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Formal Languages"
+      "Context free language"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6133,7 +6137,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Critical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6147,7 +6151,7 @@
     "set": null,
     "topics": [
       "Probability",
-      "Engineering Mathematics"
+      "Conditional probability"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6161,7 +6165,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6174,8 +6178,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Algorithms"
+      "Algorithms",
+      "Greedy techniques"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -6189,7 +6193,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6202,8 +6206,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6216,8 +6220,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6230,8 +6234,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Stacks & Queues"
+      "Data Structure",
+      "Stack and Queues"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6259,7 +6263,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "SQL"
+      "Structured Query Language"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6273,7 +6277,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "Indexing"
+      "File organization and Indexing"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6301,7 +6305,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6315,7 +6319,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Functions"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6329,7 +6333,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6342,8 +6346,8 @@
     "year": 2023,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6357,7 +6361,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -6371,7 +6375,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6399,7 +6403,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Calculus"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6427,7 +6431,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Logic"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6469,7 +6473,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Data Interpretation"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6497,7 +6501,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6511,7 +6515,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Regular Expressions"
+      "Regular expression"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6525,7 +6529,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6538,8 +6542,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Database Management Systems",
-      "Normalization"
+      "Database Management System",
+      "Normal Form"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6552,8 +6556,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Linked List"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6566,7 +6570,7 @@
     "year": "2022",
     "set": null,
     "topics": [
-      "Data Structures",
+      "Data Structure",
       "Hashing"
     ],
     "type": "MCQ",
@@ -6580,8 +6584,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "I/O Interface"
+      "Computer Organization and Architecture",
+      "I/O interface"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6595,7 +6599,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Computer Arithmetic"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6608,8 +6612,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6623,7 +6627,7 @@
     "set": null,
     "topics": [
       "Linear Algebra",
-      "Matrix Algebra"
+      "Matrices"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6636,7 +6640,7 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Programming in C",
+      "Programming",
       "Pointers"
     ],
     "type": "MCQ",
@@ -6651,7 +6655,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Subnetting"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -6665,7 +6669,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Closure Properties"
+      "Decidability-Undecidability"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -6679,7 +6683,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -6693,7 +6697,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "Relational Algebra"
+      "Relational algebra"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -6706,8 +6710,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -6721,7 +6725,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -6734,8 +6738,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -6749,7 +6753,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -6762,8 +6766,8 @@
     "year": "2022",
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -6804,8 +6808,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -6819,7 +6823,7 @@
     "set": null,
     "topics": [
       "Calculus",
-      "Limits"
+      "Limit"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -6833,7 +6837,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Application Layer"
+      "Application layer"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -6847,7 +6851,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Generating Functions"
+      "Group theory"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6860,8 +6864,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6874,8 +6878,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6889,7 +6893,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "Transactions & Concurrency Control"
+      "Serializable schedule"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6903,7 +6907,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Computer Organization"
+      "Combinational circuits"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6917,7 +6921,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Data Representation"
+      "ALU"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6930,8 +6934,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6944,8 +6948,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Data Structure",
+      "Array"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6958,8 +6962,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Datatypes and operators"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6973,7 +6977,7 @@
     "set": null,
     "topics": [
       "Linear Algebra",
-      "Numerical Methods"
+      "System of linear equations"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -6987,7 +6991,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Undecidability"
+      "Decidability-Undecidability"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7001,7 +7005,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Formal Languages"
+      "Regular language and grammar"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7015,7 +7019,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Context-Free Languages"
+      "Context free language"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7029,7 +7033,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7043,7 +7047,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7057,7 +7061,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Divide and Conquer"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7070,8 +7074,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7084,7 +7088,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7097,8 +7102,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7112,7 +7117,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7126,7 +7131,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "SQL"
+      "Structured Query Language"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7140,7 +7145,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Routing Protocols"
+      "Routing algorithm"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7153,7 +7158,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Graph Theory"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7167,7 +7173,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Data Link Layer"
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7181,7 +7187,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7195,7 +7201,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7208,8 +7214,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7222,8 +7228,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Queue"
+      "Data Structure",
+      "Stack and Queues"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7236,8 +7242,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "File Systems"
+      "Operating System",
+      "File system"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7250,8 +7256,8 @@
     "year": 2022,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -7279,7 +7285,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7293,7 +7299,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7307,7 +7313,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "English Grammar"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7335,7 +7341,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context Free Languages"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7349,7 +7355,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Analysis of Algorithms"
+      "Divide and Conquer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7363,7 +7369,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7377,7 +7383,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Run-Time Environments"
+      "Runtime environment"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7391,7 +7397,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7405,7 +7411,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Number Representation"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7419,7 +7425,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Mathematical Logic"
+      "Propositional logic"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7433,7 +7439,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Data Link Layer"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7447,7 +7453,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Sorting Algorithms"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7460,8 +7466,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7474,8 +7480,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -7489,7 +7495,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Decidability"
+      "Decidability-Undecidability"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -7502,8 +7508,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Databases",
-      "Transactions & Recovery"
+      "Database Management System",
+      "Concept of transaction"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -7516,8 +7522,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "System Calls"
+      "Operating System",
+      "Process management"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -7530,8 +7536,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "File Systems"
+      "Operating System",
+      "File system"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -7545,7 +7551,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7559,7 +7565,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7572,8 +7578,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Random variable"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7600,8 +7606,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Limit"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7614,8 +7620,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Stacks and Queues"
+      "Data Structure",
+      "Stack and Queues"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7629,7 +7635,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7642,8 +7648,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7656,8 +7662,8 @@
     "year": "2021",
     "set": "1",
     "topics": [
-      "Computer Organization",
-      "Data Representation"
+      "Digital Logic",
+      "Number System"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7671,7 +7677,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -7684,8 +7690,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -7699,7 +7705,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Syntax-Directed Translation"
+      "Syntax Directed Translation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7712,8 +7718,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7727,7 +7733,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Sequential Circuits"
+      "Counter"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7741,7 +7747,7 @@
     "set": "1",
     "topics": [
       "Computer Networks",
-      "Error Detection and Correction"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7769,7 +7775,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7783,7 +7789,7 @@
     "set": "1",
     "topics": [
       "Compiler Design",
-      "LL(1) Parser"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7797,7 +7803,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7811,7 +7817,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7825,7 +7831,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Reasoning and Aptitude"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7839,7 +7845,7 @@
     "set": 1,
     "topics": [
       "Database Management System",
-      "Transactions & Concurrency Control"
+      "Serializable schedule"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7853,7 +7859,7 @@
     "set": 1,
     "topics": [
       "Database Management System",
-      "Relational Database Design"
+      "Decomposition"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7867,7 +7873,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7880,8 +7886,8 @@
     "year": "2021",
     "set": "1",
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Random variable"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7895,7 +7901,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Mensuration"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7908,8 +7914,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Graph Theory",
-      "Algorithms"
+      "Algorithms",
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7922,8 +7928,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Datatypes and operators"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7937,7 +7943,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7951,7 +7957,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Decidability"
+      "Decidability-Undecidability"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -7965,7 +7971,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Dynamic Programming"
+      "Dynamic programming"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7979,7 +7985,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -7993,7 +7999,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8007,7 +8013,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory & Relations"
+      "Set theory (Set and Relation)"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8021,7 +8027,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8035,7 +8041,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "IP Fragmentation"
+      "IP header"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8048,8 +8054,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8062,7 +8068,7 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Data Structures",
+      "Data Structure",
       "Hashing"
     ],
     "type": "MSQ",
@@ -8076,8 +8082,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Data Structure",
+      "Array"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8091,7 +8097,7 @@
     "set": "1",
     "topics": [
       "Computer Networks",
-      "Flow Control Protocols"
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8105,7 +8111,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8119,7 +8125,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Pushdown Automata"
+      "Context free language"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8133,7 +8139,7 @@
     "set": "1",
     "topics": [
       "Linear Algebra",
-      "Engineering Mathematics"
+      "Eigen values and eigen vectors"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8146,8 +8152,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Pipelining"
+      "Computer Organization and Architecture",
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8160,8 +8166,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Conditional probability"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8174,8 +8180,8 @@
     "year": 2021,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Machine Instructions"
+      "Computer Organization and Architecture",
+      "Machine instruction"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -8189,7 +8195,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8231,7 +8237,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8245,7 +8251,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Verbal Analogy"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8259,7 +8265,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8272,8 +8278,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8287,7 +8293,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Phases of Compiler"
+      "Basics of compiler"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8300,8 +8306,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Computer Organization",
-      "Data Types and Number Representation"
+      "Computer Organization and Architecture",
+      "ALU"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8315,7 +8321,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Multiplexers"
+      "Combinational circuits"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8329,7 +8335,7 @@
     "set": 2,
     "topics": [
       "Database Management System",
-      "Relational Model"
+      "Foreign key"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8343,7 +8349,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Transport Layer"
+      "TCP"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8357,7 +8363,7 @@
     "set": "2",
     "topics": [
       "Algorithms",
-      "Searching Algorithms"
+      "Divide and Conquer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8371,7 +8377,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8384,8 +8390,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -8399,7 +8405,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory"
+      "Set theory (Set and Relation)"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -8413,7 +8419,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Closure Properties"
+      "Context free language"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -8427,7 +8433,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Intermediate Code Generation"
+      "Intermediate code generation"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -8440,8 +8446,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -8455,7 +8461,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Mathematical Logic"
+      "Propositional logic"
     ],
     "type": "MSQ",
     "correctMarks": 1,
@@ -8468,8 +8474,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8483,7 +8489,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8497,7 +8503,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Number Systems"
+      "Number System"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8510,8 +8516,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8525,7 +8531,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Input-Output Organization"
+      "I/O interface"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8539,7 +8545,7 @@
     "set": 2,
     "topics": [
       "Database Management System",
-      "Indexing"
+      "File organization and Indexing"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8552,8 +8558,8 @@
     "year": "2021",
     "set": "2",
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Bernoulli, Binomial, Poisson"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8566,7 +8572,7 @@
     "year": "2021",
     "set": "2",
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "NAT",
@@ -8595,7 +8601,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Logical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8622,8 +8628,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "System of linear equations"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8636,8 +8642,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Differentiation"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -8651,7 +8657,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Greedy Algorithms"
+      "Greedy techniques"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8665,7 +8671,7 @@
     "set": "2",
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8679,7 +8685,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Ratio and Proportion"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8693,7 +8699,7 @@
     "set": 2,
     "topics": [
       "General Aptitude",
-      "Data Interpretation"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8706,8 +8712,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Digital Logic",
-      "Finite State Machines"
+      "Theory of Computation",
+      "Transducers"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8720,8 +8726,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Random variable"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8735,7 +8741,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8749,7 +8755,7 @@
     "set": 2,
     "topics": [
       "Database Management System",
-      "SQL"
+      "Structured Query Language"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8762,8 +8768,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Transactions and Concurrency Control"
+      "Database Management System",
+      "Serializable schedule"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8776,8 +8782,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Conditional probability"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8791,7 +8797,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Error Control"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8804,8 +8810,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8819,7 +8825,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8832,8 +8838,8 @@
     "year": "2021",
     "set": "2",
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "System of linear equations"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8847,7 +8853,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "Data Flow Analysis"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8861,7 +8867,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -8874,8 +8880,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Database Management Systems",
-      "Functional Dependencies"
+      "Database Management System",
+      "Functional Dependency"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8889,7 +8895,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Context-Free Languages"
+      "Context free language"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8902,8 +8908,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8916,7 +8922,7 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Operating Systems",
+      "Operating System",
       "Deadlock"
     ],
     "type": "MSQ",
@@ -8931,7 +8937,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Data Representation"
+      "Basic COA"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8945,7 +8951,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Routing Algorithms"
+      "Routing algorithm"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8959,7 +8965,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8973,7 +8979,7 @@
     "set": 2,
     "topics": [
       "Theory of Computation",
-      "Regular Expressions"
+      "Regular expression"
     ],
     "type": "MSQ",
     "correctMarks": 2,
@@ -8986,8 +8992,8 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9000,7 +9006,7 @@
     "year": 2021,
     "set": 2,
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "NAT",
@@ -9015,7 +9021,7 @@
     "set": 2,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory"
+      "Set theory (Set and Relation)"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9029,7 +9035,7 @@
     "set": 2,
     "topics": [
       "Compiler Design",
-      "LR Parsing"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9043,7 +9049,7 @@
     "set": 2,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9057,7 +9063,7 @@
     "set": 2,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9071,7 +9077,7 @@
     "set": 2,
     "topics": [
       "Computer Networks",
-      "Multiple Access Protocols"
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9085,7 +9091,7 @@
     "set": 2,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9099,7 +9105,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9113,7 +9119,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9127,7 +9133,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9155,7 +9161,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Data Interpretation"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9168,8 +9174,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Differentiation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9183,7 +9189,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Recurrence Relations"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9196,8 +9202,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "I/O Interface"
+      "Computer Organization and Architecture",
+      "I/O interface"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9211,7 +9217,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Datapath and Control Unit"
+      "Control unit"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9224,8 +9230,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9238,8 +9244,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Data Structures",
-      "AVL Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9253,7 +9259,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Regular Expressions"
+      "Regular expression"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9267,7 +9273,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9280,7 +9286,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Compiler Design"
+      "Compiler Design",
+      "Basics of compiler"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9294,7 +9301,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Compiler Design"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9307,8 +9314,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Memory Management"
+      "Operating System",
+      "Memory management"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9321,8 +9328,8 @@
     "year": "2020",
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Process Management"
+      "Operating System",
+      "Process management"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9335,8 +9342,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Databases",
-      "SQL"
+      "Database Management System",
+      "Structured Query Language"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9350,7 +9357,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "ER Diagram"
+      "ER model"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9364,7 +9371,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9377,8 +9384,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Linked List"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -9392,7 +9399,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Relations"
+      "Set theory (Set and Relation)"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9406,7 +9413,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9420,7 +9427,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Multiplexers"
+      "Combinational circuits"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9434,7 +9441,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Computer Organization"
+      "Combinational circuits"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9447,8 +9454,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9461,8 +9468,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9475,7 +9482,7 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Data Structures",
+      "Data Structure",
       "Hashing"
     ],
     "type": "NAT",
@@ -9490,7 +9497,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9504,7 +9511,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Application Layer"
+      "Application layer"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -9518,7 +9525,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Decidability"
+      "Decidability-Undecidability"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9531,7 +9538,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Linear Algebra"
+      "Linear Algebra",
+      "Matrices"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9545,7 +9553,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9558,8 +9566,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Data Representation"
+      "Digital Logic",
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9573,7 +9581,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9587,7 +9595,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Algorithms"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9601,7 +9609,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Formal Languages"
+      "Regular language and grammar"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9628,8 +9636,8 @@
     "year": "2020",
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9657,7 +9665,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9671,7 +9679,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9685,7 +9693,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9699,7 +9707,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9712,8 +9720,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Disk Scheduling"
+      "Operating System",
+      "Disk scheduling"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9727,7 +9735,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "Normalization"
+      "Normal Form"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9740,8 +9748,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "DBMS",
-      "Transactions and Concurrency Control"
+      "Database Management System",
+      "Serializable schedule"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9755,7 +9763,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9769,7 +9777,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Predicate Logic"
+      "Predicate logic"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9783,7 +9791,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9796,8 +9804,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -9825,7 +9833,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9839,7 +9847,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Instruction Formats"
+      "Machine instruction"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9852,8 +9860,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Basic probability"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9866,8 +9874,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Recursion"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9880,8 +9888,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Heap"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9894,8 +9902,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Function"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9909,7 +9917,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9922,8 +9930,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9937,7 +9945,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9950,8 +9958,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9964,8 +9972,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9978,8 +9986,8 @@
     "year": 2020,
     "set": null,
     "topics": [
-      "Database Management Systems",
-      "B+ Trees"
+      "Database Management System",
+      "B-tree and B+ tree"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -9993,7 +10001,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "TCP Congestion Control"
+      "TCP"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10007,7 +10015,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10021,7 +10029,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10035,7 +10043,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Speed, Time and Distance"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10049,7 +10057,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10063,7 +10071,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10077,7 +10085,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Logical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10091,7 +10099,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Logical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10105,7 +10113,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10119,7 +10127,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Memory Interface"
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10133,7 +10141,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10147,7 +10155,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Computer Arithmetic"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10175,7 +10183,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10189,7 +10197,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10202,8 +10210,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Digital Logic"
+      "Digital Logic",
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10231,7 +10239,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10245,7 +10253,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "Transactions and Concurrency Control"
+      "Concurrency control protocols"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10258,8 +10266,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Graph Theory",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Graph theory"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10272,8 +10280,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Limit"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10286,8 +10294,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Databases",
-      "B+ Trees"
+      "Database Management System",
+      "B-tree and B+ tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10301,7 +10309,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Regular Languages"
+      "Regular language and grammar"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10315,7 +10323,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Application Layer Protocols"
+      "Application layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10328,8 +10336,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "System Calls"
+      "Operating System",
+      "Process management"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10342,8 +10350,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Function"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10357,7 +10365,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Syntax Analysis"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10371,7 +10379,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Sorting"
+      "Divide and Conquer"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10385,7 +10393,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Number Theory"
+      "Group theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10398,8 +10406,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Basic probability"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10412,8 +10420,8 @@
     "year": "2019",
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10426,8 +10434,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -10454,7 +10462,7 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "MCQ",
@@ -10468,8 +10476,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Storage classes"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10483,7 +10491,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "IP Addressing"
+      "IPv4"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10497,7 +10505,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Data Link Layer"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10511,7 +10519,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10525,7 +10533,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Context-Free Languages"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10538,8 +10546,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Databases",
-      "Normalization"
+      "Database Management System",
+      "Decomposition"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10552,8 +10560,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10567,7 +10575,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Decidability"
+      "Decidability-Undecidability"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10580,8 +10588,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Mathematical Logic",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Predicate logic"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10609,7 +10617,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Order Statistics"
+      "Divide and Conquer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10623,7 +10631,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10636,8 +10644,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10650,8 +10658,8 @@
     "year": "2019",
     "set": null,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10665,7 +10673,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Venn Diagrams"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10679,7 +10687,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10693,7 +10701,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Set Theory"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -10706,8 +10714,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10720,8 +10728,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "File Systems"
+      "Operating System",
+      "File system"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10735,7 +10743,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Parsing"
+      "Syntax analysis"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10762,8 +10770,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10776,8 +10784,8 @@
     "year": "2019",
     "set": null,
     "topics": [
-      "Data Structures",
-      "Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10791,7 +10799,7 @@
     "set": null,
     "topics": [
       "Probability",
-      "Engineering Mathematics"
+      "Random variable"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10805,7 +10813,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10818,7 +10826,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Computer Networks"
+      "Computer Networks",
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10832,7 +10841,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Combinational Circuits"
+      "Combinational circuits"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10845,8 +10854,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Databases",
-      "SQL"
+      "Database Management System",
+      "Structured Query Language"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10859,8 +10868,8 @@
     "year": "2019",
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Control flow statements"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10873,8 +10882,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10888,7 +10897,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Cryptography"
+      "Application layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10901,8 +10910,8 @@
     "year": 2019,
     "set": null,
     "topics": [
-      "Databases",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -10916,7 +10925,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10930,7 +10939,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10958,7 +10967,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10972,7 +10981,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -10986,7 +10995,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Numerical Ability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11014,7 +11023,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Ratio and Proportion"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11028,7 +11037,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11042,7 +11051,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Generating Functions"
+      "Combinatorics"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11055,8 +11064,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11069,8 +11078,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Linked List"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11084,7 +11093,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11097,7 +11106,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Computer Organization and Architecture"
+      "Computer Organization and Architecture",
+      "Instruction Set Architecture"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11111,7 +11121,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11125,7 +11135,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Closure Properties of Languages"
+      "Decidability-Undecidability"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11139,7 +11149,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Phases of Compiler"
+      "Basics of compiler"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11152,8 +11162,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Interrupts"
+      "Operating System",
+      "Process management"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11166,8 +11176,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11180,8 +11190,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Databases",
-      "ER Diagram"
+      "Database Management System",
+      "ER model"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11195,7 +11205,7 @@
     "set": null,
     "topics": [
       "Database Management System",
-      "SQL"
+      "Structured Query Language"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11209,7 +11219,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Header Fields"
+      "IP header"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11223,7 +11233,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "TCP Congestion Control"
+      "TCP"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11237,7 +11247,7 @@
     "set": null,
     "topics": [
       "Probability",
-      "Engineering Mathematics"
+      "Basic probability"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11250,8 +11260,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Integration"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11265,7 +11275,7 @@
     "set": null,
     "topics": [
       "Linear Algebra",
-      "Eigenvalues and Eigenvectors"
+      "Eigen values and eigen vectors"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11279,7 +11289,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11293,7 +11303,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Group Theory"
+      "Group theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11306,8 +11316,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Binary Trees"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11320,7 +11330,7 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "NAT",
@@ -11335,7 +11345,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Sequential Circuits"
+      "Flip-flop"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11349,7 +11359,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Memory Hierarchy"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11362,8 +11372,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -11390,7 +11400,8 @@
     "year": "2018",
     "set": null,
     "topics": [
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11404,7 +11415,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Set Theory"
+      "Set theory (Set and Relation)"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11417,8 +11428,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Mathematical Logic",
-      "Discrete Mathematics"
+      "Discrete Mathematics",
+      "Predicate logic"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11431,8 +11442,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11445,8 +11456,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Graph Theory"
+      "Algorithms",
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11460,7 +11471,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Dynamic Programming"
+      "Dynamic programming"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11473,8 +11484,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Control flow statements"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11488,7 +11499,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Number Representation"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11502,7 +11513,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11516,7 +11527,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Context-Free Languages"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11530,7 +11541,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Undecidability"
+      "Decidability-Undecidability"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11544,7 +11555,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Lexical Analysis"
+      "Lexical analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11558,7 +11569,7 @@
     "set": null,
     "topics": [
       "Compiler Design",
-      "Expression Parsing"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11571,8 +11582,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11585,8 +11596,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Process Synchronization"
+      "Operating System",
+      "Process synchronisation"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11599,8 +11610,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Databases",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11613,8 +11624,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Databases",
-      "Normalization"
+      "Database Management System",
+      "Normal Form"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11628,7 +11639,7 @@
     "set": null,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11642,7 +11653,7 @@
     "set": null,
     "topics": [
       "Probability",
-      "Bayes' Theorem"
+      "Conditional probability"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11655,7 +11666,7 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Programming and Data Structures",
+      "Programming",
       "Recursion"
     ],
     "type": "NAT",
@@ -11669,8 +11680,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Data Structures",
-      "Heaps"
+      "Data Structure",
+      "Tree"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11684,7 +11695,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11698,7 +11709,7 @@
     "set": null,
     "topics": [
       "Algorithms",
-      "Greedy Algorithms"
+      "Greedy techniques"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11712,7 +11723,7 @@
     "set": null,
     "topics": [
       "Digital Logic",
-      "Boolean Algebra"
+      "Boolean algebra"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11726,7 +11737,7 @@
     "set": null,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11739,8 +11750,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Computer Organization",
-      "Instruction Format"
+      "Computer Organization and Architecture",
+      "Machine instruction"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11754,7 +11765,7 @@
     "set": null,
     "topics": [
       "Theory of Computation",
-      "Formal Languages & Automata"
+      "Regular language and grammar"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11767,8 +11778,8 @@
     "year": 2018,
     "set": null,
     "topics": [
-      "Operating Systems",
-      "Disk Scheduling"
+      "Operating System",
+      "Disk scheduling"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11782,7 +11793,7 @@
     "set": null,
     "topics": [
       "General Aptitude",
-      "Geometry"
+      "Spatial Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -11796,7 +11807,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "IP Fragmentation"
+      "IPv4"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11810,7 +11821,7 @@
     "set": null,
     "topics": [
       "Computer Networks",
-      "Medium Access Control"
+      "CSMA / CSMA-CD"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -11824,7 +11835,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Mathematical Logic"
+      "Propositional logic"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11838,7 +11849,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Asymptotic Analysis"
+      "Asymptotic analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11852,7 +11863,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Design Paradigms"
+      "Divide and Conquer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11866,7 +11877,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11879,8 +11890,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Addressing Modes"
+      "Computer Organization and Architecture",
+      "Addressing mode"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11894,7 +11905,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Code Optimization"
+      "Code optimisation"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11907,8 +11918,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Pointers"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11921,7 +11932,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Computer Networks"
+      "Computer Networks",
+      "TCP"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11935,7 +11947,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Cryptography"
+      "Application layer"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11949,7 +11961,7 @@
     "set": 1,
     "topics": [
       "Database Management System",
-      "Functional Dependencies"
+      "Functional Dependency"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11963,7 +11975,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Syntax Analysis"
+      "Syntax analysis"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11976,8 +11988,8 @@
     "year": "2017",
     "set": "1",
     "topics": [
-      "Operating Systems",
-      "Threads"
+      "Operating System",
+      "Process management"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -11990,8 +12002,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Probability"
+      "Probability",
+      "Normal distribution"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12004,8 +12016,8 @@
     "year": "2017",
     "set": "1",
     "topics": [
-      "Mathematical Logic",
-      "First Order Logic"
+      "Discrete Mathematics",
+      "Predicate logic"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12018,8 +12030,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Linear Algebra"
+      "Linear Algebra",
+      "System of linear equations"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12032,8 +12044,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Data Structures",
-      "Binary Search Trees"
+      "Data Structure",
+      "Binary search Tree"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12047,7 +12059,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Graph Theory"
+      "Graph theory"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12061,7 +12073,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Combinational Circuits"
+      "Combinational circuits"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12075,7 +12087,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Finite Automata"
+      "Finite automata"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12088,8 +12100,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Databases",
-      "SQL"
+      "Database Management System",
+      "Structured Query Language"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12102,8 +12114,8 @@
     "year": "2017",
     "set": "1",
     "topics": [
-      "Operating Systems",
-      "CPU Scheduling"
+      "Operating System",
+      "CPU scheduling"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12117,7 +12129,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 1,
@@ -12131,7 +12143,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Graph Theory"
+      "Graph"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12144,8 +12156,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Deadlocks"
+      "Operating System",
+      "Deadlock"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12158,8 +12170,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Engineering Mathematics",
-      "Calculus"
+      "Calculus",
+      "Limit"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12173,7 +12185,7 @@
     "set": 1,
     "topics": [
       "Discrete Mathematics",
-      "Propositional Logic"
+      "Propositional logic"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12187,7 +12199,7 @@
     "set": 1,
     "topics": [
       "Linear Algebra",
-      "Engineering Mathematics"
+      "Matrices"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12200,7 +12212,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Linear Algebra"
+      "Linear Algebra",
+      "Eigen values and eigen vectors"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12214,7 +12227,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Error Control"
+      "Data-Link Layer"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12228,7 +12241,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Sequential Circuits"
+      "Flip-flop"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12242,7 +12255,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context Free Grammars"
+      "Context free grammar"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12255,8 +12268,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Recursion"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12269,8 +12282,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Recursion"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12284,7 +12297,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context-Free Grammars"
+      "Context free grammar"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12298,7 +12311,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Context Free Languages"
+      "Context free language"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12312,7 +12325,7 @@
     "set": 1,
     "topics": [
       "Theory of Computation",
-      "Turing Machines"
+      "Turing Machine"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12325,8 +12338,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Operating Systems",
-      "Virtual Memory"
+      "Operating System",
+      "Virtual memory"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12339,7 +12352,7 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Databases",
+      "Database Management System",
       "Tuple Relational Calculus"
     ],
     "type": "MCQ",
@@ -12354,7 +12367,7 @@
     "set": "1",
     "topics": [
       "Database Management System",
-      "Concurrency Control"
+      "Concurrency control protocols"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12367,7 +12380,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Compiler Design"
+      "Compiler Design",
+      "Intermediate code generation"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12381,7 +12395,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Cryptography"
+      "Application layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12395,7 +12409,7 @@
     "set": 1,
     "topics": [
       "Computer Networks",
-      "Data Link Layer"
+      "Data-Link Layer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12408,8 +12422,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Database Management Systems",
-      "Relational Algebra"
+      "Database Management System",
+      "Relational algebra"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12423,7 +12437,7 @@
     "set": "1",
     "topics": [
       "Discrete Mathematics",
-      "Set Theory"
+      "Set theory (Set and Relation)"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12437,7 +12451,7 @@
     "set": 1,
     "topics": [
       "Algorithms",
-      "Searching"
+      "Divide and Conquer"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12450,8 +12464,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Addressing Modes"
+      "Computer Organization and Architecture",
+      "Addressing mode"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12465,7 +12479,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Pipelining"
+      "Instruction Pipeline"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12478,8 +12492,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Computer Organization",
-      "Cache Memory"
+      "Computer Organization and Architecture",
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12493,7 +12507,7 @@
     "set": 1,
     "topics": [
       "Compiler Design",
-      "Code Generation"
+      "Code optimisation"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12506,8 +12520,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Datatypes and operators"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12521,7 +12535,7 @@
     "set": 1,
     "topics": [
       "Computer Organization and Architecture",
-      "Cache Memory"
+      "Memory hierarchy"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12534,8 +12548,8 @@
     "year": 2017,
     "set": 1,
     "topics": [
-      "Programming and Data Structures",
-      "C Programming"
+      "Programming",
+      "Storage classes"
     ],
     "type": "NAT",
     "correctMarks": 2,
@@ -12549,7 +12563,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12563,7 +12577,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12577,7 +12591,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Logical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12590,8 +12604,8 @@
     "year": "2017",
     "set": "1",
     "topics": [
-      "Quantitative Aptitude",
-      "Number Systems"
+      "General Aptitude",
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12605,7 +12619,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Computer Organization"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12619,7 +12633,7 @@
     "set": 1,
     "topics": [
       "Digital Logic",
-      "Number Representations"
+      "Number System"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12633,7 +12647,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Probability"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 1,
@@ -12647,7 +12661,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Verbal Ability"
+      "Verbal Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12661,7 +12675,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Logical Reasoning"
+      "Analytical Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12689,7 +12703,7 @@
     "set": 1,
     "topics": [
       "General Aptitude",
-      "Combinatorics"
+      "Quantitative Aptitude"
     ],
     "type": "MCQ",
     "correctMarks": 2,
@@ -12716,8 +12730,8 @@
     "year": "2017",
     "set": "1",
     "topics": [
-      "Data Structures",
-      "C Programming"
+      "Data Structure",
+      "Linked list"
     ],
     "type": "MCQ",
     "correctMarks": 1,
