@@ -3,7 +3,7 @@
   "year": 2022,
   "set": null,
   "topics": [
-    "Linear Algebra"
+    "Linear Algebra","Eigen values and eigen vectors"
   ],
   "type": "MSQ",
   "correct marks": 2,
