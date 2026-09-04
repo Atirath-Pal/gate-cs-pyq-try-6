@@ -4,7 +4,7 @@
   "set": 1,
   "topics": [
     "Computer Organization and Architecture",
-    "Pipelining"
+    "Instruction Pipeline"
   ],
   "type": "NAT",
   "correct marks": 2,
