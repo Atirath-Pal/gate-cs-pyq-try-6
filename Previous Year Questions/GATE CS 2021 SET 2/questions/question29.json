@@ -3,8 +3,8 @@
   "year": 2021,
   "set": 2,
   "topics": [
-    "Computer Organization",
-    "Cache Memory"
+    "Computer Organization and Architecture",
+    "Memory hierarchy"
   ],
   "type": "NAT",
   "correct marks": 1,

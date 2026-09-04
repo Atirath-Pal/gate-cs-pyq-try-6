@@ -3,8 +3,8 @@
   "year": 2021,
   "set": 2,
   "topics": [
-    "Computer Organization",
-    "Data Types and Number Representation"
+    "Computer Organization and Architecture",
+    "ALU"
   ],
   "type": "MCQ",
   "correct marks": 1,

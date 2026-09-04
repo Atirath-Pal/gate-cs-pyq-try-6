@@ -112,7 +112,7 @@
 **Theory of Computation**
 
 * Finite automata
-* Transducers (Mealy, Moore)
+* Transducers              (Mealy, Moore)
 * Regular expression
 * Regular language and grammar
 * Context free grammar

@@ -3,8 +3,8 @@
   "year": 2021,
   "set": 2,
   "topics": [
-    "Digital Logic",
-    "Finite State Machines"
+    "Theory of Computation",
+    "Transducers"
   ],
   "type": "MCQ",
   "correct marks": 2,

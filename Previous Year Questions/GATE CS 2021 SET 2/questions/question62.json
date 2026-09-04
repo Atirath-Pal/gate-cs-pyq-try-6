@@ -2,7 +2,7 @@
   "id": 62,
   "year": 2021,
   "set": 2,
-  "topics": ["Digital Logic", "Boolean Algebra"],
+  "topics": ["Digital Logic", "Boolean algebra"],
   "type": "NAT",
   "correct marks": 2,
   "negative marks": "0",
