@@ -2,7 +2,7 @@
   "id": 23,
   "year": 2019,
   "set": null,
-  "topics": ["Engineering Mathematics", "Calculus"],
+  "topics": ["Calculus","Limit"],
   "type": "MCQ",
   "correct marks": 1,
   "negative marks": "0.33",

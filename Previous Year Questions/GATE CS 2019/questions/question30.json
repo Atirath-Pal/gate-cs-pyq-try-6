@@ -2,7 +2,7 @@
   "id": 30,
   "year": 2019,
   "set": null,
-  "topics": ["Algorithms", "Sorting"],
+  "topics": ["Algorithms", "Divide and Conquer"],
   "type": "NAT",
   "correct marks": 1,
   "negative marks": "0",

@@ -2,7 +2,7 @@
   "id": 43,
   "year": 2019,
   "set": null,
-  "topics": ["Operating Systems", "Virtual Memory"],
+  "topics": ["Operating System", "Virtual memory"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

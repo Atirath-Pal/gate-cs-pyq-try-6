@@ -3,8 +3,8 @@
   "year": 2019,
   "set": null,
   "topics": [
-    "Operating Systems",
-    "System Calls"
+    "Operating System",
+    "Process management"
   ],
   "type": "NAT",
   "correct marks": 1,

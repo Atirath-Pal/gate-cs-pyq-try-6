@@ -2,7 +2,7 @@
   "id": 44,
   "year": "2019",
   "set": null,
-  "topics": ["Theory of Computation", "Decidability"],
+  "topics": ["Theory of Computation", "Decidability-Undecidability"],
   "type": "MCQ",
   "correct marks": 2,
   "negative marks": "0.66",

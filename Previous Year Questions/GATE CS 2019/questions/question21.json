@@ -4,7 +4,7 @@
   "set": null,
   "topics": [
     "Database Management System",
-    "Transactions and Concurrency Control"
+    "Concurrency control protocols"
   ],
   "type": "MCQ",
   "correct marks": 1,
