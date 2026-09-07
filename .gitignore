@@ -3,6 +3,6 @@ generate_manifest.js
 prompt.txt
 topics.txt
 commands.txt
-server/.env
-server/node_modules
+.env
+node_modules
 .clerk/

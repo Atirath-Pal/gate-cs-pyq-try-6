@@ -4,9 +4,11 @@ let currentQuestionData = null;
 let currentFolderName = '';
 let currentQuestionNumber = 1;
 const questionStatuses = {};
-const bookmarkedQuestions = new Set();
-const completedQuestions = new Set();
-const API_BASE_URL = 'http://localhost:3000';
+let userBookmarks = new Set();
+let userCompleted = new Set();
+const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ? 'http://localhost:3000'
+  : '';
 let currentSession = {
   questions: [],
   title: '',
@@ -56,13 +58,77 @@ function formatQuestionHeading(q) {
   return `GATE CS ${q.year}${setPart} Q.${q.id}`;
 }
 
-async function getClerkToken() {
-  const clerk = window.clerk;
-  if (!clerk || !clerk.user || !clerk.session) {
-    if (clerk && typeof clerk.openSignIn === 'function') clerk.openSignIn();
+function getClerkClient() {
+  return window.clerk || window.Clerk;
+}
+
+function isClerkSignedIn() {
+  const clerk = getClerkClient();
+  return !!(clerk && clerk.user && clerk.session);
+}
+
+async function getClerkToken({ promptSignIn = true } = {}) {
+  const clerk = getClerkClient();
+  if (!isClerkSignedIn()) {
+    if (promptSignIn && clerk && typeof clerk.openSignIn === 'function') clerk.openSignIn();
     return null;
   }
   return clerk.session.getToken();
+}
+
+function applyTrackingButtonState(btn, isActive, activeClass, activeLabel, idleLabel) {
+  if (!btn) return;
+  btn.classList.toggle('active', isActive);
+  btn.classList.toggle(activeClass, isActive);
+  btn.textContent = isActive ? activeLabel : idleLabel;
+}
+
+function refreshTrackingUI() {
+  syncTrackingButtons();
+}
+
+let userDataRequestId = 0;
+
+function clearUserProgress() {
+  userBookmarks = new Set();
+  userCompleted = new Set();
+}
+
+async function loadUserData() {
+  const requestId = ++userDataRequestId;
+  const clerk = getClerkClient();
+
+  if (!(clerk && clerk.user)) {
+    clearUserProgress();
+    refreshTrackingUI();
+    return;
+  }
+
+  try {
+    const token = await clerk.session.getToken();
+    if (requestId !== userDataRequestId) return;
+    if (!token) {
+      clearUserProgress();
+      refreshTrackingUI();
+      return;
+    }
+
+    const response = await fetch(`${API_BASE_URL}/api/user-data`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to load user data: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (requestId !== userDataRequestId) return;
+
+    userBookmarks = new Set(data.bookmarks || []);
+    userCompleted = new Set(data.completed || []);
+    refreshTrackingUI();
+  } catch (err) {
+    if (requestId === userDataRequestId) console.error(err);
+  }
 }
 
 async function postTracking(path, body) {
@@ -89,26 +155,46 @@ async function postTracking(path, body) {
 function syncTrackingButtons() {
   if (!currentQuestionData) return;
   const questionId = getQuestionId(currentQuestionData);
-  const bookmarkBtn = document.getElementById('bookmark-btn');
-  const doneBtn = document.getElementById('done-btn');
-  if (bookmarkBtn) {
-    bookmarkBtn.textContent = bookmarkedQuestions.has(questionId) ? 'Bookmarked' : 'Bookmark';
-  }
-  if (doneBtn) {
-    doneBtn.textContent = completedQuestions.has(questionId) ? 'Completed' : 'Mark as Done';
-  }
+  applyTrackingButtonState(
+    document.getElementById('bookmark-btn'),
+    userBookmarks.has(questionId),
+    'bookmarked',
+    '★ Bookmarked',
+    'Bookmark'
+  );
+  applyTrackingButtonState(
+    document.getElementById('done-btn'),
+    userCompleted.has(questionId),
+    'done',
+    '✓ Done',
+    'Mark as Done'
+  );
 }
 
 async function toggleBookmark() {
   if (!currentQuestionData) return;
   const questionId = getQuestionId(currentQuestionData);
+  const wasBookmarked = userBookmarks.has(questionId);
+
+  if (wasBookmarked) userBookmarks.delete(questionId);
+  else userBookmarks.add(questionId);
+  syncTrackingButtons();
+
   try {
     const result = await postTracking('/api/bookmark', { questionId });
-    if (!result) return;
-    if (result.bookmarked) bookmarkedQuestions.add(questionId);
-    else bookmarkedQuestions.delete(questionId);
+    if (!result) {
+      if (wasBookmarked) userBookmarks.add(questionId);
+      else userBookmarks.delete(questionId);
+      syncTrackingButtons();
+      return;
+    }
+    if (result.bookmarked) userBookmarks.add(questionId);
+    else userBookmarks.delete(questionId);
     syncTrackingButtons();
   } catch (err) {
+    if (wasBookmarked) userBookmarks.add(questionId);
+    else userBookmarks.delete(questionId);
+    syncTrackingButtons();
     console.error(err);
     alert('Could not update bookmark. Is the API server running?');
   }
@@ -117,14 +203,28 @@ async function toggleBookmark() {
 async function toggleMarkDone() {
   if (!currentQuestionData) return;
   const questionId = getQuestionId(currentQuestionData);
-  const isDone = !completedQuestions.has(questionId);
+  const wasDone = userCompleted.has(questionId);
+  const isDone = !wasDone;
+
+  if (isDone) userCompleted.add(questionId);
+  else userCompleted.delete(questionId);
+  syncTrackingButtons();
+
   try {
     const result = await postTracking('/api/status', { questionId, isDone });
-    if (!result) return;
-    if (result.isDone) completedQuestions.add(questionId);
-    else completedQuestions.delete(questionId);
+    if (!result) {
+      if (wasDone) userCompleted.add(questionId);
+      else userCompleted.delete(questionId);
+      syncTrackingButtons();
+      return;
+    }
+    if (result.isDone) userCompleted.add(questionId);
+    else userCompleted.delete(questionId);
     syncTrackingButtons();
   } catch (err) {
+    if (wasDone) userCompleted.add(questionId);
+    else userCompleted.delete(questionId);
+    syncTrackingButtons();
     console.error(err);
     alert('Could not update question status. Is the API server running?');
   }

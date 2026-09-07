@@ -32,8 +32,23 @@ async function initClerkAuth() {
   });
 
   renderClerkHeader();
+
+  let lastUserId = window.clerk.user ? window.clerk.user.id : null;
+  if (typeof loadUserData === 'function') {
+    await loadUserData();
+  }
+
   if (typeof window.clerk.addListener === 'function') {
-    window.clerk.addListener(() => renderClerkHeader());
+    window.clerk.addListener(() => {
+      renderClerkHeader();
+      const userId = window.clerk.user ? window.clerk.user.id : null;
+      if (userId === lastUserId) {
+        if (typeof refreshTrackingUI === 'function') refreshTrackingUI();
+        return;
+      }
+      lastUserId = userId;
+      if (typeof loadUserData === 'function') loadUserData();
+    });
   }
 }
 

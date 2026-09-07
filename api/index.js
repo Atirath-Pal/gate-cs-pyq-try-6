@@ -6,7 +6,6 @@ const { ClerkExpressRequireAuth } = require('@clerk/clerk-sdk-node');
 const { createClient } = require('@libsql/client');
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -59,6 +58,32 @@ async function initSchema() {
     )
   `);
 }
+
+app.get('/api/user-data', ClerkExpressRequireAuth(), async (req, res) => {
+  try {
+    const userId = getUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+    await ensureUserExists(userId, getUserEmail(req));
+
+    const bookmarksResult = await db.execute({
+      sql: 'SELECT question_id FROM bookmarks WHERE user_id = ?',
+      args: [userId]
+    });
+    const completedResult = await db.execute({
+      sql: 'SELECT question_id FROM question_status WHERE user_id = ? AND is_done = 1',
+      args: [userId]
+    });
+
+    return res.json({
+      bookmarks: bookmarksResult.rows.map((row) => row.question_id),
+      completed: completedResult.rows.map((row) => row.question_id)
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Failed to load user data' });
+  }
+});
 
 app.post('/api/bookmark', ClerkExpressRequireAuth(), async (req, res) => {
   try {
@@ -120,13 +145,8 @@ app.post('/api/status', ClerkExpressRequireAuth(), async (req, res) => {
   }
 });
 
-initSchema()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`API server listening on http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error('Failed to initialize Turso schema', err);
-    process.exit(1);
-  });
+initSchema().catch((err) => {
+  console.error('Failed to initialize Turso schema', err);
+});
+
+module.exports = app;

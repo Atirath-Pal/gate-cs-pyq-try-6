@@ -836,6 +836,14 @@
   gap: var(--space-2);
 }
 
+.action-footer__tracking .btn.bookmarked,
+.action-footer__tracking .btn.done,
+.action-footer__tracking .btn.active {
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  border-color: var(--accent-primary);
+}
+
 /* Scrollbar styling */
 #question-grid::-webkit-scrollbar {
   height: 6px;
