@@ -538,6 +538,13 @@
   background: var(--status-warning-bg);
 }
 
+/* Persisted/optimistic completion is distinct from the answer-check result. */
+.palette-btn--done {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-muted);
+  box-shadow: inset 0 0 0 1px var(--accent-primary);
+}
+
 /* Tiers 3–4: palette + question card */
 .workspace-body {
   display: flex;

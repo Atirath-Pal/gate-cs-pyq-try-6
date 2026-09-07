@@ -4,8 +4,25 @@ let currentQuestionData = null;
 let currentFolderName = '';
 let currentQuestionNumber = 1;
 const questionStatuses = {};
-let userBookmarks = new Set();
-let userCompleted = new Set();
+window.userState = window.userState || {
+  bookmarks: new Set(),
+  completed: new Set(),
+  isLoaded: false
+};
+
+// Keep the state shape reliable if this script is loaded more than once.
+window.userState.bookmarks = window.userState.bookmarks instanceof Set
+  ? window.userState.bookmarks : new Set(window.userState.bookmarks || []);
+window.userState.completed = window.userState.completed instanceof Set
+  ? window.userState.completed : new Set(window.userState.completed || []);
+window.userState.isLoaded = Boolean(window.userState.isLoaded);
+
+const pendingSync = {
+  bookmarks: new Map(),
+  statuses: new Map()
+};
+let syncTimer = null;
+let syncInFlight = false;
 const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:3000'
   : '';
@@ -85,13 +102,30 @@ function applyTrackingButtonState(btn, isActive, activeClass, activeLabel, idleL
 
 function refreshTrackingUI() {
   syncTrackingButtons();
+  updateAllPaletteButtons();
 }
 
 let userDataRequestId = 0;
 
 function clearUserProgress() {
-  userBookmarks = new Set();
-  userCompleted = new Set();
+  window.userState.bookmarks.clear();
+  window.userState.completed.clear();
+  window.userState.isLoaded = false;
+  pendingSync.bookmarks.clear();
+  pendingSync.statuses.clear();
+  if (syncTimer) window.clearTimeout(syncTimer);
+  syncTimer = null;
+}
+
+function applyPendingChangesToUserState() {
+  pendingSync.bookmarks.forEach((bookmarked, questionId) => {
+    if (bookmarked) window.userState.bookmarks.add(questionId);
+    else window.userState.bookmarks.delete(questionId);
+  });
+  pendingSync.statuses.forEach((isDone, questionId) => {
+    if (isDone) window.userState.completed.add(questionId);
+    else window.userState.completed.delete(questionId);
+  });
 }
 
 async function loadUserData() {
@@ -123,111 +157,138 @@ async function loadUserData() {
     const data = await response.json();
     if (requestId !== userDataRequestId) return;
 
-    userBookmarks = new Set(data.bookmarks || []);
-    userCompleted = new Set(data.completed || []);
+    window.userState.bookmarks = new Set(data.bookmarks || []);
+    window.userState.completed = new Set(data.completed || []);
+    // Do not let a slow user-data response overwrite an optimistic click.
+    applyPendingChangesToUserState();
+    window.userState.isLoaded = true;
     refreshTrackingUI();
   } catch (err) {
     if (requestId === userDataRequestId) console.error(err);
   }
 }
 
-async function postTracking(path, body) {
-  const token = await getClerkToken();
-  if (!token) return null;
-
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify(body)
-  });
-
-  if (!response.ok) {
-    const message = await response.text();
-    throw new Error(message || `Request failed: ${response.status}`);
-  }
-
-  return response.json();
+function hasPendingSync() {
+  return pendingSync.bookmarks.size > 0 || pendingSync.statuses.size > 0;
 }
+
+function debounceSync() {
+  if (syncTimer) window.clearTimeout(syncTimer);
+  syncTimer = window.setTimeout(() => {
+    syncTimer = null;
+    flushSyncQueue();
+  }, 1500);
+}
+
+async function flushSyncQueue() {
+  if (!hasPendingSync() || syncInFlight || !isClerkSignedIn()) return;
+
+  const token = await getClerkToken({ promptSignIn: false });
+  if (!token || syncInFlight) return;
+
+  // Snapshot the queue. New clicks can continue to update the Maps while this
+  // request is in flight, and are retained for the next batch.
+  const bookmarks = new Map(pendingSync.bookmarks);
+  const statuses = new Map(pendingSync.statuses);
+  syncInFlight = true;
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/sync`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        bookmarks: Array.from(bookmarks, ([questionId, bookmarked]) => ({ questionId, bookmarked })),
+        statuses: Array.from(statuses, ([questionId, isDone]) => ({ questionId, isDone }))
+      }),
+      // Allows the small final batch to continue during page unload where supported.
+      keepalive: document.visibilityState === 'hidden'
+    });
+
+    if (!response.ok) throw new Error(`Sync failed: ${response.status}`);
+
+    // Clear only unchanged entries, so a newer click is never lost.
+    bookmarks.forEach((bookmarked, questionId) => {
+      if (pendingSync.bookmarks.get(questionId) === bookmarked) {
+        pendingSync.bookmarks.delete(questionId);
+      }
+    });
+    statuses.forEach((isDone, questionId) => {
+      if (pendingSync.statuses.get(questionId) === isDone) {
+        pendingSync.statuses.delete(questionId);
+      }
+    });
+  } catch (err) {
+    // Retain the queue for a subsequent interaction or retry rather than
+    // reverting an optimistic UI update that may still be saved.
+    console.error('Could not sync tracking changes', err);
+  } finally {
+    syncInFlight = false;
+    const hasChangesAfterSnapshot = Array.from(pendingSync.bookmarks)
+      .some(([questionId, bookmarked]) => bookmarks.get(questionId) !== bookmarked)
+      || Array.from(pendingSync.statuses)
+        .some(([questionId, isDone]) => statuses.get(questionId) !== isDone);
+    if (hasChangesAfterSnapshot) debounceSync();
+  }
+}
+
+window.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    flushSyncQueue();
+  }
+});
 
 function syncTrackingButtons() {
   if (!currentQuestionData) return;
   const questionId = getQuestionId(currentQuestionData);
   applyTrackingButtonState(
     document.getElementById('bookmark-btn'),
-    userBookmarks.has(questionId),
+    window.userState.bookmarks.has(questionId),
     'bookmarked',
     '★ Bookmarked',
     'Bookmark'
   );
   applyTrackingButtonState(
     document.getElementById('done-btn'),
-    userCompleted.has(questionId),
+    window.userState.completed.has(questionId),
     'done',
     '✓ Done',
     'Mark as Done'
   );
 }
 
-async function toggleBookmark() {
+function toggleBookmark() {
   if (!currentQuestionData) return;
-  const questionId = getQuestionId(currentQuestionData);
-  const wasBookmarked = userBookmarks.has(questionId);
-
-  if (wasBookmarked) userBookmarks.delete(questionId);
-  else userBookmarks.add(questionId);
-  syncTrackingButtons();
-
-  try {
-    const result = await postTracking('/api/bookmark', { questionId });
-    if (!result) {
-      if (wasBookmarked) userBookmarks.add(questionId);
-      else userBookmarks.delete(questionId);
-      syncTrackingButtons();
-      return;
-    }
-    if (result.bookmarked) userBookmarks.add(questionId);
-    else userBookmarks.delete(questionId);
-    syncTrackingButtons();
-  } catch (err) {
-    if (wasBookmarked) userBookmarks.add(questionId);
-    else userBookmarks.delete(questionId);
-    syncTrackingButtons();
-    console.error(err);
-    alert('Could not update bookmark. Is the API server running?');
+  if (!isClerkSignedIn()) {
+    getClerkToken();
+    return;
   }
+  const questionId = getQuestionId(currentQuestionData);
+  const bookmarked = !window.userState.bookmarks.has(questionId);
+
+  if (bookmarked) window.userState.bookmarks.add(questionId);
+  else window.userState.bookmarks.delete(questionId);
+  pendingSync.bookmarks.set(questionId, bookmarked);
+  refreshTrackingUI();
+  debounceSync();
 }
 
-async function toggleMarkDone() {
+function toggleMarkDone() {
   if (!currentQuestionData) return;
-  const questionId = getQuestionId(currentQuestionData);
-  const wasDone = userCompleted.has(questionId);
-  const isDone = !wasDone;
-
-  if (isDone) userCompleted.add(questionId);
-  else userCompleted.delete(questionId);
-  syncTrackingButtons();
-
-  try {
-    const result = await postTracking('/api/status', { questionId, isDone });
-    if (!result) {
-      if (wasDone) userCompleted.add(questionId);
-      else userCompleted.delete(questionId);
-      syncTrackingButtons();
-      return;
-    }
-    if (result.isDone) userCompleted.add(questionId);
-    else userCompleted.delete(questionId);
-    syncTrackingButtons();
-  } catch (err) {
-    if (wasDone) userCompleted.add(questionId);
-    else userCompleted.delete(questionId);
-    syncTrackingButtons();
-    console.error(err);
-    alert('Could not update question status. Is the API server running?');
+  if (!isClerkSignedIn()) {
+    getClerkToken();
+    return;
   }
+  const questionId = getQuestionId(currentQuestionData);
+  const isDone = !window.userState.completed.has(questionId);
+
+  if (isDone) window.userState.completed.add(questionId);
+  else window.userState.completed.delete(questionId);
+  pendingSync.statuses.set(questionId, isDone);
+  refreshTrackingUI();
+  debounceSync();
 }
 
 function themeToggleHTML() {
@@ -327,8 +388,14 @@ function updatePaletteButton(qNumber) {
     'palette-btn--answered',
     'palette-btn--correct',
     'palette-btn--incorrect',
-    'palette-btn--warning'
+    'palette-btn--warning',
+    'palette-btn--done'
   );
+
+  const entry = currentSession.questions[qNumber - 1];
+  if (entry && entry.questionId && window.userState.completed.has(entry.questionId)) {
+    btn.classList.add('palette-btn--done');
+  }
 
   const status = questionStatuses[qNumber];
   if (qNumber === currentQuestionNumber) {
@@ -511,8 +578,11 @@ async function loadQuestion(qNumber) {
 
     currentQuestionData = await response.json();
     const qData = currentQuestionData;
+    // Cache the exact ID generated from question metadata for palette refreshes.
+    // This intentionally reuses getQuestionId rather than deriving IDs from paths.
+    entry.questionId = getQuestionId(qData);
     qNumHeading.innerText = formatQuestionHeading(qData);
-    syncTrackingButtons();
+    refreshTrackingUI();
 
     const correctMarks = qData["correct marks"] || qData.marks || 1;
     const negativeMarks = qData["negative marks"] !== undefined ? qData["negative marks"] : 0;

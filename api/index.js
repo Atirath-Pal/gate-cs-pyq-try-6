@@ -85,6 +85,86 @@ app.get('/api/user-data', ClerkExpressRequireAuth(), async (req, res) => {
   }
 });
 
+// Applies the latest client-side bookmark and completion changes together.  The
+// frontend coalesces repeated clicks by question ID before it reaches this route.
+app.post('/api/sync', ClerkExpressRequireAuth(), async (req, res) => {
+  try {
+    const userId = getUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+    const body = req.body || {};
+    const bookmarkChanges = body.bookmarks == null ? [] : body.bookmarks;
+    const statusChanges = body.statuses == null ? [] : body.statuses;
+
+    if (!Array.isArray(bookmarkChanges) || !Array.isArray(statusChanges)) {
+      return res.status(400).json({ error: 'bookmarks and statuses must be arrays' });
+    }
+
+    // Last write wins if a caller sends more than one change for a question.
+    // This mirrors the Map-based queue on the client and avoids unnecessary SQL.
+    const bookmarks = new Map();
+    const statuses = new Map();
+
+    for (const change of bookmarkChanges) {
+      if (!change || typeof change.questionId !== 'string' || !change.questionId.trim()
+        || typeof change.bookmarked !== 'boolean') {
+        return res.status(400).json({ error: 'Each bookmark requires questionId and bookmarked' });
+      }
+      bookmarks.set(change.questionId, change.bookmarked);
+    }
+
+    for (const change of statusChanges) {
+      if (!change || typeof change.questionId !== 'string' || !change.questionId.trim()
+        || typeof change.isDone !== 'boolean') {
+        return res.status(400).json({ error: 'Each status requires questionId and isDone' });
+      }
+      statuses.set(change.questionId, change.isDone);
+    }
+
+    const syncedCount = bookmarks.size + statuses.size;
+    if (syncedCount === 0) return res.json({ success: true, syncedCount });
+
+    const statements = [
+      {
+        sql: 'INSERT INTO users (user_id, email) VALUES (?, ?) ON CONFLICT(user_id) DO NOTHING',
+        args: [userId, getUserEmail(req)]
+      }
+    ];
+
+    for (const [questionId, bookmarked] of bookmarks) {
+      statements.push(bookmarked
+        ? {
+            sql: 'INSERT INTO bookmarks (user_id, question_id) VALUES (?, ?) ON CONFLICT DO NOTHING',
+            args: [userId, questionId]
+          }
+        : {
+            sql: 'DELETE FROM bookmarks WHERE user_id = ? AND question_id = ?',
+            args: [userId, questionId]
+          });
+    }
+
+    for (const [questionId, isDone] of statuses) {
+      statements.push({
+        sql: `
+          INSERT INTO question_status (user_id, question_id, is_done)
+          VALUES (?, ?, ?)
+          ON CONFLICT(user_id, question_id)
+          DO UPDATE SET is_done = excluded.is_done, updated_at = datetime('now')
+        `,
+        args: [userId, questionId, isDone ? 1 : 0]
+      });
+    }
+
+    // libSQL executes batch statements as one transaction; "write" obtains the
+    // appropriate write transaction up front.
+    await db.batch(statements, 'write');
+    return res.json({ success: true, syncedCount });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Failed to sync user data' });
+  }
+});
+
 app.post('/api/bookmark', ClerkExpressRequireAuth(), async (req, res) => {
   try {
     const userId = getUserId(req);
