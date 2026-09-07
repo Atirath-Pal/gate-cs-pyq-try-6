@@ -490,6 +490,7 @@
 }
 
 .palette-btn {
+  position: relative;
   min-width: 36px;
   height: 36px;
   display: flex;
@@ -543,6 +544,34 @@
   border-color: var(--accent-primary);
   background: var(--accent-primary-muted);
   box-shadow: inset 0 0 0 1px var(--accent-primary);
+}
+
+.palette-btn.is-done::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background: url('/images/green-check.png') center / contain no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.palette-btn.is-bookmarked::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 16px;
+  background: url('/images/yellow-bookmark.png') center / contain no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.palette-btn.is-done.is-bookmarked::after {
+  right: 12px;
 }
 
 /* Tiers 3–4: palette + question card */

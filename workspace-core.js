@@ -393,9 +393,12 @@ function updatePaletteButton(qNumber) {
   );
 
   const entry = currentSession.questions[qNumber - 1];
-  if (entry && entry.questionId && window.userState.completed.has(entry.questionId)) {
-    btn.classList.add('palette-btn--done');
-  }
+  const questionId = entry && entry.questionId;
+  const isDone = Boolean(questionId && window.userState.completed.has(questionId));
+  const isBookmarked = Boolean(questionId && window.userState.bookmarks.has(questionId));
+  btn.classList.toggle('palette-btn--done', isDone);
+  btn.classList.toggle('is-done', isDone);
+  btn.classList.toggle('is-bookmarked', isBookmarked);
 
   const status = questionStatuses[qNumber];
   if (qNumber === currentQuestionNumber) {
