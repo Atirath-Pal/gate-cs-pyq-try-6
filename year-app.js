@@ -6,7 +6,9 @@ function router() {
     return;
   }
   if (parts[0] === 'paper' && parts.length >= 2) {
-    renderYearWorkspace(parts.slice(1).join('/'));
+    const renderPaper = () => renderYearWorkspace(parts.slice(1).join('/'));
+    if (typeof checkAuthAndProceed === 'function') checkAuthAndProceed(renderPaper);
+    else renderPaper();
     return;
   }
 

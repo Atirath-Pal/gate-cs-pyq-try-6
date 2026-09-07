@@ -32,7 +32,9 @@ function router() {
   if (parts[0] === 'topic' && parts.length >= 2) {
     const subject = parts[1];
     const subtopic = parts.length >= 3 ? parts.slice(2).join('/') : '';
-    renderTopicWorkspace(subject, subtopic);
+    const renderTopic = () => renderTopicWorkspace(subject, subtopic);
+    if (typeof checkAuthAndProceed === 'function') checkAuthAndProceed(renderTopic);
+    else renderTopic();
     return;
   }
 

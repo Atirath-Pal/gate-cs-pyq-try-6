@@ -37,6 +37,25 @@
 </head>
 <body>
   <div id="app"></div>
+  <div id="auth-modal" class="auth-modal-overlay" hidden aria-hidden="true">
+    <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <div class="auth-form-panel">
+        <button type="button" id="close-auth-modal" class="auth-close-btn" aria-label="Close sign in dialog">&times;</button>
+        <div class="auth-brand"><span class="auth-logo-icon" aria-hidden="true">⌁</span><span class="auth-logo-text">GATE CS PYQ</span></div>
+        <h2 id="auth-modal-title" class="auth-title">Welcome Back!</h2>
+        <p class="auth-subtitle">Sign in to access Year-wise &amp; Subject-wise PYQs, track your progress, and save bookmarks.</p>
+        <div id="clerk-signin-container"></div>
+      </div>
+      <div class="auth-hero-panel">
+        <div class="auth-hero-content">
+          <h1 class="auth-hero-heading">Master GATE CS with Smarter PYQ Practice</h1>
+          <blockquote class="auth-hero-quote">“Tracking my progress year-wise and topic-wise gave me the exact clarity I needed during final revision.”</blockquote>
+          <div class="auth-hero-author"><strong>GATE CS Aspirant</strong><span>IIT Bombay CSE ’25</span></div>
+          <div class="auth-hero-stats"><span>JOIN 10K+ ASPIRANTS</span><div class="auth-badges"><span>✓ 100% Free PYQs</span><span>✓ Detailed Solutions</span><span>✓ Progress Sync</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script defer src="./workspace-core.js"></script>
   <script defer src="./app.js"></script>

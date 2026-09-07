@@ -113,7 +113,8 @@ function isClerkSignedIn() {
 async function getClerkToken({ promptSignIn = true } = {}) {
   const clerk = getClerkClient();
   if (!isClerkSignedIn()) {
-    if (promptSignIn && clerk && typeof clerk.openSignIn === 'function') clerk.openSignIn();
+    if (promptSignIn && typeof openAuthModal === 'function') openAuthModal();
+    else if (promptSignIn && clerk && typeof clerk.openSignIn === 'function') clerk.openSignIn();
     return null;
   }
   return clerk.session.getToken();
@@ -393,7 +394,7 @@ function yearCardHTML(title, count, href, tag) {
       <span class="year-card__tag">${tag}</span>
       <h3 class="year-card__title">${title}</h3>
       <p class="year-card__count">${count} Questions</p>
-      <a href="${href}" class="year-card__link">
+      <a href="${href}" class="year-card__link" data-auth-required>
         Launch <i data-lucide="arrow-right"></i>
       </a>
     </article>
