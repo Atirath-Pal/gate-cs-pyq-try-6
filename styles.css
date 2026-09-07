@@ -175,6 +175,17 @@
   gap: var(--space-3);
 }
 
+.clerk-auth {
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+}
+
+.clerk-user-button {
+  display: flex;
+  align-items: center;
+}
+
 .home-main {
   flex: 1;
   max-width: 72rem;
@@ -815,6 +826,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.action-footer__tracking {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 /* Scrollbar styling */

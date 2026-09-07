@@ -4,6 +4,9 @@ let currentQuestionData = null;
 let currentFolderName = '';
 let currentQuestionNumber = 1;
 const questionStatuses = {};
+const bookmarkedQuestions = new Set();
+const completedQuestions = new Set();
+const API_BASE_URL = 'http://localhost:3000';
 let currentSession = {
   questions: [],
   title: '',
@@ -39,11 +42,108 @@ function updateThemeToggleButtons() {
   if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
+function refreshChrome() {
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+  if (typeof renderClerkHeader === 'function') renderClerkHeader();
+}
+
+function getQuestionId(q) {
+  return `GATE-CS-${q.year}-${q.set ? 'S' + q.set + '-' : ''}Q${q.id}`;
+}
+
+function formatQuestionHeading(q) {
+  const setPart = q.set != null && q.set !== '' ? ` SET ${q.set}` : '';
+  return `GATE CS ${q.year}${setPart} Q.${q.id}`;
+}
+
+async function getClerkToken() {
+  const clerk = window.clerk;
+  if (!clerk || !clerk.user || !clerk.session) {
+    if (clerk && typeof clerk.openSignIn === 'function') clerk.openSignIn();
+    return null;
+  }
+  return clerk.session.getToken();
+}
+
+async function postTracking(path, body) {
+  const token = await getClerkToken();
+  if (!token) return null;
+
+  const response = await fetch(`${API_BASE_URL}${path}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Request failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+function syncTrackingButtons() {
+  if (!currentQuestionData) return;
+  const questionId = getQuestionId(currentQuestionData);
+  const bookmarkBtn = document.getElementById('bookmark-btn');
+  const doneBtn = document.getElementById('done-btn');
+  if (bookmarkBtn) {
+    bookmarkBtn.textContent = bookmarkedQuestions.has(questionId) ? 'Bookmarked' : 'Bookmark';
+  }
+  if (doneBtn) {
+    doneBtn.textContent = completedQuestions.has(questionId) ? 'Completed' : 'Mark as Done';
+  }
+}
+
+async function toggleBookmark() {
+  if (!currentQuestionData) return;
+  const questionId = getQuestionId(currentQuestionData);
+  try {
+    const result = await postTracking('/api/bookmark', { questionId });
+    if (!result) return;
+    if (result.bookmarked) bookmarkedQuestions.add(questionId);
+    else bookmarkedQuestions.delete(questionId);
+    syncTrackingButtons();
+  } catch (err) {
+    console.error(err);
+    alert('Could not update bookmark. Is the API server running?');
+  }
+}
+
+async function toggleMarkDone() {
+  if (!currentQuestionData) return;
+  const questionId = getQuestionId(currentQuestionData);
+  const isDone = !completedQuestions.has(questionId);
+  try {
+    const result = await postTracking('/api/status', { questionId, isDone });
+    if (!result) return;
+    if (result.isDone) completedQuestions.add(questionId);
+    else completedQuestions.delete(questionId);
+    syncTrackingButtons();
+  } catch (err) {
+    console.error(err);
+    alert('Could not update question status. Is the API server running?');
+  }
+}
+
 function themeToggleHTML() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   const label = isDark ? 'Light' : 'Dark';
   const icon = isDark ? 'sun' : 'moon';
   return `<button type="button" class="btn btn-theme" data-theme-toggle onclick="toggleTheme()"><i data-lucide="${icon}"></i> <span class="btn-label">${label}</span></button>`;
+}
+
+function clerkAuthControlsHTML() {
+  return `
+    <div id="clerk-auth" class="clerk-auth">
+      <div id="user-button" class="clerk-user-button" hidden></div>
+      <button type="button" id="sign-in-btn" class="btn btn-primary" hidden>Sign In</button>
+    </div>
+  `;
 }
 
 // --- BASE PATH FIX ---
@@ -86,6 +186,7 @@ function listingHeaderHTML(backHref) {
       </div>
       <div class="home-header__actions">
         ${themeToggleHTML()}
+        ${clerkAuthControlsHTML()}
       </div>
     </header>
   `;
@@ -223,6 +324,7 @@ function renderWorkspacePage() {
         </div>
         <div class="workspace-header__right">
           ${themeToggleHTML()}
+          ${clerkAuthControlsHTML()}
         </div>
       </header>
 
@@ -261,6 +363,10 @@ function renderWorkspacePage() {
             </div>
 
             <div id="action-footer" class="hidden">
+              <div class="action-footer__tracking">
+                <button type="button" id="bookmark-btn" class="btn" onclick="toggleBookmark()">Bookmark</button>
+                <button type="button" id="done-btn" class="btn" onclick="toggleMarkDone()">Mark as Done</button>
+              </div>
               <button type="button" id="check-btn" class="btn btn-primary" onclick="checkAnswer()" disabled>
                 Check Answer
               </button>
@@ -271,7 +377,7 @@ function renderWorkspacePage() {
     </div>
   `;
 
-  lucide.createIcons();
+  refreshChrome();
   loadQuestion(1);
 }
 
@@ -305,6 +411,8 @@ async function loadQuestion(qNumber) {
 
     currentQuestionData = await response.json();
     const qData = currentQuestionData;
+    qNumHeading.innerText = formatQuestionHeading(qData);
+    syncTrackingButtons();
 
     const correctMarks = qData["correct marks"] || qData.marks || 1;
     const negativeMarks = qData["negative marks"] !== undefined ? qData["negative marks"] : 0;

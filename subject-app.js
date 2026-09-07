@@ -66,7 +66,7 @@ async function renderSubjectHomePage() {
       </main>
     `;
 
-    lucide.createIcons();
+    refreshChrome();
   } catch (err) {
     appDiv.innerHTML = `<div class="error-state">Error loading topic manifest: ${err.message}</div>`;
   }

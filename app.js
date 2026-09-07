@@ -22,7 +22,7 @@ function renderIndexPage() {
       </div>
     </main>
   `;
-  lucide.createIcons();
+  refreshChrome();
 }
 
 function redirectLegacyHash() {

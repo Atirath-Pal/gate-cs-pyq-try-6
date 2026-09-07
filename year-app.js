@@ -39,7 +39,7 @@ async function renderYearHomePage() {
       </main>
     `;
 
-    lucide.createIcons();
+    refreshChrome();
   } catch (err) {
     appDiv.innerHTML = `<div class="error-state">Error loading manifest: ${err.message}</div>`;
   }
