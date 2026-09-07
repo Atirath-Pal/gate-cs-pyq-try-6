@@ -45,15 +45,36 @@ async function renderYearHomePage() {
   }
 }
 
-function renderYearWorkspace(folderName) {
-  const questions = [];
-  for (let i = 1; i <= 65; i++) {
-    questions.push({
-      paperFolder: folderName,
-      filePath: `Previous Year Questions/${folderName}/questions/question${i}.json`
-    });
+let questionCatalogPromise = null;
+
+function getQuestionCatalog() {
+  if (!questionCatalogPromise) {
+    questionCatalogPromise = fetch('./topic_wise_manifest.json')
+      .then((response) => {
+        if (!response.ok) throw new Error('Question catalog not found');
+        return response.json();
+      });
   }
-  startSession(questions, folderName, '#/');
+  return questionCatalogPromise;
+}
+
+async function renderYearWorkspace(folderName) {
+  appDiv.innerHTML = `<div class="loading-state">Loading questions...</div>`;
+
+  try {
+    // The catalog carries year, set, and number for every question. Using it
+    // here lets startSession eagerly create the same canonical IDs used by the
+    // Subject and Topic views before rendering any palette button.
+    const catalog = await getQuestionCatalog();
+    const questions = catalog
+      .filter((question) => question.paperFolder === folderName)
+      .sort((a, b) => Number(a.id) - Number(b.id));
+
+    if (!questions.length) throw new Error(`No questions found for ${folderName}`);
+    startSession(questions, folderName, '#/');
+  } catch (err) {
+    appDiv.innerHTML = `<div class="error-state">Error loading paper: ${err.message}</div>`;
+  }
 }
 
 window.addEventListener('hashchange', router);

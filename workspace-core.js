@@ -28,10 +28,12 @@ const API_BASE_URL = (window.location.hostname === 'localhost' || window.locatio
   : '';
 let currentSession = {
   questions: [],
+  questionIds: [],
   title: '',
   backHref: './index.html',
   headerExtraHTML: ''
 };
+let activeSetQuestionIds = [];
 
 function sessionLength() {
   return currentSession.questions.length;
@@ -66,8 +68,32 @@ function refreshChrome() {
   if (typeof renderClerkHeader === 'function') renderClerkHeader();
 }
 
-function getQuestionId(q) {
-  return `GATE-CS-${q.year}-${q.set ? 'S' + q.set + '-' : ''}Q${q.id}`;
+function getCanonicalQuestionId(questionObj) {
+  if (!questionObj) throw new Error('Question metadata is required to create an ID');
+
+  // Preserve a canonical ID supplied by a future manifest, but never treat the
+  // current numeric `id` field as globally unique on its own.
+  if (typeof questionObj.questionId === 'string' && questionObj.questionId) {
+    return questionObj.questionId;
+  }
+  if (typeof questionObj.id === 'string' && /^GATE-CS-/.test(questionObj.id)) {
+    return questionObj.id;
+  }
+
+  const exam = String(questionObj.exam || 'GATE-CS')
+    .trim()
+    .replace(/[\s_]+/g, '-');
+  const year = questionObj.year;
+  const number = questionObj.number ?? questionObj.id;
+  const set = questionObj.set;
+  if (year == null || year === '' || number == null || number === '') {
+    throw new Error('Question metadata must include year and id/number');
+  }
+
+  const setPart = set != null && set !== ''
+    ? `S${String(set).replace(/^S/i, '')}-`
+    : '';
+  return `${exam}-${year}-${setPart}Q${number}`;
 }
 
 function formatQuestionHeading(q) {
@@ -102,7 +128,11 @@ function applyTrackingButtonState(btn, isActive, activeClass, activeLabel, idleL
 
 function refreshTrackingUI() {
   syncTrackingButtons();
-  updateAllPaletteButtons();
+  refreshActivePaletteBadges();
+}
+
+function notifyUserStateChanged() {
+  window.dispatchEvent(new Event('userstatechange'));
 }
 
 let userDataRequestId = 0;
@@ -115,6 +145,7 @@ function clearUserProgress() {
   pendingSync.statuses.clear();
   if (syncTimer) window.clearTimeout(syncTimer);
   syncTimer = null;
+  notifyUserStateChanged();
 }
 
 function applyPendingChangesToUserState() {
@@ -162,6 +193,7 @@ async function loadUserData() {
     // Do not let a slow user-data response overwrite an optimistic click.
     applyPendingChangesToUserState();
     window.userState.isLoaded = true;
+    notifyUserStateChanged();
     refreshTrackingUI();
   } catch (err) {
     if (requestId === userDataRequestId) console.error(err);
@@ -242,7 +274,7 @@ window.addEventListener('visibilitychange', () => {
 
 function syncTrackingButtons() {
   if (!currentQuestionData) return;
-  const questionId = getQuestionId(currentQuestionData);
+  const questionId = getCanonicalQuestionId(currentQuestionData);
   applyTrackingButtonState(
     document.getElementById('bookmark-btn'),
     window.userState.bookmarks.has(questionId),
@@ -265,12 +297,13 @@ function toggleBookmark() {
     getClerkToken();
     return;
   }
-  const questionId = getQuestionId(currentQuestionData);
+  const questionId = getCanonicalQuestionId(currentQuestionData);
   const bookmarked = !window.userState.bookmarks.has(questionId);
 
   if (bookmarked) window.userState.bookmarks.add(questionId);
   else window.userState.bookmarks.delete(questionId);
   pendingSync.bookmarks.set(questionId, bookmarked);
+  notifyUserStateChanged();
   refreshTrackingUI();
   debounceSync();
 }
@@ -281,12 +314,13 @@ function toggleMarkDone() {
     getClerkToken();
     return;
   }
-  const questionId = getQuestionId(currentQuestionData);
+  const questionId = getCanonicalQuestionId(currentQuestionData);
   const isDone = !window.userState.completed.has(questionId);
 
   if (isDone) window.userState.completed.add(questionId);
   else window.userState.completed.delete(questionId);
   pendingSync.statuses.set(questionId, isDone);
+  notifyUserStateChanged();
   refreshTrackingUI();
   debounceSync();
 }
@@ -367,8 +401,10 @@ function yearCardHTML(title, count, href, tag) {
 }
 
 function startSession(questions, title, backHref, headerExtraHTML) {
+  activeSetQuestionIds = questions.map(getCanonicalQuestionId);
   currentSession = {
     questions,
+    questionIds: activeSetQuestionIds,
     title,
     backHref,
     headerExtraHTML: headerExtraHTML || ''
@@ -392,8 +428,7 @@ function updatePaletteButton(qNumber) {
     'palette-btn--done'
   );
 
-  const entry = currentSession.questions[qNumber - 1];
-  const questionId = entry && entry.questionId;
+  const questionId = activeSetQuestionIds[qNumber - 1];
   const isDone = Boolean(questionId && window.userState.completed.has(questionId));
   const isBookmarked = Boolean(questionId && window.userState.bookmarks.has(questionId));
   btn.classList.toggle('palette-btn--done', isDone);
@@ -414,6 +449,18 @@ function updateAllPaletteButtons() {
   const n = sessionLength();
   for (let i = 1; i <= n; i++) updatePaletteButton(i);
 }
+
+function refreshActivePaletteBadges() {
+  activeSetQuestionIds.forEach((questionId, index) => {
+    const btn = document.getElementById(`p-btn-${index + 1}`);
+    if (!btn) return;
+
+    btn.dataset.questionId = questionId;
+    updatePaletteButton(index + 1);
+  });
+}
+
+window.addEventListener('userstatechange', refreshActivePaletteBadges);
 
 function setQuestionStatus(qNumber, status) {
   questionStatuses[qNumber] = status;
@@ -473,12 +520,13 @@ function renderWorkspacePage() {
   currentFolderName = folderName;
 
   let paletteHTML = '';
-  for (let i = 1; i <= n; i++) {
+  activeSetQuestionIds.forEach((questionId, index) => {
+    const questionNumber = index + 1;
     paletteHTML += `
-      <button type="button" id="p-btn-${i}" onclick="loadQuestion(${i})" class="palette-btn">
-        ${i}
+      <button type="button" id="p-btn-${questionNumber}" data-question-id="${questionId}" onclick="loadQuestion(${questionNumber})" class="palette-btn">
+        ${questionNumber}
       </button>`;
-  }
+  });
 
   appDiv.innerHTML = `
     <div class="workspace">
@@ -547,6 +595,7 @@ function renderWorkspacePage() {
     </div>
   `;
 
+  refreshActivePaletteBadges();
   refreshChrome();
   loadQuestion(1);
 }
@@ -581,9 +630,6 @@ async function loadQuestion(qNumber) {
 
     currentQuestionData = await response.json();
     const qData = currentQuestionData;
-    // Cache the exact ID generated from question metadata for palette refreshes.
-    // This intentionally reuses getQuestionId rather than deriving IDs from paths.
-    entry.questionId = getQuestionId(qData);
     qNumHeading.innerText = formatQuestionHeading(qData);
     refreshTrackingUI();
 
