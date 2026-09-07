@@ -579,24 +579,27 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  display: grid;
-  place-items: center;
-  padding: var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 .auth-modal-overlay[hidden] {
-  display: none;
+  display: none !important;
 }
 
 .auth-card {
-  width: min(960px, 100%);
-  max-height: min(720px, calc(100vh - 2 * var(--space-5)));
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid var(--border-default);
   border-radius: 16px;
   background: var(--bg-elevated);
@@ -605,7 +608,11 @@
 
 .auth-form-panel {
   position: relative;
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 32px 28px;
+  overflow-y: auto;
   background: var(--bg-elevated);
   color: var(--text-primary);
 }
@@ -663,7 +670,30 @@
 }
 
 #clerk-signin-container {
+  width: 100%;
+  min-width: 0;
   min-height: 280px;
+}
+
+/* These classes are attached through Clerk's appearance.elements API. They
+   prevent Clerk's default card width and white surface from escaping the panel. */
+#clerk-signin-container,
+#clerk-signin-container > *,
+#clerk-signin-container .auth-clerk-root,
+#clerk-signin-container .auth-clerk-card,
+#clerk-signin-container .cl-rootBox,
+#clerk-signin-container .cl-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+#clerk-signin-container .auth-clerk-card {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .auth-hero-panel {
@@ -737,17 +767,17 @@ body.auth-modal-open {
 
 @media (max-width: 768px) {
   .auth-modal-overlay {
-    padding: var(--space-4);
+    padding: 16px;
   }
 
   .auth-card {
-    width: 90%;
-    max-width: 440px;
+    max-width: 420px;
+    max-height: 85vh;
     grid-template-columns: 1fr;
   }
 
   .auth-form-panel {
-    padding: 32px 24px;
+    padding: 24px 18px;
   }
 
   .auth-hero-panel {

@@ -1,7 +1,6 @@
 const CLERK_PUBLISHABLE_KEY = 'pk_test_Z2VuZXJvdXMtaGFsaWJ1dC01NDYzLmNsZXJrLmFjY291bnRzLmRldiQ';
 
 let pendingAuthAction = null;
-let isSignInMounted = false;
 
 function getAuthModalElements() {
   return {
@@ -11,22 +10,62 @@ function getAuthModalElements() {
   };
 }
 
+function getSignInAppearance() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const variables = isDark
+    ? {
+        colorPrimary: '#0d9488',
+        colorBackground: '#18181b',
+        colorForeground: '#f3f4f6',
+        colorMutedForeground: '#a1a1aa',
+        colorInput: '#27272a',
+        colorInputForeground: '#ffffff',
+        colorNeutral: '#3f3f46',
+        borderRadius: '8px'
+      }
+    : {
+        colorPrimary: '#0f766e',
+        colorBackground: '#ffffff',
+        colorForeground: '#09090b',
+        colorMutedForeground: '#71717a',
+        colorInput: '#f4f4f5',
+        colorInputForeground: '#09090b',
+        colorNeutral: '#d4d4d8',
+        borderRadius: '8px'
+      };
+
+  return {
+    variables,
+    elements: {
+      card: 'auth-clerk-card',
+      rootBox: 'auth-clerk-root',
+      headerTitle: 'hidden',
+      headerSubtitle: 'hidden',
+      footer: 'auth-clerk-footer',
+      footerAction: 'auth-clerk-footer-action'
+    }
+  };
+}
+
 function mountAuthSignIn() {
   const clerk = window.clerk;
   const { container } = getAuthModalElements();
-  if (!clerk || !container || isSignInMounted || typeof clerk.mountSignIn !== 'function') return;
+  if (!clerk || !container || typeof clerk.mountSignIn !== 'function') return;
+
+  // Clerk removes its own tree when unmounted. Always clear a possible stale
+  // instance before mounting, including when the modal is reopened.
+  if (typeof clerk.unmountSignIn === 'function') {
+    try {
+      clerk.unmountSignIn(container);
+    } catch (err) {
+      // There may be no existing instance during the first open.
+    }
+  }
+  container.replaceChildren();
 
   clerk.mountSignIn(container, {
-    appearance: {
-      variables: { colorPrimary: '#0d7871', borderRadius: '0.75rem' },
-      elements: {
-        card: 'shadow-none p-0 bg-transparent',
-        headerTitle: 'hidden',
-        headerSubtitle: 'hidden'
-      }
-    }
+    appearance: getSignInAppearance()
   });
-  isSignInMounted = true;
 }
 
 function openAuthModal(redirectAction) {
@@ -41,6 +80,7 @@ function openAuthModal(redirectAction) {
   modal.hidden = false;
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('auth-modal-open');
+  document.body.style.overflow = 'hidden';
   mountAuthSignIn();
   if (closeButton) closeButton.focus();
 }
@@ -49,10 +89,13 @@ function closeAuthModal() {
   const clerk = window.clerk;
   const { modal, container } = getAuthModalElements();
 
-  if (isSignInMounted && clerk && container && typeof clerk.unmountSignIn === 'function') {
-    clerk.unmountSignIn(container);
+  if (clerk && container && typeof clerk.unmountSignIn === 'function') {
+    try {
+      clerk.unmountSignIn(container);
+    } catch (err) {
+      // The container can already be empty after a cancelled Clerk flow.
+    }
   }
-  isSignInMounted = false;
   if (container) container.replaceChildren();
 
   if (modal) {
@@ -60,6 +103,7 @@ function closeAuthModal() {
     modal.setAttribute('aria-hidden', 'true');
   }
   document.body.classList.remove('auth-modal-open');
+  document.body.style.overflow = '';
   pendingAuthAction = null;
 }
 
@@ -158,3 +202,7 @@ async function initClerkAuth() {
 
 window.addEventListener('DOMContentLoaded', setupAuthModal);
 window.addEventListener('load', initClerkAuth);
+window.addEventListener('themechange', () => {
+  const { modal } = getAuthModalElements();
+  if (modal && !modal.hidden) mountAuthSignIn();
+});

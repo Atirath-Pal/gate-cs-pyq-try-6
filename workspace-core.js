@@ -51,6 +51,7 @@ function toggleTheme() {
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('gate-pyq-theme', next);
   updateThemeToggleButtons();
+  window.dispatchEvent(new Event('themechange'));
 }
 
 function updateThemeToggleButtons() {
