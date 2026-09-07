@@ -4,61 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GATE CS PYQ Hub</title>
-
-  <!-- Design System -->
   <link rel="stylesheet" href="./Global_style_components.css">
   <link rel="stylesheet" href="./styles.css">
-
-  <!-- KaTeX CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-
-  <!-- KaTeX Core Library (Required for auto-render to work) -->
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-
-  <!-- KaTeX Auto-Render Extension -->
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script
-    defer
-    crossorigin="anonymous"
-    src="https://generous-halibut-5463.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"
-    type="text/javascript"
-  ></script>
-  <script
-    defer
-    crossorigin="anonymous"
-    data-clerk-publishable-key="pk_test_Z2VuZXJvdXMtaGFsaWJ1dC01NDYzLmNsZXJrLmFjY291bnRzLmRldiQ"
-    src="https://generous-halibut-5463.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"
-    type="text/javascript"
-  ></script>
 </head>
 <body>
   <div id="app"></div>
   <div id="auth-modal" class="auth-modal-overlay" hidden aria-hidden="true">
     <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
       <div class="auth-form-panel">
-        <button type="button" id="close-auth-modal" class="auth-close-btn" aria-label="Close sign in dialog">&times;</button>
-        <div class="auth-brand"><span class="auth-logo-icon" aria-hidden="true">⌁</span><span class="auth-logo-text">GATE CS PYQ</span></div>
+        <button id="close-auth-modal" class="auth-close-btn" type="button" aria-label="Close sign in dialog">&times;</button>
+        <div class="auth-brand"><span class="auth-logo-icon">⌁</span><span class="auth-logo-text">GATE CS PYQ</span></div>
         <h2 id="auth-modal-title" class="auth-title">Welcome Back!</h2>
-        <p class="auth-subtitle">Sign in to access Year-wise &amp; Subject-wise PYQs, track your progress, and save bookmarks.</p>
-        <div id="clerk-signin-container"></div>
+        <p id="auth-modal-subtitle" class="auth-subtitle">Sign in to access Year-wise &amp; Subject-wise PYQs, track your progress, and save bookmarks.</p>
+        <form id="native-auth-form" class="auth-form">
+          <div class="auth-field" id="name-field-group" hidden><label for="auth-name">Full Name</label><div class="input-wrapper"><input type="text" id="auth-name" placeholder="Enter your name"></div></div>
+          <div class="auth-field"><label for="auth-email">Email</label><div class="input-wrapper"><input type="email" id="auth-email" placeholder="Enter your email" required></div></div>
+          <div class="auth-field"><label for="auth-password">Password</label><div class="input-wrapper"><input type="password" id="auth-password" placeholder="Enter your password" required><button type="button" id="toggle-password-btn" class="toggle-password" aria-label="Show password">👁</button></div></div>
+          <div class="auth-options"><a href="#" id="forgot-password-link" class="auth-link">Forgot Password?</a></div>
+          <div id="auth-error-msg" class="auth-error" hidden></div>
+          <button type="submit" id="auth-submit-btn" class="auth-btn-primary">Sign In</button>
+        </form>
+        <div class="auth-divider"><span>OR</span></div>
+        <div id="google-signin-btn" class="google-btn-wrapper"></div>
+        <div class="auth-toggle-mode"><span id="auth-toggle-text">Don't have an account?</span><button type="button" id="auth-toggle-btn" class="auth-link-bold">Sign Up</button></div>
       </div>
       <div class="auth-hero-panel">
         <div class="auth-hero-content">
           <h1 class="auth-hero-heading">Master GATE CS with Smarter PYQ Practice</h1>
           <blockquote class="auth-hero-quote">“Tracking my progress year-wise and topic-wise gave me the exact clarity I needed during final revision.”</blockquote>
-          <div class="auth-hero-author"><strong>GATE CS Aspirant</strong><span>IIT Bombay CSE ’25</span></div>
+          <div class="auth-hero-author"><strong>GATE CS Aspirant</strong><span>IIT Bombay CSE '25</span></div>
           <div class="auth-hero-stats"><span>JOIN 10K+ ASPIRANTS</span><div class="auth-badges"><span>✓ 100% Free PYQs</span><span>✓ Detailed Solutions</span><span>✓ Progress Sync</span></div></div>
         </div>
       </div>
     </div>
   </div>
-
   <script defer src="./workspace-core.js"></script>
   <script defer src="./app.js"></script>
-  <script defer src="./clerk-auth.js"></script>
+  <script defer src="./auth.js"></script>
 </body>
 </html>

@@ -175,15 +175,20 @@
   gap: var(--space-3);
 }
 
-.clerk-auth {
+.auth-controls {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
   min-height: 2rem;
 }
 
-.clerk-user-button {
-  display: flex;
-  align-items: center;
+.auth-user-email {
+  max-width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
 }
 
 .home-main {
@@ -574,7 +579,7 @@
   right: 12px;
 }
 
-/* Custom Clerk sign-in modal */
+/* Native sign-in modal */
 .auth-modal-overlay {
   position: fixed;
   inset: 0;
@@ -584,9 +589,9 @@
   justify-content: center;
   padding: 16px;
   overflow-y: auto;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .auth-modal-overlay[hidden] {
@@ -600,9 +605,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--border-default);
+  border: 1px solid #27272a;
   border-radius: 16px;
-  background: var(--bg-elevated);
+  background: #18181b;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
@@ -613,8 +618,8 @@
   min-width: 0;
   padding: 32px 28px;
   overflow-y: auto;
-  background: var(--bg-elevated);
-  color: var(--text-primary);
+  background: #18181b;
+  color: #f4f4f5;
 }
 
 .auth-close-btn {
@@ -669,31 +674,127 @@
   line-height: 1.6;
 }
 
-#clerk-signin-container {
+.auth-form {
+  display: grid;
+  gap: 14px;
+}
+
+.auth-field {
+  display: grid;
+  gap: 6px;
+  color: #e4e4e7;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
   width: 100%;
   min-width: 0;
-  min-height: 280px;
+  box-sizing: border-box;
+  padding: 11px 42px 11px 12px;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  background: #27272a;
+  color: #fff;
+  font: inherit;
 }
 
-/* These classes are attached through Clerk's appearance.elements API. They
-   prevent Clerk's default card width and white surface from escaping the panel. */
-#clerk-signin-container,
-#clerk-signin-container > *,
-#clerk-signin-container .auth-clerk-root,
-#clerk-signin-container .auth-clerk-card,
-#clerk-signin-container .cl-rootBox,
-#clerk-signin-container .cl-card {
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
+.input-wrapper input:focus {
+  outline: 2px solid #0d9488;
+  outline-offset: 1px;
+  border-color: #0d9488;
 }
 
-#clerk-signin-container .auth-clerk-card {
-  padding: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  border: 0;
+  background: transparent;
+  color: #d4d4d8;
+  cursor: pointer;
+}
+
+.auth-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+}
+
+.auth-link,
+.auth-link-bold {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #5eead4;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+}
+
+.auth-link-bold { font-weight: var(--font-bold); }
+
+.auth-error {
+  padding: 9px 10px;
+  border-radius: 8px;
+  background: rgba(248, 113, 113, 0.15);
+  color: #fca5a5;
+  font-size: var(--text-sm);
+}
+
+.auth-btn-primary {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #0d9488;
+  color: #fff;
+  font: inherit;
+  font-weight: var(--font-bold);
+  cursor: pointer;
+}
+
+.auth-btn-primary:hover { background: #0f766e; }
+.auth-btn-primary:disabled { cursor: wait; opacity: 0.7; }
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  color: #a1a1aa;
+  font-size: var(--text-xs);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #3f3f46;
+}
+
+.google-btn-wrapper {
+  min-height: 40px;
+  overflow: hidden;
+}
+
+.google-btn-wrapper > div {
+  max-width: 100%;
+}
+
+.auth-toggle-mode {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  color: #a1a1aa;
+  font-size: var(--text-sm);
 }
 
 .auth-hero-panel {
@@ -781,7 +882,7 @@ body.auth-modal-open {
   }
 
   .auth-hero-panel {
-    display: none;
+    display: none !important;
   }
 }
 

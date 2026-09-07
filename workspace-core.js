@@ -66,7 +66,7 @@ function updateThemeToggleButtons() {
 
 function refreshChrome() {
   if (typeof lucide !== 'undefined') lucide.createIcons();
-  if (typeof renderClerkHeader === 'function') renderClerkHeader();
+  if (typeof renderAuthHeader === 'function') renderAuthHeader();
 }
 
 function getCanonicalQuestionId(questionObj) {
@@ -102,23 +102,12 @@ function formatQuestionHeading(q) {
   return `GATE CS ${q.year}${setPart} Q.${q.id}`;
 }
 
-function getClerkClient() {
-  return window.clerk || window.Clerk;
+function getAuthToken() {
+  return localStorage.getItem('auth_token');
 }
 
-function isClerkSignedIn() {
-  const clerk = getClerkClient();
-  return !!(clerk && clerk.user && clerk.session);
-}
-
-async function getClerkToken({ promptSignIn = true } = {}) {
-  const clerk = getClerkClient();
-  if (!isClerkSignedIn()) {
-    if (promptSignIn && typeof openAuthModal === 'function') openAuthModal();
-    else if (promptSignIn && clerk && typeof clerk.openSignIn === 'function') clerk.openSignIn();
-    return null;
-  }
-  return clerk.session.getToken();
+function isSignedIn() {
+  return Boolean(getAuthToken());
 }
 
 function applyTrackingButtonState(btn, isActive, activeClass, activeLabel, idleLabel) {
@@ -163,23 +152,15 @@ function applyPendingChangesToUserState() {
 
 async function loadUserData() {
   const requestId = ++userDataRequestId;
-  const clerk = getClerkClient();
-
-  if (!(clerk && clerk.user)) {
+  const token = getAuthToken();
+  if (!token) {
     clearUserProgress();
     refreshTrackingUI();
     return;
   }
 
   try {
-    const token = await clerk.session.getToken();
     if (requestId !== userDataRequestId) return;
-    if (!token) {
-      clearUserProgress();
-      refreshTrackingUI();
-      return;
-    }
-
     const response = await fetch(`${API_BASE_URL}/api/user-data`, {
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -215,9 +196,8 @@ function debounceSync() {
 }
 
 async function flushSyncQueue() {
-  if (!hasPendingSync() || syncInFlight || !isClerkSignedIn()) return;
-
-  const token = await getClerkToken({ promptSignIn: false });
+  if (!hasPendingSync() || syncInFlight || !isSignedIn()) return;
+  const token = getAuthToken();
   if (!token || syncInFlight) return;
 
   // Snapshot the queue. New clicks can continue to update the Maps while this
@@ -295,8 +275,8 @@ function syncTrackingButtons() {
 
 function toggleBookmark() {
   if (!currentQuestionData) return;
-  if (!isClerkSignedIn()) {
-    getClerkToken();
+  if (!isSignedIn()) {
+    if (typeof checkAuthAndProceed === 'function') checkAuthAndProceed(toggleBookmark);
     return;
   }
   const questionId = getCanonicalQuestionId(currentQuestionData);
@@ -312,8 +292,8 @@ function toggleBookmark() {
 
 function toggleMarkDone() {
   if (!currentQuestionData) return;
-  if (!isClerkSignedIn()) {
-    getClerkToken();
+  if (!isSignedIn()) {
+    if (typeof checkAuthAndProceed === 'function') checkAuthAndProceed(toggleMarkDone);
     return;
   }
   const questionId = getCanonicalQuestionId(currentQuestionData);
@@ -334,11 +314,12 @@ function themeToggleHTML() {
   return `<button type="button" class="btn btn-theme" data-theme-toggle onclick="toggleTheme()"><i data-lucide="${icon}"></i> <span class="btn-label">${label}</span></button>`;
 }
 
-function clerkAuthControlsHTML() {
+function authControlsHTML() {
   return `
-    <div id="clerk-auth" class="clerk-auth">
-      <div id="user-button" class="clerk-user-button" hidden></div>
-      <button type="button" id="sign-in-btn" class="btn btn-primary" hidden>Sign In</button>
+    <div class="auth-controls">
+      <span class="auth-user-email" hidden></span>
+      <button type="button" class="btn btn-primary sign-in-btn">Sign In</button>
+      <button type="button" class="btn logout-btn" hidden>Log out</button>
     </div>
   `;
 }
@@ -383,7 +364,7 @@ function listingHeaderHTML(backHref) {
       </div>
       <div class="home-header__actions">
         ${themeToggleHTML()}
-        ${clerkAuthControlsHTML()}
+        ${authControlsHTML()}
       </div>
     </header>
   `;
@@ -544,7 +525,7 @@ function renderWorkspacePage() {
         </div>
         <div class="workspace-header__right">
           ${themeToggleHTML()}
-          ${clerkAuthControlsHTML()}
+          ${authControlsHTML()}
         </div>
       </header>
 
