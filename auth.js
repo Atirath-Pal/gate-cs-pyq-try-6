@@ -42,6 +42,7 @@
     const nameGroup = byId('name-field-group');
     const nameInput = byId('auth-name');
     const passwordInput = byId('auth-password');
+    const passwordHint = byId('password-hint');
     const forgotPassword = byId('forgot-password-container');
     const submitButton = byId('auth-submit-btn');
     const toggleText = byId('auth-toggle-text');
@@ -52,10 +53,17 @@
     if (isSignUpMode) {
       if (title) title.textContent = 'Create Account';
       if (subtitle) subtitle.textContent = 'Sign up to track your PYQ progress and save bookmarks.';
-      if (nameGroup) nameGroup.hidden = false;
+      if (nameGroup) {
+        nameGroup.hidden = false;
+        nameGroup.style.display = 'grid';
+      }
       if (nameInput) nameInput.required = true;
       if (passwordInput) passwordInput.autocomplete = 'new-password';
-      if (forgotPassword) forgotPassword.hidden = true;
+      if (passwordHint) passwordHint.hidden = false;
+      if (forgotPassword) {
+        forgotPassword.hidden = true;
+        forgotPassword.style.display = 'none';
+      }
       if (submitButton) submitButton.textContent = 'Create Account';
       if (toggleText) toggleText.textContent = 'Already have an account?';
       if (toggleButton) toggleButton.textContent = 'Sign In';
@@ -64,13 +72,20 @@
 
     if (title) title.textContent = 'Welcome Back!';
     if (subtitle) subtitle.textContent = 'Sign in to access Year-wise & Subject-wise PYQs, track your progress, and save bookmarks.';
-    if (nameGroup) nameGroup.hidden = true;
+    if (nameGroup) {
+      nameGroup.hidden = true;
+      nameGroup.style.display = 'none';
+    }
     if (nameInput) {
       nameInput.required = false;
       nameInput.value = '';
     }
     if (passwordInput) passwordInput.autocomplete = 'current-password';
-    if (forgotPassword) forgotPassword.hidden = false;
+    if (passwordHint) passwordHint.hidden = true;
+    if (forgotPassword) {
+      forgotPassword.hidden = false;
+      forgotPassword.style.display = 'flex';
+    }
     if (submitButton) submitButton.textContent = 'Sign In';
     if (toggleText) toggleText.textContent = "Don't have an account?";
     if (toggleButton) toggleButton.textContent = 'Sign Up';
