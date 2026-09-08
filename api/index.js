@@ -32,7 +32,13 @@ function signToken(user) {
 }
 
 function publicUser(user) {
-  return { user_id: user.user_id, email: user.email, name: user.name || null };
+  return {
+    user_id: user.user_id,
+    email: user.email,
+    name: user.name || null,
+    picture: user.picture || null,
+    isGoogleAccount: Boolean(user.google_id)
+  };
 }
 
 function normaliseEmail(email) {
@@ -45,7 +51,7 @@ function isValidEmail(email) {
 
 async function findUserByEmail(email) {
   const result = await db.execute({
-    sql: 'SELECT user_id, email, password_hash, name, picture FROM users WHERE email = ? LIMIT 1',
+    sql: 'SELECT user_id, email, password_hash, google_id, name, picture FROM users WHERE email = ? LIMIT 1',
     args: [email]
   });
   return result.rows[0] || null;
@@ -117,12 +123,17 @@ async function initSchema() {
       user_id TEXT NOT NULL,
       question_id TEXT NOT NULL,
       is_done INTEGER NOT NULL DEFAULT 0,
+      subject TEXT,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       PRIMARY KEY (user_id, question_id)
     )
   `);
   await db.execute('CREATE INDEX IF NOT EXISTS idx_bookmarks_user ON bookmarks(user_id)');
   await db.execute('CREATE INDEX IF NOT EXISTS idx_status_user ON question_status(user_id)');
+  const statusColumns = await db.execute('PRAGMA table_info(question_status)');
+  if (!statusColumns.rows.some((column) => column.name === 'subject')) {
+    await db.execute('ALTER TABLE question_status ADD COLUMN subject TEXT');
+  }
 }
 
 const schemaReady = initSchema();
@@ -236,7 +247,7 @@ app.post('/api/auth/login', async (req, res) => {
     if (!email || typeof password !== 'string') return res.status(400).json({ error: 'Email and password are required' });
 
     const result = await db.execute({
-      sql: 'SELECT user_id, email, password_hash, name, picture FROM users WHERE email = ? LIMIT 1',
+      sql: 'SELECT user_id, email, password_hash, google_id, name, picture FROM users WHERE email = ? LIMIT 1',
       args: [email]
     });
     const user = result.rows[0];
@@ -292,6 +303,31 @@ app.get('/api/user-data', requireAuth, async (req, res) => {
   }
 });
 
+app.get('/api/user/profile-stats', requireAuth, async (req, res) => {
+  try {
+    const [userResult, solvedResult, bookmarkedResult, subjectResult] = await Promise.all([
+      db.execute({ sql: 'SELECT user_id, email, google_id, name, picture FROM users WHERE user_id = ? LIMIT 1', args: [req.userId] }),
+      db.execute({ sql: 'SELECT COUNT(*) AS total_solved FROM question_status WHERE user_id = ? AND is_done = 1', args: [req.userId] }),
+      db.execute({ sql: 'SELECT COUNT(*) AS total_bookmarked FROM bookmarks WHERE user_id = ?', args: [req.userId] }),
+      db.execute({
+        sql: "SELECT COALESCE(NULLIF(subject, ''), 'Uncategorized') AS subject, COUNT(*) AS solved FROM question_status WHERE user_id = ? AND is_done = 1 GROUP BY COALESCE(NULLIF(subject, ''), 'Uncategorized') ORDER BY subject",
+        args: [req.userId]
+      })
+    ]);
+    const user = userResult.rows[0];
+    if (!user) return res.status(404).json({ error: 'User account not found' });
+    return res.json({
+      totalSolved: Number(solvedResult.rows[0].total_solved || 0),
+      totalBookmarked: Number(bookmarkedResult.rows[0].total_bookmarked || 0),
+      subjectProgress: subjectResult.rows.map((row) => ({ subject: row.subject, solved: Number(row.solved || 0) })),
+      user: publicUser(user)
+    });
+  } catch (err) {
+    console.error('Failed to load profile stats', err);
+    return res.status(500).json({ error: 'Failed to load profile stats' });
+  }
+});
+
 app.post('/api/sync', requireAuth, async (req, res) => {
   try {
     const body = req.body || {};
@@ -307,7 +343,8 @@ app.post('/api/sync', requireAuth, async (req, res) => {
     }
     for (const change of statusChanges) {
       if (!change || typeof change.questionId !== 'string' || !change.questionId.trim() || typeof change.isDone !== 'boolean') return res.status(400).json({ error: 'Each status requires questionId and isDone' });
-      statuses.set(change.questionId, change.isDone);
+      if (change.subject != null && (typeof change.subject !== 'string' || change.subject.length > 120)) return res.status(400).json({ error: 'Each status subject must be a short string' });
+      statuses.set(change.questionId, { isDone: change.isDone, subject: typeof change.subject === 'string' ? change.subject.trim() || null : null });
     }
     const syncedCount = bookmarks.size + statuses.size;
     if (!syncedCount) return res.json({ success: true, syncedCount });
@@ -318,8 +355,8 @@ app.post('/api/sync', requireAuth, async (req, res) => {
         ? { sql: 'INSERT INTO bookmarks (user_id, question_id) VALUES (?, ?) ON CONFLICT(user_id, question_id) DO NOTHING', args: [req.userId, questionId] }
         : { sql: 'DELETE FROM bookmarks WHERE user_id = ? AND question_id = ?', args: [req.userId, questionId] });
     }
-    for (const [questionId, isDone] of statuses) {
-      statements.push({ sql: "INSERT INTO question_status (user_id, question_id, is_done) VALUES (?, ?, ?) ON CONFLICT(user_id, question_id) DO UPDATE SET is_done = excluded.is_done, updated_at = datetime('now')", args: [req.userId, questionId, isDone ? 1 : 0] });
+    for (const [questionId, status] of statuses) {
+      statements.push({ sql: "INSERT INTO question_status (user_id, question_id, is_done, subject) VALUES (?, ?, ?, ?) ON CONFLICT(user_id, question_id) DO UPDATE SET is_done = excluded.is_done, subject = COALESCE(excluded.subject, question_status.subject), updated_at = datetime('now')", args: [req.userId, questionId, status.isDone ? 1 : 0, status.subject] });
     }
     await db.batch(statements, 'write');
     return res.json({ success: true, syncedCount });

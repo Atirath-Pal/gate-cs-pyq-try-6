@@ -177,6 +177,13 @@
     setError('');
   }
 
+  function openPasswordResetModal(email) {
+    openAuthModal();
+    const emailInput = byId('auth-email');
+    if (emailInput && email) emailInput.value = email;
+    setAuthView('resetEmail');
+  }
+
   function checkAuthAndProceed(actionCallback) {
     if (isAuthenticated()) {
       if (typeof actionCallback === 'function') actionCallback();
@@ -187,15 +194,39 @@
     return false;
   }
 
-  function renderAuthHeader() {
-    const user = currentUser();
+  function getInitials(user) {
+    const source = (user && (user.name || user.email)) || 'GATE Aspirant';
+    const parts = String(source).trim().split(/\s+/).filter(Boolean);
+    return (parts.slice(0, 2).map((part) => part.charAt(0)).join('') || 'GA').toUpperCase();
+  }
+
+  function setAvatarContent(avatar, user) {
+    avatar.replaceChildren();
+    const initials = getInitials(user);
+    avatar.setAttribute('aria-label', `Open profile for ${user.name || user.email || 'GATE Aspirant'}`);
+    avatar.title = user.name || user.email || 'Profile';
+    if (user.picture) {
+      const image = document.createElement('img');
+      image.src = user.picture;
+      image.alt = '';
+      image.addEventListener('error', () => avatar.replaceChildren(document.createTextNode(initials)), { once: true });
+      avatar.appendChild(image);
+    } else {
+      avatar.textContent = initials;
+    }
+  }
+
+  function updateHeaderUI(user) {
     const signedIn = isAuthenticated() && user;
-    document.querySelectorAll('.auth-user-email').forEach((node) => {
-      node.textContent = signedIn ? user.email : '';
-      node.hidden = !signedIn;
-    });
     document.querySelectorAll('.sign-in-btn').forEach((node) => { node.hidden = signedIn; });
-    document.querySelectorAll('.logout-btn').forEach((node) => { node.hidden = !signedIn; });
+    document.querySelectorAll('.user-avatar').forEach((avatar) => {
+      avatar.hidden = !signedIn;
+      if (signedIn) setAvatarContent(avatar, user);
+    });
+  }
+
+  function renderAuthHeader() {
+    updateHeaderUI(currentUser());
   }
 
   async function acceptAuthResult(result) {
@@ -359,7 +390,7 @@
         return;
       }
       if (event.target.closest('.sign-in-btn')) openAuthModal();
-      if (event.target.closest('.logout-btn')) logout();
+      if (event.target.closest('.user-avatar')) window.location.assign('user.html');
     });
   }
 
@@ -376,6 +407,9 @@
   window.closeAuthModal = closeAuthModal;
   window.checkAuthAndProceed = checkAuthAndProceed;
   window.renderAuthHeader = renderAuthHeader;
+  window.updateHeaderUI = updateHeaderUI;
+  window.openPasswordResetModal = openPasswordResetModal;
+  window.logout = logout;
   window.handleGoogleCredentialResponse = handleGoogleCredentialResponse;
   document.addEventListener('DOMContentLoaded', enforcePageProtection);
   window.addEventListener('load', initialise);

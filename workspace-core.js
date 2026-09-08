@@ -144,8 +144,8 @@ function applyPendingChangesToUserState() {
     if (bookmarked) window.userState.bookmarks.add(questionId);
     else window.userState.bookmarks.delete(questionId);
   });
-  pendingSync.statuses.forEach((isDone, questionId) => {
-    if (isDone) window.userState.completed.add(questionId);
+  pendingSync.statuses.forEach((change, questionId) => {
+    if (change.isDone) window.userState.completed.add(questionId);
     else window.userState.completed.delete(questionId);
   });
 }
@@ -215,7 +215,11 @@ async function flushSyncQueue() {
       },
       body: JSON.stringify({
         bookmarks: Array.from(bookmarks, ([questionId, bookmarked]) => ({ questionId, bookmarked })),
-        statuses: Array.from(statuses, ([questionId, isDone]) => ({ questionId, isDone }))
+        statuses: Array.from(statuses, ([questionId, change]) => ({
+          questionId,
+          isDone: change.isDone,
+          subject: change.subject
+        }))
       }),
       // Allows the small final batch to continue during page unload where supported.
       keepalive: document.visibilityState === 'hidden'
@@ -229,8 +233,8 @@ async function flushSyncQueue() {
         pendingSync.bookmarks.delete(questionId);
       }
     });
-    statuses.forEach((isDone, questionId) => {
-      if (pendingSync.statuses.get(questionId) === isDone) {
+    statuses.forEach((change, questionId) => {
+      if (pendingSync.statuses.get(questionId) === change) {
         pendingSync.statuses.delete(questionId);
       }
     });
@@ -243,7 +247,7 @@ async function flushSyncQueue() {
     const hasChangesAfterSnapshot = Array.from(pendingSync.bookmarks)
       .some(([questionId, bookmarked]) => bookmarks.get(questionId) !== bookmarked)
       || Array.from(pendingSync.statuses)
-        .some(([questionId, isDone]) => statuses.get(questionId) !== isDone);
+        .some(([questionId, change]) => statuses.get(questionId) !== change);
     if (hasChangesAfterSnapshot) debounceSync();
   }
 }
@@ -301,7 +305,10 @@ function toggleMarkDone() {
 
   if (isDone) window.userState.completed.add(questionId);
   else window.userState.completed.delete(questionId);
-  pendingSync.statuses.set(questionId, isDone);
+  const subject = Array.isArray(currentQuestionData.topics) && currentQuestionData.topics[0]
+    ? String(currentQuestionData.topics[0]).trim()
+    : '';
+  pendingSync.statuses.set(questionId, { isDone, subject });
   notifyUserStateChanged();
   refreshTrackingUI();
   debounceSync();
@@ -317,9 +324,8 @@ function themeToggleHTML() {
 function authControlsHTML() {
   return `
     <div class="auth-controls">
-      <span class="auth-user-email" hidden></span>
       <button type="button" class="btn btn-primary sign-in-btn">Sign In</button>
-      <button type="button" class="btn logout-btn" hidden>Log out</button>
+      <button type="button" class="user-avatar" hidden aria-label="Open your profile"></button>
     </div>
   `;
 }

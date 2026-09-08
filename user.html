@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Profile — GATE CS PYQ</title>
+  <link rel="stylesheet" href="./Global_style_components.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="home-header glass">
+    <div class="home-header__brand">
+      <a href="./index.html" class="workspace-header__home"><i data-lucide="arrow-left"></i><span class="btn-label">Home</span></a>
+      <span class="workspace-header__divider"></span>
+      <h1 class="home-header__title">GATECS.IO</h1>
+    </div>
+    <div class="home-header__actions">
+      <button type="button" class="btn btn-theme" data-theme-toggle onclick="toggleTheme()"><i data-lucide="sun"></i><span class="btn-label">Light</span></button>
+      <div class="auth-controls">
+        <button type="button" class="btn btn-primary sign-in-btn">Sign In</button>
+        <button type="button" class="user-avatar" hidden aria-label="Open your profile"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-page">
+    <section class="profile-overview card" aria-labelledby="profile-name">
+      <div id="profile-avatar" class="profile-avatar" aria-hidden="true"></div>
+      <div class="profile-overview__details">
+        <p class="profile-eyebrow">Your GATE CS profile</p>
+        <h2 id="profile-name">GATE Aspirant</h2>
+        <p id="profile-email" class="profile-email"></p>
+        <span id="account-tag" class="badge badge-type">Verified Email Account</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="stats-heading">
+      <div class="profile-section-heading"><h2 id="stats-heading">Quick stats</h2></div>
+      <div class="profile-stat-grid">
+        <article class="profile-stat-card card"><span class="profile-stat-card__label">Total Solved</span><strong id="total-solved" class="profile-stat-card__value">—</strong></article>
+        <article class="profile-stat-card card"><span class="profile-stat-card__label">Total Bookmarked</span><strong id="total-bookmarked" class="profile-stat-card__value">—</strong></article>
+      </div>
+    </section>
+
+    <section class="profile-progress card" aria-labelledby="progress-heading">
+      <div class="profile-section-heading">
+        <div><h2 id="progress-heading">Subject-wise progress</h2><p>Questions marked as done across the PYQ bank.</p></div>
+        <span id="progress-status" class="profile-progress__status">Loading…</span>
+      </div>
+      <div id="subject-progress-list" class="subject-progress-list" aria-live="polite"></div>
+    </section>
+
+    <section class="profile-controls card" aria-labelledby="controls-heading">
+      <div><h2 id="controls-heading">Account controls</h2><p>Keep your account access secure.</p></div>
+      <div class="profile-controls__actions">
+        <button id="change-password-btn" type="button" class="btn">Change Password</button>
+        <button id="profile-sign-out-btn" type="button" class="btn profile-sign-out-btn">Sign Out</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="auth-modal" class="auth-modal-overlay" hidden aria-hidden="true">
+    <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <div class="auth-form-panel">
+        <button id="close-auth-modal" class="auth-close-btn" type="button" aria-label="Close sign in dialog">&times;</button>
+        <div class="auth-brand"><span class="auth-logo-icon">⌁</span><span class="auth-logo-text">GATE CS PYQ</span></div>
+        <h2 id="auth-modal-title" class="auth-title">Welcome Back!</h2>
+        <p id="auth-modal-subtitle" class="auth-subtitle">Sign in to access Year-wise &amp; Subject-wise PYQs, track your progress, and save bookmarks.</p>
+        <form id="native-auth-form" class="auth-form">
+          <div class="auth-field" id="name-field-group" hidden><label for="auth-name">Full Name</label><div class="input-wrapper"><input type="text" id="auth-name" placeholder="Enter your full name"></div></div>
+          <div class="auth-field" id="email-field-group"><label for="auth-email">Email</label><div class="input-wrapper"><input type="email" id="auth-email" placeholder="Enter your email" autocomplete="email" required></div></div>
+          <div class="auth-field" id="password-field-group"><label for="auth-password">Password</label><div class="input-wrapper"><input type="password" id="auth-password" placeholder="Enter your password" autocomplete="current-password" required><button type="button" id="toggle-password-btn" class="toggle-password" aria-label="Show password">👁</button></div><div id="password-hint" class="auth-hint" hidden>Must be at least 8 characters long</div></div>
+          <div class="auth-field" id="otp-field-group" hidden><label for="auth-otp">6-Digit Verification Code</label><div class="input-wrapper"><input type="text" id="auth-otp" maxlength="6" inputmode="numeric" pattern="[0-9]{6}" autocomplete="one-time-code" placeholder="123456"></div></div>
+          <div id="reset-password-fields" hidden><div class="auth-field"><label for="auth-new-password">New Password</label><div class="input-wrapper"><input type="password" id="auth-new-password" autocomplete="new-password" placeholder="Enter new password (8+ chars)"></div></div><div class="auth-field"><label for="auth-confirm-password">Confirm Password</label><div class="input-wrapper"><input type="password" id="auth-confirm-password" autocomplete="new-password" placeholder="Confirm new password"></div></div></div>
+          <div class="auth-options" id="forgot-password-container"><a href="#" id="forgot-password-link" class="auth-link">Forgot Password?</a></div>
+          <div id="auth-error-msg" class="auth-error" hidden></div>
+          <button type="submit" id="auth-submit-btn" class="auth-btn-primary">Sign In</button>
+        </form>
+        <div class="auth-divider"><span>OR</span></div>
+        <div id="google-signin-btn" class="google-btn-wrapper"></div>
+        <div class="auth-toggle-mode"><span id="auth-toggle-text">Don't have an account?</span><button type="button" id="auth-toggle-btn" class="auth-link-bold">Sign Up</button></div>
+      </div>
+      <div class="auth-hero-panel"><div class="auth-hero-content"><h1 class="auth-hero-heading">Master GATE CS with Smarter PYQ Practice</h1><blockquote class="auth-hero-quote">Track every question that moves you closer to your goal.</blockquote></div></div>
+    </div>
+  </div>
+
+  <script defer src="./workspace-core.js"></script>
+  <script defer src="./user-profile.js"></script>
+  <script defer src="./auth.js"></script>
+</body>
+</html>
