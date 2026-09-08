@@ -8,6 +8,8 @@
     ? 'http://localhost:3000'
     : '';
   let isSignUpMode = false;
+  let authView = 'signin';
+  let pendingAuth = null;
   let pendingAuthAction = null;
   let googleInitialised = false;
 
@@ -27,6 +29,16 @@
     return Boolean(localStorage.getItem(TOKEN_KEY));
   }
 
+  function enforcePageProtection() {
+    const currentPath = window.location.pathname;
+    const isProtectedPage = currentPath.endsWith('year.html') || currentPath.endsWith('subject.html');
+    if (isProtectedPage && !isAuthenticated()) {
+      window.location.replace('index.html');
+      return true;
+    }
+    return false;
+  }
+
   function setError(message) {
     const node = byId('auth-error-msg');
     if (!node) return;
@@ -34,66 +46,121 @@
     node.hidden = !message;
   }
 
-  function setAuthMode(isSignUp) {
-    isSignUpMode = isSignUp;
+  function setVisible(node, visible, display) {
+    if (!node) return;
+    node.hidden = !visible;
+    node.style.display = visible ? (display || '') : 'none';
+  }
+
+  function setAuthView(nextView) {
+    authView = nextView;
+    isSignUpMode = nextView === 'signup' || nextView === 'signupOtp';
 
     const title = byId('auth-modal-title');
     const subtitle = byId('auth-modal-subtitle');
     const nameGroup = byId('name-field-group');
-    const nameInput = byId('auth-name');
-    const passwordInput = byId('auth-password');
-    const passwordHint = byId('password-hint');
+    const emailGroup = byId('email-field-group');
+    const passwordGroup = byId('password-field-group');
+    const otpGroup = byId('otp-field-group');
+    const resetPasswordFields = byId('reset-password-fields');
     const forgotPassword = byId('forgot-password-container');
+    const passwordHint = byId('password-hint');
+    const divider = document.querySelector('.auth-divider');
+    const googleButton = byId('google-signin-btn');
+    const toggleMode = document.querySelector('.auth-toggle-mode');
     const submitButton = byId('auth-submit-btn');
     const toggleText = byId('auth-toggle-text');
     const toggleButton = byId('auth-toggle-btn');
+    const emailInput = byId('auth-email');
+    const nameInput = byId('auth-name');
+    const passwordInput = byId('auth-password');
+    const otpInput = byId('auth-otp');
+    const newPasswordInput = byId('auth-new-password');
+    const confirmPasswordInput = byId('auth-confirm-password');
+
+    const isSignIn = nextView === 'signin';
+    const isSignUp = nextView === 'signup';
+    const isSignUpOtp = nextView === 'signupOtp';
+    const isResetEmail = nextView === 'resetEmail';
+    const isResetOtp = nextView === 'resetOtp';
+    const isResetPassword = nextView === 'resetPassword';
+    const showsOtp = isSignUpOtp || isResetOtp;
+    const showsEmail = !isResetPassword;
+    const showsPassword = isSignIn || isSignUp;
+    const showsSocialOptions = isSignIn || isSignUp;
+    const showsModeToggle = isSignIn || isSignUp;
 
     setError('');
+    setVisible(nameGroup, isSignUp, 'grid');
+    setVisible(emailGroup, showsEmail, 'grid');
+    setVisible(passwordGroup, showsPassword, 'grid');
+    setVisible(otpGroup, showsOtp, 'grid');
+    setVisible(resetPasswordFields, isResetPassword, 'grid');
+    setVisible(forgotPassword, isSignIn, 'flex');
+    setVisible(passwordHint, isSignUp);
+    setVisible(divider, showsSocialOptions, 'flex');
+    setVisible(googleButton, showsSocialOptions);
+    setVisible(toggleMode, showsModeToggle);
 
-    if (isSignUpMode) {
+    if (emailInput) {
+      emailInput.required = showsEmail;
+      emailInput.readOnly = isSignUpOtp || isResetOtp;
+    }
+    if (nameInput) nameInput.required = isSignUp;
+    if (passwordInput) {
+      passwordInput.required = showsPassword;
+      passwordInput.autocomplete = isSignUp ? 'new-password' : 'current-password';
+    }
+    if (otpInput) otpInput.required = showsOtp;
+    if (newPasswordInput) newPasswordInput.required = isResetPassword;
+    if (confirmPasswordInput) confirmPasswordInput.required = isResetPassword;
+
+    if (isSignIn) {
+      if (title) title.textContent = 'Welcome Back!';
+      if (subtitle) subtitle.textContent = 'Sign in to access Year-wise & Subject-wise PYQs, track your progress, and save bookmarks.';
+      if (submitButton) submitButton.textContent = 'Sign In';
+      if (toggleText) toggleText.textContent = "Don't have an account?";
+      if (toggleButton) toggleButton.textContent = 'Sign Up';
+    } else if (isSignUp) {
       if (title) title.textContent = 'Create Account';
       if (subtitle) subtitle.textContent = 'Sign up to track your PYQ progress and save bookmarks.';
-      if (nameGroup) {
-        nameGroup.hidden = false;
-        nameGroup.style.display = 'grid';
-      }
-      if (nameInput) nameInput.required = true;
-      if (passwordInput) passwordInput.autocomplete = 'new-password';
-      if (passwordHint) passwordHint.hidden = false;
-      if (forgotPassword) {
-        forgotPassword.hidden = true;
-        forgotPassword.style.display = 'none';
-      }
       if (submitButton) submitButton.textContent = 'Create Account';
       if (toggleText) toggleText.textContent = 'Already have an account?';
       if (toggleButton) toggleButton.textContent = 'Sign In';
-      return;
+    } else if (isSignUpOtp) {
+      if (title) title.textContent = 'Verify Your Email';
+      if (subtitle) subtitle.textContent = 'Enter the 6-digit code we sent to your email address.';
+      if (submitButton) submitButton.textContent = 'Verify & Register';
+    } else if (isResetEmail) {
+      if (title) title.textContent = 'Reset Password';
+      if (subtitle) subtitle.textContent = 'Enter your email address to receive a verification code.';
+      if (submitButton) submitButton.textContent = 'Send Verification Code';
+    } else if (isResetOtp) {
+      if (title) title.textContent = 'Verify Your Code';
+      if (subtitle) subtitle.textContent = 'Enter the 6-digit code we sent to your email address.';
+      if (submitButton) submitButton.textContent = 'Verify Code';
+    } else if (isResetPassword) {
+      if (title) title.textContent = 'Choose a New Password';
+      if (subtitle) subtitle.textContent = 'Use at least 8 characters for your new password.';
+      if (submitButton) submitButton.textContent = 'Confirm Password';
     }
 
-    if (title) title.textContent = 'Welcome Back!';
-    if (subtitle) subtitle.textContent = 'Sign in to access Year-wise & Subject-wise PYQs, track your progress, and save bookmarks.';
-    if (nameGroup) {
-      nameGroup.hidden = true;
-      nameGroup.style.display = 'none';
-    }
-    if (nameInput) {
-      nameInput.required = false;
-      nameInput.value = '';
-    }
-    if (passwordInput) passwordInput.autocomplete = 'current-password';
-    if (passwordHint) passwordHint.hidden = true;
-    if (forgotPassword) {
-      forgotPassword.hidden = false;
-      forgotPassword.style.display = 'flex';
-    }
-    if (submitButton) submitButton.textContent = 'Sign In';
-    if (toggleText) toggleText.textContent = "Don't have an account?";
-    if (toggleButton) toggleButton.textContent = 'Sign Up';
+    const focusTarget = isSignUpOtp || isResetOtp ? otpInput
+      : isResetPassword ? newPasswordInput
+        : emailInput;
+    const modal = byId('auth-modal');
+    if (modal && !modal.hidden && focusTarget) window.setTimeout(() => focusTarget.focus(), 0);
+  }
+
+  function setAuthMode(isSignUp) {
+    setAuthView(isSignUp ? 'signup' : 'signin');
   }
 
   function openAuthModal() {
     const modal = byId('auth-modal');
     if (!modal) return;
+    pendingAuth = null;
+    byId('native-auth-form').reset();
     setAuthMode(false);
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
@@ -160,19 +227,58 @@
     const email = byId('auth-email').value.trim();
     const password = byId('auth-password').value;
     const name = byId('auth-name').value.trim();
+    const code = byId('auth-otp').value.trim();
+    const newPassword = byId('auth-new-password').value;
+    const confirmPassword = byId('auth-confirm-password').value;
     setError('');
     button.disabled = true;
-    button.textContent = isSignUpMode ? 'Creating account…' : 'Signing in…';
     try {
-      const payload = { email, password };
-      if (isSignUpMode) payload.name = name;
-      const result = await sendAuthRequest('/api/auth/' + (isSignUpMode ? 'signup' : 'login'), payload);
-      await acceptAuthResult(result);
+      if (authView === 'signin') {
+        button.textContent = 'Signing in…';
+        await acceptAuthResult(await sendAuthRequest('/api/auth/login', { email, password }));
+      } else if (authView === 'signup') {
+        button.textContent = 'Sending code…';
+        await sendAuthRequest('/api/auth/send-otp', { email, type: 'signup' });
+        pendingAuth = { email, name, password, code: '' };
+        setAuthView('signupOtp');
+      } else if (authView === 'signupOtp') {
+        if (!pendingAuth) throw new Error('Please restart sign-up and request a new verification code');
+        button.textContent = 'Verifying…';
+        const result = await sendAuthRequest('/api/auth/verify-signup-otp', {
+          email: pendingAuth.email,
+          name: pendingAuth.name,
+          password: pendingAuth.password,
+          code
+        });
+        await acceptAuthResult(result);
+      } else if (authView === 'resetEmail') {
+        button.textContent = 'Sending code…';
+        await sendAuthRequest('/api/auth/send-otp', { email, type: 'reset' });
+        pendingAuth = { email, code: '' };
+        setAuthView('resetOtp');
+      } else if (authView === 'resetOtp') {
+        if (!pendingAuth) throw new Error('Please restart password recovery and request a new verification code');
+        button.textContent = 'Verifying…';
+        await sendAuthRequest('/api/auth/verify-reset-otp', { email: pendingAuth.email, code });
+        pendingAuth.code = code;
+        setAuthView('resetPassword');
+      } else if (authView === 'resetPassword') {
+        if (!pendingAuth) throw new Error('Please restart password recovery and request a new verification code');
+        if (newPassword.length < 8) throw new Error('Password must be at least 8 characters');
+        if (newPassword !== confirmPassword) throw new Error('Passwords do not match');
+        button.textContent = 'Updating password…';
+        const result = await sendAuthRequest('/api/auth/reset-password', {
+          email: pendingAuth.email,
+          code: pendingAuth.code,
+          newPassword
+        });
+        await acceptAuthResult(result);
+      }
     } catch (err) {
       setError(err.message);
     } finally {
       button.disabled = false;
-      button.textContent = isSignUpMode ? 'Create Account' : 'Sign In';
+      if (!byId('auth-modal').hidden) setAuthView(authView);
     }
   }
 
@@ -213,14 +319,16 @@
     document.head.appendChild(script);
   }
 
-  async function logout() {
-    if (typeof flushSyncQueue === 'function') await flushSyncQueue();
+  function logout() {
+    if (typeof flushSyncQueue === 'function') Promise.resolve(flushSyncQueue()).catch(() => {});
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
     if (typeof clearUserProgress === 'function') clearUserProgress();
     if (typeof refreshTrackingUI === 'function') refreshTrackingUI();
     renderAuthHeader();
     window.dispatchEvent(new Event('authchange'));
+    const currentPath = window.location.pathname;
+    if (!currentPath.endsWith('index.html') && currentPath !== '/') window.location.assign('index.html');
   }
 
   function bindEvents() {
@@ -233,7 +341,8 @@
     });
     byId('forgot-password-link').addEventListener('click', (event) => {
       event.preventDefault();
-      setError('Password recovery is not available yet. Please sign in with Google or create a new account.');
+      pendingAuth = null;
+      setAuthView('resetEmail');
     });
     byId('auth-modal').addEventListener('click', (event) => {
       if (event.target === byId('auth-modal')) closeAuthModal();
@@ -255,6 +364,7 @@
   }
 
   function initialise() {
+    if (enforcePageProtection()) return;
     bindEvents();
     setAuthMode(false);
     renderAuthHeader();
@@ -267,5 +377,6 @@
   window.checkAuthAndProceed = checkAuthAndProceed;
   window.renderAuthHeader = renderAuthHeader;
   window.handleGoogleCredentialResponse = handleGoogleCredentialResponse;
+  document.addEventListener('DOMContentLoaded', enforcePageProtection);
   window.addEventListener('load', initialise);
 }());

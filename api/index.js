@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 const { OAuth2Client } = require('google-auth-library');
 const { createClient } = require('@libsql/client');
 
@@ -13,6 +14,13 @@ const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const db = createClient({
   url: process.env.TURSO_DATABASE_URL,
   authToken: process.env.TURSO_AUTH_TOKEN
+});
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
 });
 
 app.use(cors());
@@ -29,6 +37,26 @@ function publicUser(user) {
 
 function normaliseEmail(email) {
   return typeof email === 'string' ? email.trim().toLowerCase() : '';
+}
+
+function isValidEmail(email) {
+  return /^\S+@\S+\.\S+$/.test(email);
+}
+
+async function findUserByEmail(email) {
+  const result = await db.execute({
+    sql: 'SELECT user_id, email, password_hash, name, picture FROM users WHERE email = ? LIMIT 1',
+    args: [email]
+  });
+  return result.rows[0] || null;
+}
+
+async function findValidOtp(email, code, type) {
+  const result = await db.execute({
+    sql: "SELECT email FROM otps WHERE email = ? AND code = ? AND type = ? AND expires_at > datetime('now') LIMIT 1",
+    args: [email, code, type]
+  });
+  return result.rows[0] || null;
 }
 
 function requireAuth(req, res, next) {
@@ -66,6 +94,14 @@ async function initSchema() {
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS otps (
+      email TEXT PRIMARY KEY,
+      code TEXT NOT NULL,
+      type TEXT NOT NULL,
+      expires_at DATETIME NOT NULL
+    )
+  `);
 
   await db.execute(`
     CREATE TABLE IF NOT EXISTS bookmarks (
@@ -94,27 +130,102 @@ app.use((req, res, next) => {
   schemaReady.then(() => next()).catch(next);
 });
 
-app.post('/api/auth/signup', async (req, res) => {
+app.post('/api/auth/send-otp', async (req, res) => {
   try {
     const email = normaliseEmail(req.body && req.body.email);
-    const password = req.body && req.body.password;
-    const name = typeof (req.body && req.body.name) === 'string' ? req.body.name.trim() : null;
-    if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ error: 'A valid email is required' });
-    if (typeof password !== 'string' || password.length < 8) return res.status(400).json({ error: 'Password must be at least 8 characters' });
+    const type = req.body && req.body.type;
+    if (!isValidEmail(email)) return res.status(400).json({ error: 'A valid email is required' });
+    if (type !== 'signup' && type !== 'reset') return res.status(400).json({ error: 'Invalid OTP request type' });
 
-    const existing = await db.execute({ sql: 'SELECT user_id FROM users WHERE email = ? LIMIT 1', args: [email] });
-    if (existing.rows.length) return res.status(400).json({ error: 'Email already registered' });
+    const user = await findUserByEmail(email);
+    if (type === 'signup' && user) return res.status(400).json({ error: 'Email already registered' });
+    if (type === 'reset' && !user) return res.status(404).json({ error: 'No account found with this email address' });
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    await db.execute({
+      sql: "INSERT INTO otps (email, code, type, expires_at) VALUES (?, ?, ?, datetime('now', '+10 minutes')) ON CONFLICT(email) DO UPDATE SET code = excluded.code, type = excluded.type, expires_at = excluded.expires_at",
+      args: [email, code, type]
+    });
+
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'Your Verification Code',
+        text: `Your GATE CS PYQ verification code is ${code}. It expires in 10 minutes.`
+      });
+    } catch (mailError) {
+      await db.execute({ sql: 'DELETE FROM otps WHERE email = ? AND code = ?', args: [email, code] });
+      throw mailError;
+    }
+    return res.json({ message: 'Verification code sent to your email' });
+  } catch (err) {
+    console.error('Failed to send verification code', err);
+    return res.status(500).json({ error: 'Unable to send verification code' });
+  }
+});
+
+app.post('/api/auth/verify-signup-otp', async (req, res) => {
+  try {
+    const email = normaliseEmail(req.body && req.body.email);
+    const name = typeof (req.body && req.body.name) === 'string' ? req.body.name.trim() : null;
+    const password = req.body && req.body.password;
+    const code = typeof (req.body && req.body.code) === 'string' ? req.body.code.trim() : '';
+    if (!isValidEmail(email)) return res.status(400).json({ error: 'A valid email is required' });
+    if (typeof password !== 'string' || password.length < 8) return res.status(400).json({ error: 'Password must be at least 8 characters' });
+    if (!/^\d{6}$/.test(code) || !(await findValidOtp(email, code, 'signup'))) {
+      return res.status(400).json({ error: 'Invalid or expired verification code' });
+    }
+    if (await findUserByEmail(email)) return res.status(400).json({ error: 'Email already registered' });
 
     const user = { user_id: crypto.randomUUID(), email, name: name || null, picture: null };
     const passwordHash = await bcrypt.hash(password, 10);
-    await db.execute({
-      sql: 'INSERT INTO users (user_id, email, password_hash, name) VALUES (?, ?, ?, ?)',
-      args: [user.user_id, user.email, passwordHash, user.name]
-    });
+    await db.batch([
+      { sql: 'DELETE FROM otps WHERE email = ? AND code = ? AND type = ?', args: [email, code, 'signup'] },
+      { sql: 'INSERT INTO users (user_id, email, password_hash, name) VALUES (?, ?, ?, ?)', args: [user.user_id, user.email, passwordHash, user.name] }
+    ], 'write');
     return res.json({ token: signToken(user), user: publicUser(user) });
   } catch (err) {
-    console.error('Sign-up failed', err);
+    console.error('Sign-up verification failed', err);
     return res.status(500).json({ error: 'Unable to create account' });
+  }
+});
+
+app.post('/api/auth/verify-reset-otp', async (req, res) => {
+  try {
+    const email = normaliseEmail(req.body && req.body.email);
+    const code = typeof (req.body && req.body.code) === 'string' ? req.body.code.trim() : '';
+    if (!isValidEmail(email) || !/^\d{6}$/.test(code) || !(await findValidOtp(email, code, 'reset'))) {
+      return res.status(400).json({ error: 'Invalid or expired verification code' });
+    }
+    return res.json({ valid: true });
+  } catch (err) {
+    console.error('Password reset verification failed', err);
+    return res.status(500).json({ error: 'Unable to verify code' });
+  }
+});
+
+app.post('/api/auth/reset-password', async (req, res) => {
+  try {
+    const email = normaliseEmail(req.body && req.body.email);
+    const code = typeof (req.body && req.body.code) === 'string' ? req.body.code.trim() : '';
+    const newPassword = req.body && req.body.newPassword;
+    if (typeof newPassword !== 'string' || newPassword.length < 8) return res.status(400).json({ error: 'Password must be at least 8 characters' });
+    if (!isValidEmail(email) || !/^\d{6}$/.test(code) || !(await findValidOtp(email, code, 'reset'))) {
+      return res.status(400).json({ error: 'Invalid or expired verification code' });
+    }
+
+    const user = await findUserByEmail(email);
+    if (!user) return res.status(404).json({ error: 'No account found with this email address' });
+    const passwordHash = await bcrypt.hash(newPassword, 10);
+    await db.batch([
+      { sql: 'DELETE FROM otps WHERE email = ? AND code = ? AND type = ?', args: [email, code, 'reset'] },
+      { sql: 'UPDATE users SET password_hash = ? WHERE user_id = ?', args: [passwordHash, user.user_id] }
+    ], 'write');
+    return res.json({ token: signToken(user), user: publicUser(user), message: 'Password updated successfully' });
+  } catch (err) {
+    console.error('Password reset failed', err);
+    return res.status(500).json({ error: 'Unable to reset password' });
   }
 });
 
