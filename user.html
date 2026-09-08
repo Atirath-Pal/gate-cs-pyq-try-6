@@ -19,7 +19,7 @@
       <button type="button" class="btn btn-theme" data-theme-toggle onclick="toggleTheme()"><i data-lucide="sun"></i><span class="btn-label">Light</span></button>
       <div class="auth-controls">
         <button type="button" class="btn btn-primary sign-in-btn">Sign In</button>
-        <button type="button" class="user-avatar" hidden aria-label="Open your profile"></button>
+        <button type="button" class="user-avatar" hidden style="display: none" aria-label="Open your profile"></button>
       </div>
     </div>
   </header>
@@ -35,6 +35,25 @@
       </div>
     </section>
 
+    <section class="profile-main-progress card" aria-labelledby="main-progress-heading">
+      <div class="profile-gauge" role="img" aria-labelledby="main-progress-heading gauge-value">
+        <svg class="profile-gauge__svg" viewBox="0 0 160 160" aria-hidden="true">
+          <circle class="profile-gauge__track" cx="80" cy="80" r="68"></circle>
+          <circle id="progress-gauge-ring" class="profile-gauge__ring" cx="80" cy="80" r="68"></circle>
+        </svg>
+        <div class="profile-gauge__content"><strong id="gauge-value">0 / 0</strong><span>✓ Solved</span></div>
+      </div>
+      <div class="profile-main-progress__content">
+        <p class="profile-eyebrow">Practice progress</p>
+        <h2 id="main-progress-heading">Your PYQ journey</h2>
+        <p id="progress-summary">Loading your question bank progress…</p>
+        <div class="profile-breakdown-actions">
+          <button id="year-progress-toggle" type="button" class="btn profile-breakdown-toggle" aria-controls="year-progress-section" aria-expanded="false">See Year wise Progress</button>
+          <button id="subject-progress-toggle" type="button" class="btn profile-breakdown-toggle" aria-controls="subject-progress-section" aria-expanded="false">See Subject wise Progress</button>
+        </div>
+      </div>
+    </section>
+
     <section aria-labelledby="stats-heading">
       <div class="profile-section-heading"><h2 id="stats-heading">Quick stats</h2></div>
       <div class="profile-stat-grid">
@@ -43,12 +62,30 @@
       </div>
     </section>
 
-    <section class="profile-progress card" aria-labelledby="progress-heading">
+    <section id="year-progress-section" class="profile-progress profile-breakdown card" hidden aria-labelledby="year-progress-heading">
       <div class="profile-section-heading">
-        <div><h2 id="progress-heading">Subject-wise progress</h2><p>Questions marked as done across the PYQ bank.</p></div>
+        <div><h2 id="year-progress-heading">Year-wise progress</h2><p>Progress grouped by each GATE paper and set.</p></div>
+      </div>
+      <div id="year-progress-list" class="year-progress-list" aria-live="polite"></div>
+    </section>
+
+    <section id="subject-progress-section" class="profile-progress profile-breakdown card" hidden aria-labelledby="subject-progress-heading">
+      <div class="profile-section-heading">
+        <div><h2 id="subject-progress-heading">Subject-wise progress</h2><p>Questions marked as done across the PYQ bank.</p></div>
         <span id="progress-status" class="profile-progress__status">Loading…</span>
       </div>
       <div id="subject-progress-list" class="subject-progress-list" aria-live="polite"></div>
+    </section>
+
+    <section class="profile-activity card" aria-labelledby="activity-heading">
+      <div class="profile-section-heading"><div><h2 id="activity-heading">Submission activity</h2><p>Your completed questions from the last 12 months.</p></div></div>
+      <div class="activity-summary" aria-label="Activity summary">
+        <div><strong id="active-days">0</strong><span>Total Active Days</span></div>
+        <div><strong id="current-streak">0</strong><span>Current Streak</span></div>
+        <div><strong id="max-streak">0</strong><span>Max Streak</span></div>
+      </div>
+      <div id="activity-heatmap" class="activity-heatmap" aria-label="Solved question activity heatmap"></div>
+      <div class="activity-legend" aria-hidden="true"><span>Less</span><i></i><i></i><i></i><i></i><span>More</span></div>
     </section>
 
     <section class="profile-controls card" aria-labelledby="controls-heading">

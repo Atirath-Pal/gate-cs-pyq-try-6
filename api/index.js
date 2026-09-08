@@ -305,21 +305,18 @@ app.get('/api/user-data', requireAuth, async (req, res) => {
 
 app.get('/api/user/profile-stats', requireAuth, async (req, res) => {
   try {
-    const [userResult, solvedResult, bookmarkedResult, subjectResult] = await Promise.all([
+    const [userResult, solvedResult, bookmarkedResult] = await Promise.all([
       db.execute({ sql: 'SELECT user_id, email, google_id, name, picture FROM users WHERE user_id = ? LIMIT 1', args: [req.userId] }),
-      db.execute({ sql: 'SELECT COUNT(*) AS total_solved FROM question_status WHERE user_id = ? AND is_done = 1', args: [req.userId] }),
-      db.execute({ sql: 'SELECT COUNT(*) AS total_bookmarked FROM bookmarks WHERE user_id = ?', args: [req.userId] }),
-      db.execute({
-        sql: "SELECT COALESCE(NULLIF(subject, ''), 'Uncategorized') AS subject, COUNT(*) AS solved FROM question_status WHERE user_id = ? AND is_done = 1 GROUP BY COALESCE(NULLIF(subject, ''), 'Uncategorized') ORDER BY subject",
-        args: [req.userId]
-      })
+      db.execute({ sql: 'SELECT question_id, updated_at FROM question_status WHERE user_id = ? AND is_done = 1 ORDER BY updated_at ASC', args: [req.userId] }),
+      db.execute({ sql: 'SELECT question_id FROM bookmarks WHERE user_id = ? ORDER BY created_at ASC', args: [req.userId] })
     ]);
     const user = userResult.rows[0];
     if (!user) return res.status(404).json({ error: 'User account not found' });
     return res.json({
-      totalSolved: Number(solvedResult.rows[0].total_solved || 0),
-      totalBookmarked: Number(bookmarkedResult.rows[0].total_bookmarked || 0),
-      subjectProgress: subjectResult.rows.map((row) => ({ subject: row.subject, solved: Number(row.solved || 0) })),
+      totalSolved: solvedResult.rows.length,
+      totalBookmarked: bookmarkedResult.rows.length,
+      solvedQuestions: solvedResult.rows.map((row) => ({ questionId: row.question_id, updatedAt: row.updated_at })),
+      bookmarks: bookmarkedResult.rows.map((row) => row.question_id),
       user: publicUser(user)
     });
   } catch (err) {

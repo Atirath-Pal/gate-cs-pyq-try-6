@@ -218,9 +218,15 @@
 
   function updateHeaderUI(user) {
     const signedIn = isAuthenticated() && user;
-    document.querySelectorAll('.sign-in-btn').forEach((node) => { node.hidden = signedIn; });
+    document.querySelectorAll('.sign-in-btn').forEach((node) => {
+      node.hidden = signedIn;
+      node.style.display = signedIn ? 'none' : '';
+      node.setAttribute('aria-hidden', String(signedIn));
+    });
     document.querySelectorAll('.user-avatar').forEach((avatar) => {
       avatar.hidden = !signedIn;
+      avatar.style.display = signedIn ? '' : 'none';
+      avatar.setAttribute('aria-hidden', String(!signedIn));
       if (signedIn) setAvatarContent(avatar, user);
     });
   }

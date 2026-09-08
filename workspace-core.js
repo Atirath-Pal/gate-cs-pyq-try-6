@@ -97,6 +97,24 @@ function getCanonicalQuestionId(questionObj) {
   return `${exam}-${year}-${setPart}Q${number}`;
 }
 
+// Keep headers rendered by workspace pages in the same auth state as the home
+// header. auth.js replaces this with its richer version once it has loaded.
+function updateHeaderUI(user) {
+  const signedIn = Boolean(localStorage.getItem('auth_token') && user);
+  document.querySelectorAll('.sign-in-btn').forEach((button) => {
+    button.hidden = signedIn;
+    button.style.display = signedIn ? 'none' : '';
+    button.setAttribute('aria-hidden', String(signedIn));
+  });
+  document.querySelectorAll('.user-avatar').forEach((avatar) => {
+    avatar.hidden = !signedIn;
+    avatar.style.display = signedIn ? '' : 'none';
+    avatar.setAttribute('aria-hidden', String(!signedIn));
+  });
+}
+
+window.updateHeaderUI = updateHeaderUI;
+
 function formatQuestionHeading(q) {
   const setPart = q.set != null && q.set !== '' ? ` SET ${q.set}` : '';
   return `GATE CS ${q.year}${setPart} Q.${q.id}`;
@@ -325,7 +343,7 @@ function authControlsHTML() {
   return `
     <div class="auth-controls">
       <button type="button" class="btn btn-primary sign-in-btn">Sign In</button>
-      <button type="button" class="user-avatar" hidden aria-label="Open your profile"></button>
+      <button type="button" class="user-avatar" hidden style="display: none" aria-label="Open your profile"></button>
     </div>
   `;
 }
