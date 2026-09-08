@@ -7,7 +7,7 @@
   const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:3000'
     : '';
-  let mode = 'signin';
+  let isSignUpMode = false;
   let pendingAuthAction = null;
   let googleInitialised = false;
 
@@ -34,25 +34,52 @@
     node.hidden = !message;
   }
 
-  function setMode(nextMode) {
-    mode = nextMode;
-    const signingUp = mode === 'signup';
-    byId('name-field-group').hidden = !signingUp;
-    byId('auth-name').required = signingUp;
-    byId('forgot-password-link').closest('.auth-options').hidden = signingUp;
-    byId('auth-modal-title').textContent = signingUp ? 'Create your account' : 'Welcome Back!';
-    byId('auth-modal-subtitle').textContent = signingUp
-      ? 'Sign up to save bookmarks and keep your PYQ progress in sync.'
-      : 'Sign in to access Year-wise & Subject-wise PYQs, track your progress, and save bookmarks.';
-    byId('auth-submit-btn').textContent = signingUp ? 'Create Account' : 'Sign In';
-    byId('auth-toggle-text').textContent = signingUp ? 'Already have an account?' : "Don't have an account?";
-    byId('auth-toggle-btn').textContent = signingUp ? 'Sign In' : 'Sign Up';
+  function setAuthMode(isSignUp) {
+    isSignUpMode = isSignUp;
+
+    const title = byId('auth-modal-title');
+    const subtitle = byId('auth-modal-subtitle');
+    const nameGroup = byId('name-field-group');
+    const nameInput = byId('auth-name');
+    const passwordInput = byId('auth-password');
+    const forgotPassword = byId('forgot-password-container');
+    const submitButton = byId('auth-submit-btn');
+    const toggleText = byId('auth-toggle-text');
+    const toggleButton = byId('auth-toggle-btn');
+
     setError('');
+
+    if (isSignUpMode) {
+      if (title) title.textContent = 'Create Account';
+      if (subtitle) subtitle.textContent = 'Sign up to track your PYQ progress and save bookmarks.';
+      if (nameGroup) nameGroup.hidden = false;
+      if (nameInput) nameInput.required = true;
+      if (passwordInput) passwordInput.autocomplete = 'new-password';
+      if (forgotPassword) forgotPassword.hidden = true;
+      if (submitButton) submitButton.textContent = 'Create Account';
+      if (toggleText) toggleText.textContent = 'Already have an account?';
+      if (toggleButton) toggleButton.textContent = 'Sign In';
+      return;
+    }
+
+    if (title) title.textContent = 'Welcome Back!';
+    if (subtitle) subtitle.textContent = 'Sign in to access Year-wise & Subject-wise PYQs, track your progress, and save bookmarks.';
+    if (nameGroup) nameGroup.hidden = true;
+    if (nameInput) {
+      nameInput.required = false;
+      nameInput.value = '';
+    }
+    if (passwordInput) passwordInput.autocomplete = 'current-password';
+    if (forgotPassword) forgotPassword.hidden = false;
+    if (submitButton) submitButton.textContent = 'Sign In';
+    if (toggleText) toggleText.textContent = "Don't have an account?";
+    if (toggleButton) toggleButton.textContent = 'Sign Up';
   }
 
   function openAuthModal() {
     const modal = byId('auth-modal');
     if (!modal) return;
+    setAuthMode(false);
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('auth-modal-open');
@@ -120,17 +147,17 @@
     const name = byId('auth-name').value.trim();
     setError('');
     button.disabled = true;
-    button.textContent = mode === 'signup' ? 'Creating account…' : 'Signing in…';
+    button.textContent = isSignUpMode ? 'Creating account…' : 'Signing in…';
     try {
       const payload = { email, password };
-      if (mode === 'signup') payload.name = name;
-      const result = await sendAuthRequest('/api/auth/' + (mode === 'signup' ? 'signup' : 'login'), payload);
+      if (isSignUpMode) payload.name = name;
+      const result = await sendAuthRequest('/api/auth/' + (isSignUpMode ? 'signup' : 'login'), payload);
       await acceptAuthResult(result);
     } catch (err) {
       setError(err.message);
     } finally {
       button.disabled = false;
-      button.textContent = mode === 'signup' ? 'Create Account' : 'Sign In';
+      button.textContent = isSignUpMode ? 'Create Account' : 'Sign In';
     }
   }
 
@@ -184,7 +211,7 @@
   function bindEvents() {
     byId('native-auth-form').addEventListener('submit', handleFormSubmit);
     byId('close-auth-modal').addEventListener('click', closeAuthModal);
-    byId('auth-toggle-btn').addEventListener('click', () => setMode(mode === 'signup' ? 'signin' : 'signup'));
+    byId('auth-toggle-btn').addEventListener('click', () => setAuthMode(!isSignUpMode));
     byId('toggle-password-btn').addEventListener('click', () => {
       const input = byId('auth-password');
       input.type = input.type === 'password' ? 'text' : 'password';
@@ -214,7 +241,7 @@
 
   function initialise() {
     bindEvents();
-    setMode('signin');
+    setAuthMode(false);
     renderAuthHeader();
     loadGoogleIdentity();
     if (isAuthenticated() && typeof loadUserData === 'function') loadUserData();

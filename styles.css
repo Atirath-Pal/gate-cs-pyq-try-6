@@ -789,12 +789,22 @@
 }
 
 .auth-toggle-mode {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 20px;
-  color: #a1a1aa;
-  font-size: var(--text-sm);
+  margin-top: 18px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.auth-link-bold {
+  padding: 0 4px;
+  color: #0d9488;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.auth-link-bold:hover {
+  color: #14b8a6;
 }
 
 .auth-hero-panel {

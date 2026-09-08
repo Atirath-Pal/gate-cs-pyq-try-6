@@ -21,10 +21,10 @@
         <h2 id="auth-modal-title" class="auth-title">Welcome Back!</h2>
         <p id="auth-modal-subtitle" class="auth-subtitle">Sign in to access Year-wise &amp; Subject-wise PYQs, track your progress, and save bookmarks.</p>
         <form id="native-auth-form" class="auth-form">
-          <div class="auth-field" id="name-field-group" hidden><label for="auth-name">Full Name</label><div class="input-wrapper"><input type="text" id="auth-name" placeholder="Enter your name"></div></div>
+          <div class="auth-field" id="name-field-group" hidden><label for="auth-name">Full Name</label><div class="input-wrapper"><input type="text" id="auth-name" placeholder="Enter your full name"></div></div>
           <div class="auth-field"><label for="auth-email">Email</label><div class="input-wrapper"><input type="email" id="auth-email" placeholder="Enter your email" required></div></div>
-          <div class="auth-field"><label for="auth-password">Password</label><div class="input-wrapper"><input type="password" id="auth-password" placeholder="Enter your password" required><button type="button" id="toggle-password-btn" class="toggle-password" aria-label="Show password">👁</button></div></div>
-          <div class="auth-options"><a href="#" id="forgot-password-link" class="auth-link">Forgot Password?</a></div>
+          <div class="auth-field"><label for="auth-password">Password</label><div class="input-wrapper"><input type="password" id="auth-password" placeholder="Enter your password" autocomplete="current-password" required><button type="button" id="toggle-password-btn" class="toggle-password" aria-label="Show password">👁</button></div></div>
+          <div class="auth-options" id="forgot-password-container"><a href="#" id="forgot-password-link" class="auth-link">Forgot Password?</a></div>
           <div id="auth-error-msg" class="auth-error" hidden></div>
           <button type="submit" id="auth-submit-btn" class="auth-btn-primary">Sign In</button>
         </form>
