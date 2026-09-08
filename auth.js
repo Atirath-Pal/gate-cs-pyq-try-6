@@ -38,6 +38,8 @@
     mode = nextMode;
     const signingUp = mode === 'signup';
     byId('name-field-group').hidden = !signingUp;
+    byId('auth-name').required = signingUp;
+    byId('forgot-password-link').closest('.auth-options').hidden = signingUp;
     byId('auth-modal-title').textContent = signingUp ? 'Create your account' : 'Welcome Back!';
     byId('auth-modal-subtitle').textContent = signingUp
       ? 'Sign up to save bookmarks and keep your PYQ progress in sync.'

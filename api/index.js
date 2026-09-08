@@ -20,11 +20,11 @@ app.use(express.json());
 
 function signToken(user) {
   if (!process.env.JWT_SECRET) throw new Error('JWT_SECRET is not configured');
-  return jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '30d' });
+  return jwt.sign({ userId: user.user_id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '30d' });
 }
 
 function publicUser(user) {
-  return { id: user.id, email: user.email, name: user.name || null, picture: user.picture || null };
+  return { user_id: user.user_id, email: user.email, name: user.name || null };
 }
 
 function normaliseEmail(email) {
@@ -46,16 +46,18 @@ function requireAuth(req, res, next) {
 
 async function findUserByEmailOrGoogleId(email, googleId) {
   const result = await db.execute({
-    sql: 'SELECT id, email, password_hash, google_id, name, picture FROM users WHERE email = ? OR google_id = ? LIMIT 1',
-    args: [email, googleId]
+    sql: 'SELECT user_id, email, password_hash, google_id, name, picture FROM users WHERE google_id = ? OR email = ? LIMIT 1',
+    args: [googleId, email]
   });
   return result.rows[0] || null;
 }
 
 async function initSchema() {
+  await db.execute('DROP TABLE IF EXISTS question_attempts');
+
   await db.execute(`
     CREATE TABLE IF NOT EXISTS users (
-      id TEXT PRIMARY KEY,
+      user_id TEXT PRIMARY KEY,
       email TEXT UNIQUE NOT NULL,
       password_hash TEXT,
       google_id TEXT UNIQUE,
@@ -65,25 +67,13 @@ async function initSchema() {
     )
   `);
 
-  // Migrate the earlier users.user_id table without losing existing progress.
-  const columns = (await db.execute('PRAGMA table_info(users)')).rows.map((column) => column.name);
-  const additions = { id: 'TEXT', password_hash: 'TEXT', google_id: 'TEXT', name: 'TEXT', picture: 'TEXT', created_at: 'TIMESTAMP' };
-  for (const [name, type] of Object.entries(additions)) {
-    if (!columns.includes(name)) await db.execute(`ALTER TABLE users ADD COLUMN ${name} ${type}`);
-  }
-  if (columns.includes('user_id') && !columns.includes('id')) {
-    await db.execute('UPDATE users SET id = user_id WHERE id IS NULL');
-  }
-  await db.execute('CREATE UNIQUE INDEX IF NOT EXISTS users_id_unique ON users(id)');
-  await db.execute('CREATE UNIQUE INDEX IF NOT EXISTS users_email_unique ON users(email)');
-  await db.execute('CREATE UNIQUE INDEX IF NOT EXISTS users_google_id_unique ON users(google_id) WHERE google_id IS NOT NULL');
-
   await db.execute(`
     CREATE TABLE IF NOT EXISTS bookmarks (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id TEXT NOT NULL,
       question_id TEXT NOT NULL,
-      created_at TEXT NOT NULL DEFAULT (datetime('now')),
-      PRIMARY KEY (user_id, question_id)
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE (user_id, question_id)
     )
   `);
   await db.execute(`
@@ -91,10 +81,12 @@ async function initSchema() {
       user_id TEXT NOT NULL,
       question_id TEXT NOT NULL,
       is_done INTEGER NOT NULL DEFAULT 0,
-      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       PRIMARY KEY (user_id, question_id)
     )
   `);
+  await db.execute('CREATE INDEX IF NOT EXISTS idx_bookmarks_user ON bookmarks(user_id)');
+  await db.execute('CREATE INDEX IF NOT EXISTS idx_status_user ON question_status(user_id)');
 }
 
 const schemaReady = initSchema();
@@ -110,16 +102,16 @@ app.post('/api/auth/signup', async (req, res) => {
     if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ error: 'A valid email is required' });
     if (typeof password !== 'string' || password.length < 8) return res.status(400).json({ error: 'Password must be at least 8 characters' });
 
-    const existing = await db.execute({ sql: 'SELECT id FROM users WHERE email = ? LIMIT 1', args: [email] });
-    if (existing.rows.length) return res.status(409).json({ error: 'An account with this email already exists' });
+    const existing = await db.execute({ sql: 'SELECT user_id FROM users WHERE email = ? LIMIT 1', args: [email] });
+    if (existing.rows.length) return res.status(400).json({ error: 'Email already registered' });
 
-    const user = { id: crypto.randomUUID(), email, name: name || null, picture: null };
+    const user = { user_id: crypto.randomUUID(), email, name: name || null, picture: null };
     const passwordHash = await bcrypt.hash(password, 10);
     await db.execute({
-      sql: 'INSERT INTO users (id, email, password_hash, name) VALUES (?, ?, ?, ?)',
-      args: [user.id, user.email, passwordHash, user.name]
+      sql: 'INSERT INTO users (user_id, email, password_hash, name) VALUES (?, ?, ?, ?)',
+      args: [user.user_id, user.email, passwordHash, user.name]
     });
-    return res.status(201).json({ token: signToken(user), user: publicUser(user) });
+    return res.json({ token: signToken(user), user: publicUser(user) });
   } catch (err) {
     console.error('Sign-up failed', err);
     return res.status(500).json({ error: 'Unable to create account' });
@@ -133,11 +125,13 @@ app.post('/api/auth/login', async (req, res) => {
     if (!email || typeof password !== 'string') return res.status(400).json({ error: 'Email and password are required' });
 
     const result = await db.execute({
-      sql: 'SELECT id, email, password_hash, name, picture FROM users WHERE email = ? LIMIT 1',
+      sql: 'SELECT user_id, email, password_hash, name, picture FROM users WHERE email = ? LIMIT 1',
       args: [email]
     });
     const user = result.rows[0];
-    if (!user || !user.password_hash || !(await bcrypt.compare(password, user.password_hash))) return res.status(401).json({ error: 'Invalid email or password' });
+    if (!user) return res.status(401).json({ error: 'Invalid email or password' });
+    if (!user.password_hash) return res.status(400).json({ error: 'Please sign in using Google' });
+    if (!(await bcrypt.compare(password, user.password_hash))) return res.status(401).json({ error: 'Invalid email or password' });
     return res.json({ token: signToken(user), user: publicUser(user) });
   } catch (err) {
     console.error('Login failed', err);
@@ -157,15 +151,15 @@ app.post('/api/auth/google', async (req, res) => {
 
     let user = await findUserByEmailOrGoogleId(email, payload.sub);
     if (!user) {
-      user = { id: crypto.randomUUID(), email, google_id: payload.sub, name: payload.name || null, picture: payload.picture || null };
+      user = { user_id: crypto.randomUUID(), email, google_id: payload.sub, name: payload.name || null, picture: payload.picture || null };
       await db.execute({
-        sql: 'INSERT INTO users (id, email, google_id, name, picture) VALUES (?, ?, ?, ?, ?)',
-        args: [user.id, user.email, user.google_id, user.name, user.picture]
+        sql: 'INSERT INTO users (user_id, email, google_id, name, picture) VALUES (?, ?, ?, ?, ?)',
+        args: [user.user_id, user.email, user.google_id, user.name, user.picture]
       });
     } else {
       await db.execute({
-        sql: 'UPDATE users SET google_id = COALESCE(google_id, ?), name = COALESCE(name, ?), picture = COALESCE(picture, ?) WHERE id = ?',
-        args: [payload.sub, payload.name || null, payload.picture || null, user.id]
+        sql: 'UPDATE users SET google_id = COALESCE(google_id, ?), picture = COALESCE(?, picture) WHERE user_id = ?',
+        args: [payload.sub, payload.picture || null, user.user_id]
       });
       user = { ...user, google_id: user.google_id || payload.sub, name: user.name || payload.name || null, picture: user.picture || payload.picture || null };
     }
@@ -210,7 +204,7 @@ app.post('/api/sync', requireAuth, async (req, res) => {
     const statements = [];
     for (const [questionId, bookmarked] of bookmarks) {
       statements.push(bookmarked
-        ? { sql: 'INSERT INTO bookmarks (user_id, question_id) VALUES (?, ?) ON CONFLICT DO NOTHING', args: [req.userId, questionId] }
+        ? { sql: 'INSERT INTO bookmarks (user_id, question_id) VALUES (?, ?) ON CONFLICT(user_id, question_id) DO NOTHING', args: [req.userId, questionId] }
         : { sql: 'DELETE FROM bookmarks WHERE user_id = ? AND question_id = ?', args: [req.userId, questionId] });
     }
     for (const [questionId, isDone] of statuses) {
@@ -234,7 +228,7 @@ app.post('/api/bookmark', requireAuth, async (req, res) => {
       await db.execute({ sql: 'DELETE FROM bookmarks WHERE user_id = ? AND question_id = ?', args: [req.userId, questionId] });
       return res.json({ bookmarked: false });
     }
-    await db.execute({ sql: 'INSERT INTO bookmarks (user_id, question_id) VALUES (?, ?) ON CONFLICT DO NOTHING', args: [req.userId, questionId] });
+    await db.execute({ sql: 'INSERT INTO bookmarks (user_id, question_id) VALUES (?, ?) ON CONFLICT(user_id, question_id) DO NOTHING', args: [req.userId, questionId] });
     return res.json({ bookmarked: true });
   } catch (err) {
     console.error(err);
