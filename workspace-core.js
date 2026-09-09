@@ -604,6 +604,82 @@ function updateAllPaletteButtons() {
   for (let i = 1; i <= n; i++) updatePaletteButton(i);
 }
 
+function hasStoredSessionAnswer(answer) {
+  return Array.isArray(answer) ? answer.length > 0 : String(answer ?? '').trim() !== '';
+}
+
+function getStoredCheckedStatus(qData, savedAnswer) {
+  if (qData.type === 'MCQ' || qData.type === 'MSQ') {
+    const selectedAnswers = Array.isArray(savedAnswer) ? savedAnswer : [savedAnswer];
+    const correctAnswers = Array.isArray(qData.answer) ? qData.answer : [qData.answer];
+    const hasWrong = selectedAnswers.some((answer) => !correctAnswers.includes(answer));
+    const hasMissed = correctAnswers.some((answer) => !selectedAnswers.includes(answer));
+    const hasCorrect = selectedAnswers.some((answer) => correctAnswers.includes(answer));
+
+    if (hasWrong) return 'incorrect';
+    if (hasMissed) return 'warning';
+    return hasCorrect ? 'correct' : 'answered';
+  }
+
+  if (qData.type === 'NAT') {
+    let min, max;
+    if (typeof qData.answer === 'object' && !Array.isArray(qData.answer)) {
+      min = qData.answer.min;
+      max = qData.answer.max;
+    } else if (Array.isArray(qData.answer)) {
+      min = parseFloat(qData.answer[0]);
+      max = qData.answer.length > 1 ? parseFloat(qData.answer[1]) : min;
+    } else {
+      min = parseFloat(qData.answer);
+      max = min;
+    }
+
+    const userValue = parseFloat(savedAnswer);
+    return !isNaN(userValue) && userValue >= min && userValue <= max ? 'correct' : 'incorrect';
+  }
+
+  return 'answered';
+}
+
+function restorePaletteStatuses() {
+  const savedAnswers = getSessionAnswers();
+
+  currentSession.questions.forEach((entry, index) => {
+    const questionId = activeSetQuestionIds[index];
+    const savedEntry = savedAnswers[questionId];
+    if (!savedEntry) return;
+
+    const savedAnswer = savedEntry && typeof savedEntry === 'object' && !Array.isArray(savedEntry)
+      ? savedEntry.answer
+      : savedEntry;
+    const isChecked = Boolean(savedEntry && typeof savedEntry === 'object' && !Array.isArray(savedEntry) && savedEntry.isChecked);
+    if (!hasStoredSessionAnswer(savedAnswer)) return;
+
+    const questionNumber = index + 1;
+    if (!isChecked) {
+      setQuestionStatus(questionNumber, 'answered');
+      return;
+    }
+
+    const questionDataPromise = entry.questionData
+      ? Promise.resolve(entry.questionData)
+      : fetch(`./${entry.filePath}`).then((response) => {
+        if (!response.ok) throw new Error('Question JSON file not found');
+        return response.json();
+      });
+
+    questionDataPromise
+      .then((qData) => {
+        if (activeSetQuestionIds[index] !== questionId) return;
+        setQuestionStatus(questionNumber, getStoredCheckedStatus(qData, savedAnswer));
+      })
+      .catch(() => {
+        // Keep tracking UI independent if a question definition is unavailable.
+        if (activeSetQuestionIds[index] === questionId) setQuestionStatus(questionNumber, 'answered');
+      });
+  });
+}
+
 function refreshActivePaletteBadges() {
   activeSetQuestionIds.forEach((questionId, index) => {
     const btn = document.getElementById(`p-btn-${index + 1}`);
@@ -751,6 +827,7 @@ function renderWorkspacePage() {
   `;
 
   refreshActivePaletteBadges();
+  restorePaletteStatuses();
   refreshChrome();
   loadQuestion(1);
 }
@@ -899,6 +976,7 @@ async function loadQuestion(qNumber) {
 
 function handleInputChange() {
   saveCurrentSessionAnswer();
+  setQuestionStatus(currentQuestionNumber, 'answered');
   updateAnswerCheckState();
 }
 
