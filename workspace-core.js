@@ -36,6 +36,7 @@ let currentSession = {
 let activeSetQuestionIds = [];
 let workspaceTimerHandle = null;
 const QUESTION_TIMES_STORAGE_KEY = 'gate_pyq_question_times';
+const SESSION_ANSWERS_STORAGE_KEY = 'gate_pyq_session_answers';
 let questionTimes = loadQuestionTimes();
 let currentQuestionId = null;
 let accumulatedSeconds = 0;
@@ -44,6 +45,58 @@ let questionLoadRequestId = 0;
 
 function sessionLength() {
   return currentSession.questions.length;
+}
+
+function getSessionAnswers() {
+  try {
+    const answers = JSON.parse(sessionStorage.getItem(SESSION_ANSWERS_STORAGE_KEY) || '{}');
+    return answers && typeof answers === 'object' && !Array.isArray(answers) ? answers : {};
+  } catch (_) {
+    return {};
+  }
+}
+
+function saveSessionAnswer(questionId, answerData) {
+  if (!questionId) return;
+  const answers = getSessionAnswers();
+  answers[questionId] = answerData;
+  try { sessionStorage.setItem(SESSION_ANSWERS_STORAGE_KEY, JSON.stringify(answers)); } catch (_) { /* Storage is optional. */ }
+}
+
+function restoreSessionAnswer(questionId, questionType) {
+  const answers = getSessionAnswers();
+  if (!Object.prototype.hasOwnProperty.call(answers, questionId)) return;
+  const savedAnswer = answers[questionId];
+
+  if (questionType === 'MCQ' && typeof savedAnswer === 'string') {
+    document.querySelectorAll('input[name="q_option"]').forEach((input) => {
+      input.checked = input.value === savedAnswer;
+    });
+  } else if (questionType === 'MSQ' && Array.isArray(savedAnswer)) {
+    const selectedAnswers = new Set(savedAnswer);
+    document.querySelectorAll('input[name="q_option"]').forEach((input) => {
+      input.checked = selectedAnswers.has(input.value);
+    });
+  } else if (questionType === 'NAT' && typeof savedAnswer === 'string') {
+    const input = document.getElementById('nat-input');
+    if (input) input.value = savedAnswer;
+  }
+}
+
+function saveCurrentSessionAnswer() {
+  if (!currentQuestionData || !currentQuestionId) return;
+  const type = currentQuestionData.type;
+
+  if (type === 'MCQ') {
+    const selected = document.querySelector('input[name="q_option"]:checked');
+    saveSessionAnswer(currentQuestionId, selected ? selected.value : '');
+  } else if (type === 'MSQ') {
+    const selected = Array.from(document.querySelectorAll('input[name="q_option"]:checked'), (input) => input.value);
+    saveSessionAnswer(currentQuestionId, selected);
+  } else if (type === 'NAT') {
+    const input = document.getElementById('nat-input');
+    saveSessionAnswer(currentQuestionId, input ? input.value : '');
+  }
 }
 
 // --- THEME ---
@@ -454,7 +507,7 @@ function formatElapsedTime(totalSeconds) {
 
 function loadQuestionTimes() {
   try {
-    const savedTimes = JSON.parse(localStorage.getItem(QUESTION_TIMES_STORAGE_KEY) || '{}');
+    const savedTimes = JSON.parse(sessionStorage.getItem(QUESTION_TIMES_STORAGE_KEY) || '{}');
     if (!savedTimes || typeof savedTimes !== 'object' || Array.isArray(savedTimes)) return {};
     return Object.fromEntries(Object.entries(savedTimes).filter(([, seconds]) => Number.isFinite(seconds) && seconds >= 0)
       .map(([questionId, seconds]) => [questionId, Math.floor(seconds)]));
@@ -464,7 +517,7 @@ function loadQuestionTimes() {
 }
 
 function persistQuestionTimes() {
-  try { localStorage.setItem(QUESTION_TIMES_STORAGE_KEY, JSON.stringify(questionTimes)); } catch (_) { /* Storage is optional. */ }
+  try { sessionStorage.setItem(QUESTION_TIMES_STORAGE_KEY, JSON.stringify(questionTimes)); } catch (_) { /* Storage is optional. */ }
 }
 
 function stopWorkspaceTimer() {
@@ -826,6 +879,8 @@ async function loadQuestion(qNumber) {
       });
     });
 
+    restoreSessionAnswer(currentQuestionId, qData.type);
+    updateAnswerCheckState();
     actionFooter.classList.remove('hidden');
 
   } catch (error) {
@@ -835,7 +890,13 @@ async function loadQuestion(qNumber) {
 }
 
 function handleInputChange() {
+  saveCurrentSessionAnswer();
+  updateAnswerCheckState();
+}
+
+function updateAnswerCheckState() {
   const checkBtn = document.getElementById('check-btn');
+  if (!checkBtn || !currentQuestionData) return;
   const type = currentQuestionData.type;
 
   if (type === 'MCQ' || type === 'MSQ') {
