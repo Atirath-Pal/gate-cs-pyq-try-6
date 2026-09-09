@@ -56,17 +56,22 @@ function getSessionAnswers() {
   }
 }
 
-function saveSessionAnswer(questionId, answerData) {
+function saveSessionAnswer(questionId, answerData, isChecked = false) {
   if (!questionId) return;
   const answers = getSessionAnswers();
-  answers[questionId] = answerData;
+  answers[questionId] = { answer: answerData, isChecked };
   try { sessionStorage.setItem(SESSION_ANSWERS_STORAGE_KEY, JSON.stringify(answers)); } catch (_) { /* Storage is optional. */ }
 }
 
 function restoreSessionAnswer(questionId, questionType) {
   const answers = getSessionAnswers();
-  if (!Object.prototype.hasOwnProperty.call(answers, questionId)) return;
-  const savedAnswer = answers[questionId];
+  if (!Object.prototype.hasOwnProperty.call(answers, questionId)) return false;
+  const savedEntry = answers[questionId];
+  // Treat records written before evaluated-state persistence was added as drafts.
+  const savedAnswer = savedEntry && typeof savedEntry === 'object' && !Array.isArray(savedEntry)
+    ? savedEntry.answer
+    : savedEntry;
+  const isChecked = Boolean(savedEntry && typeof savedEntry === 'object' && !Array.isArray(savedEntry) && savedEntry.isChecked);
 
   if (questionType === 'MCQ' && typeof savedAnswer === 'string') {
     document.querySelectorAll('input[name="q_option"]').forEach((input) => {
@@ -81,21 +86,24 @@ function restoreSessionAnswer(questionId, questionType) {
     const input = document.getElementById('nat-input');
     if (input) input.value = savedAnswer;
   }
+
+  if (isChecked) checkAnswer();
+  return isChecked;
 }
 
-function saveCurrentSessionAnswer() {
+function saveCurrentSessionAnswer(isChecked = false) {
   if (!currentQuestionData || !currentQuestionId) return;
   const type = currentQuestionData.type;
 
   if (type === 'MCQ') {
     const selected = document.querySelector('input[name="q_option"]:checked');
-    saveSessionAnswer(currentQuestionId, selected ? selected.value : '');
+    saveSessionAnswer(currentQuestionId, selected ? selected.value : '', isChecked);
   } else if (type === 'MSQ') {
     const selected = Array.from(document.querySelectorAll('input[name="q_option"]:checked'), (input) => input.value);
-    saveSessionAnswer(currentQuestionId, selected);
+    saveSessionAnswer(currentQuestionId, selected, isChecked);
   } else if (type === 'NAT') {
     const input = document.getElementById('nat-input');
-    saveSessionAnswer(currentQuestionId, input ? input.value : '');
+    saveSessionAnswer(currentQuestionId, input ? input.value : '', isChecked);
   }
 }
 
@@ -879,8 +887,8 @@ async function loadQuestion(qNumber) {
       });
     });
 
-    restoreSessionAnswer(currentQuestionId, qData.type);
-    updateAnswerCheckState();
+    const restoredCheckedAnswer = restoreSessionAnswer(currentQuestionId, qData.type);
+    if (!restoredCheckedAnswer) updateAnswerCheckState();
     actionFooter.classList.remove('hidden');
 
   } catch (error) {
@@ -911,6 +919,7 @@ function updateAnswerCheckState() {
 function checkAnswer() {
   const qData = currentQuestionData;
   const checkBtn = document.getElementById('check-btn');
+  saveCurrentSessionAnswer(true);
   checkBtn.disabled = true;
 
   let overallStatus = 'answered';
