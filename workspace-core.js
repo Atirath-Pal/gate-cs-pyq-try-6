@@ -450,25 +450,6 @@ function startWorkspaceTimer() {
   }, 1000);
 }
 
-function logicSheetStorageKey() {
-  return `gate-pyq-logic-sheet:${currentSession.title}`;
-}
-
-function toggleLogicSheet() {
-  const drawer = document.getElementById('logic-sheet-drawer');
-  if (!drawer) return;
-  const isOpen = drawer.classList.toggle('is-open');
-  drawer.setAttribute('aria-hidden', String(!isOpen));
-  document.getElementById('logic-sheet-toggle')?.setAttribute('aria-expanded', String(isOpen));
-  if (isOpen) document.getElementById('logic-sheet-input')?.focus();
-}
-
-function saveLogicSheet() {
-  const input = document.getElementById('logic-sheet-input');
-  if (!input) return;
-  try { sessionStorage.setItem(logicSheetStorageKey(), input.value); } catch (_) { /* Storage is optional. */ }
-}
-
 // --- PALETTE STATUS ---
 function updatePaletteButton(qNumber) {
   const btn = document.getElementById(`p-btn-${qNumber}`);
@@ -610,7 +591,6 @@ function renderWorkspacePage() {
           Next <i data-lucide="chevron-right"></i>
         </button>
         <div class="workspace-timer" aria-label="Practice timer"><i data-lucide="timer"></i><span id="workspace-timer">00:00:00</span></div>
-        <button type="button" id="logic-sheet-toggle" class="btn" onclick="toggleLogicSheet()" aria-controls="logic-sheet-drawer" aria-expanded="false"><i data-lucide="notebook-pen"></i> Logic Sheet</button>
       </nav>
 
       <div class="workspace-body">
@@ -649,15 +629,10 @@ function renderWorkspacePage() {
           </article>
         </main>
       </div>
-      <aside id="logic-sheet-drawer" class="logic-sheet-drawer" aria-hidden="true" aria-label="Logic sheet">
-        <div class="logic-sheet-drawer__header"><h2>Logic Sheet</h2><button type="button" class="btn btn-ghost" onclick="toggleLogicSheet()" aria-label="Close logic sheet">×</button></div>
-        <textarea id="logic-sheet-input" oninput="saveLogicSheet()" placeholder="Write your working, formulas, or revision notes here..."></textarea>
-      </aside>
     </div>
   `;
 
   refreshActivePaletteBadges();
-  try { document.getElementById('logic-sheet-input').value = sessionStorage.getItem(logicSheetStorageKey()) || ''; } catch (_) { /* Storage is optional. */ }
   refreshChrome();
   loadQuestion(1);
 }
