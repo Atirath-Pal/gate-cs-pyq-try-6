@@ -420,3 +420,4 @@
   document.addEventListener('DOMContentLoaded', enforcePageProtection);
   window.addEventListener('load', initialise);
 }());
+
