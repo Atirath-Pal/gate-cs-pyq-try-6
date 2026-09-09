@@ -11,6 +11,13 @@
   function readUser() {
     try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); } catch (_) { return null; }
   }
+  function updateChangePasswordVisibility(profileData) {
+    let legacyUser = {};
+    try { legacyUser = JSON.parse(localStorage.getItem('user') || '{}'); } catch (_) { /* Ignore malformed legacy data. */ }
+    const isGoogleUser = profileData?.user?.isGoogleAccount ?? readUser()?.isGoogleAccount ?? legacyUser?.isGoogleAccount;
+    const container = document.getElementById('change-password-container');
+    if (container) container.style.display = isGoogleUser === true ? 'none' : '';
+  }
   function redirectToHome() { window.location.replace('./index.html'); }
   function initials(user) {
     const parts = String(user.name || user.email || 'GATE Aspirant').trim().split(/\s+/).filter(Boolean);
@@ -30,7 +37,7 @@
     document.getElementById('profile-name').textContent = user.name || 'GATE Aspirant';
     document.getElementById('profile-email').textContent = user.email || '';
     document.getElementById('account-tag').textContent = user.isGoogleAccount ? 'Google Account' : 'Verified Email Account';
-    document.getElementById('change-password-btn').hidden = Boolean(user.isGoogleAccount);
+    updateChangePasswordVisibility({ user });
   }
   function canonicalQuestionId(question) {
     const exam = String(question.exam || 'GATE-CS').trim().replace(/[\s_]+/g, '-');
@@ -195,6 +202,7 @@
       if (!statsResponse.ok) throw new Error(stats.error || 'Profile stats could not be loaded');
       if (stats.user) {
         user = { ...user, ...stats.user }; localStorage.setItem(USER_KEY, JSON.stringify(user)); renderProfile(user);
+        updateChangePasswordVisibility(stats);
         if (typeof window.updateHeaderUI === 'function') window.updateHeaderUI(user);
       }
       const solvedQuestions = Array.isArray(stats.solvedQuestions) ? stats.solvedQuestions : [];
