@@ -875,32 +875,6 @@
   font-weight: var(--font-semibold);
 }
 
-.palette-filters {
-  display: flex;
-  gap: var(--space-1);
-  padding: 0 var(--space-6) var(--space-3);
-}
-
-.question-panel:not(.is-expanded) .palette-filters {
-  display: none;
-}
-
-.palette-filter {
-  padding: var(--space-1) var(--space-2);
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-input);
-  font-size: var(--text-xs);
-}
-
-.palette-filter:hover,
-.palette-filter.is-active {
-  color: var(--text-primary);
-  border-color: var(--accent-primary);
-  background: var(--accent-primary-muted);
-}
-
 .logic-sheet-drawer {
   position: fixed;
   z-index: 110;

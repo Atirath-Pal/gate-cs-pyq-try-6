@@ -34,7 +34,6 @@ let currentSession = {
   headerExtraHTML: ''
 };
 let activeSetQuestionIds = [];
-let activePaletteFilter = 'all';
 let workspaceTimerHandle = null;
 let workspaceElapsedSeconds = 0;
 
@@ -423,7 +422,6 @@ function startSession(questions, title, backHref, headerExtraHTML, backLabel) {
     backLabel: backLabel || 'Home'
   };
   currentQuestionNumber = 1;
-  activePaletteFilter = 'all';
   workspaceElapsedSeconds = 0;
   if (workspaceTimerHandle) window.clearInterval(workspaceTimerHandle);
   Object.keys(questionStatuses).forEach(k => delete questionStatuses[k]);
@@ -471,31 +469,6 @@ function saveLogicSheet() {
   try { sessionStorage.setItem(logicSheetStorageKey(), input.value); } catch (_) { /* Storage is optional. */ }
 }
 
-function paletteFilterHTML() {
-  return `
-    <div class="palette-filters" role="group" aria-label="Filter question palette">
-      <button type="button" class="palette-filter is-active" data-palette-filter="all" onclick="setPaletteFilter('all')">All</button>
-      <button type="button" class="palette-filter" data-palette-filter="done" onclick="setPaletteFilter('done')">Done</button>
-      <button type="button" class="palette-filter" data-palette-filter="unanswered" onclick="setPaletteFilter('unanswered')">Unanswered</button>
-    </div>`;
-}
-
-function setPaletteFilter(filter) {
-  activePaletteFilter = filter;
-  document.querySelectorAll('[data-palette-filter]').forEach((button) => {
-    button.classList.toggle('is-active', button.dataset.paletteFilter === filter);
-  });
-  activeSetQuestionIds.forEach((questionId, index) => {
-    const button = document.getElementById(`p-btn-${index + 1}`);
-    if (!button) return;
-    const status = questionStatuses[index + 1];
-    const isDone = window.userState.completed.has(questionId);
-    const isAnswered = Boolean(status);
-    const visible = filter === 'all' || (filter === 'done' && isDone) || (filter === 'unanswered' && !isAnswered);
-    button.hidden = !visible;
-  });
-}
-
 // --- PALETTE STATUS ---
 function updatePaletteButton(qNumber) {
   const btn = document.getElementById(`p-btn-${qNumber}`);
@@ -540,7 +513,6 @@ function refreshActivePaletteBadges() {
     btn.dataset.questionId = questionId;
     updatePaletteButton(index + 1);
   });
-  if (activePaletteFilter !== 'all') setPaletteFilter(activePaletteFilter);
 }
 
 window.addEventListener('userstatechange', refreshActivePaletteBadges);
@@ -548,7 +520,6 @@ window.addEventListener('userstatechange', refreshActivePaletteBadges);
 function setQuestionStatus(qNumber, status) {
   questionStatuses[qNumber] = status;
   updatePaletteButton(qNumber);
-  if (activePaletteFilter !== 'all') setPaletteFilter(activePaletteFilter);
 }
 
 // --- NAVIGATION ---
@@ -649,7 +620,6 @@ function renderWorkspacePage() {
             <span>Question Palette (1–${n})</span>
             <i data-lucide="chevron-down" class="panel-toggle__icon"></i>
           </button>
-          ${paletteFilterHTML()}
           <div id="question-grid">
             ${paletteHTML}
           </div>
@@ -688,7 +658,6 @@ function renderWorkspacePage() {
 
   refreshActivePaletteBadges();
   try { document.getElementById('logic-sheet-input').value = sessionStorage.getItem(logicSheetStorageKey()) || ''; } catch (_) { /* Storage is optional. */ }
-  setPaletteFilter(activePaletteFilter);
   refreshChrome();
   loadQuestion(1);
 }
