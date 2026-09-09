@@ -31,7 +31,7 @@
 
   function enforcePageProtection() {
     const currentPath = window.location.pathname;
-    const isProtectedPage = currentPath.endsWith('year.html') || currentPath.endsWith('subject.html');
+    const isProtectedPage = currentPath.endsWith('year.html') || currentPath.endsWith('subject.html') || currentPath.endsWith('bookmarks.html');
     if (isProtectedPage && !isAuthenticated()) {
       window.location.replace('index.html');
       return true;

@@ -34,6 +34,9 @@ let currentSession = {
   headerExtraHTML: ''
 };
 let activeSetQuestionIds = [];
+let activePaletteFilter = 'all';
+let workspaceTimerHandle = null;
+let workspaceElapsedSeconds = 0;
 
 function sessionLength() {
   return currentSession.questions.length;
@@ -309,7 +312,9 @@ function toggleBookmark() {
   pendingSync.bookmarks.set(questionId, bookmarked);
   notifyUserStateChanged();
   refreshTrackingUI();
-  debounceSync();
+  // A removal in the bookmark-review workspace must reach Turso immediately;
+  // the session array remains unchanged until the user refreshes the page.
+  flushSyncQueue();
 }
 
 function toggleMarkDone() {
@@ -329,7 +334,7 @@ function toggleMarkDone() {
   pendingSync.statuses.set(questionId, { isDone, subject });
   notifyUserStateChanged();
   refreshTrackingUI();
-  debounceSync();
+  flushSyncQueue();
 }
 
 function themeToggleHTML() {
@@ -407,18 +412,88 @@ function yearCardHTML(title, count, href, tag) {
   `;
 }
 
-function startSession(questions, title, backHref, headerExtraHTML) {
+function startSession(questions, title, backHref, headerExtraHTML, backLabel) {
   activeSetQuestionIds = questions.map(getCanonicalQuestionId);
   currentSession = {
     questions,
     questionIds: activeSetQuestionIds,
     title,
     backHref,
-    headerExtraHTML: headerExtraHTML || ''
+    headerExtraHTML: headerExtraHTML || '',
+    backLabel: backLabel || 'Home'
   };
   currentQuestionNumber = 1;
+  activePaletteFilter = 'all';
+  workspaceElapsedSeconds = 0;
+  if (workspaceTimerHandle) window.clearInterval(workspaceTimerHandle);
   Object.keys(questionStatuses).forEach(k => delete questionStatuses[k]);
   renderWorkspacePage();
+  startWorkspaceTimer();
+}
+
+function formatElapsedTime(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function updateWorkspaceTimer() {
+  const timer = document.getElementById('workspace-timer');
+  if (timer) timer.textContent = formatElapsedTime(workspaceElapsedSeconds);
+}
+
+function startWorkspaceTimer() {
+  if (workspaceTimerHandle) window.clearInterval(workspaceTimerHandle);
+  updateWorkspaceTimer();
+  workspaceTimerHandle = window.setInterval(() => {
+    workspaceElapsedSeconds += 1;
+    updateWorkspaceTimer();
+  }, 1000);
+}
+
+function logicSheetStorageKey() {
+  return `gate-pyq-logic-sheet:${currentSession.title}`;
+}
+
+function toggleLogicSheet() {
+  const drawer = document.getElementById('logic-sheet-drawer');
+  if (!drawer) return;
+  const isOpen = drawer.classList.toggle('is-open');
+  drawer.setAttribute('aria-hidden', String(!isOpen));
+  document.getElementById('logic-sheet-toggle')?.setAttribute('aria-expanded', String(isOpen));
+  if (isOpen) document.getElementById('logic-sheet-input')?.focus();
+}
+
+function saveLogicSheet() {
+  const input = document.getElementById('logic-sheet-input');
+  if (!input) return;
+  try { sessionStorage.setItem(logicSheetStorageKey(), input.value); } catch (_) { /* Storage is optional. */ }
+}
+
+function paletteFilterHTML() {
+  return `
+    <div class="palette-filters" role="group" aria-label="Filter question palette">
+      <button type="button" class="palette-filter is-active" data-palette-filter="all" onclick="setPaletteFilter('all')">All</button>
+      <button type="button" class="palette-filter" data-palette-filter="done" onclick="setPaletteFilter('done')">Done</button>
+      <button type="button" class="palette-filter" data-palette-filter="unanswered" onclick="setPaletteFilter('unanswered')">Unanswered</button>
+    </div>`;
+}
+
+function setPaletteFilter(filter) {
+  activePaletteFilter = filter;
+  document.querySelectorAll('[data-palette-filter]').forEach((button) => {
+    button.classList.toggle('is-active', button.dataset.paletteFilter === filter);
+  });
+  activeSetQuestionIds.forEach((questionId, index) => {
+    const button = document.getElementById(`p-btn-${index + 1}`);
+    if (!button) return;
+    const status = questionStatuses[index + 1];
+    const isDone = window.userState.completed.has(questionId);
+    const isAnswered = Boolean(status);
+    const visible = filter === 'all' || (filter === 'done' && isDone) || (filter === 'unanswered' && !isAnswered);
+    button.hidden = !visible;
+  });
 }
 
 // --- PALETTE STATUS ---
@@ -465,6 +540,7 @@ function refreshActivePaletteBadges() {
     btn.dataset.questionId = questionId;
     updatePaletteButton(index + 1);
   });
+  if (activePaletteFilter !== 'all') setPaletteFilter(activePaletteFilter);
 }
 
 window.addEventListener('userstatechange', refreshActivePaletteBadges);
@@ -472,6 +548,7 @@ window.addEventListener('userstatechange', refreshActivePaletteBadges);
 function setQuestionStatus(qNumber, status) {
   questionStatuses[qNumber] = status;
   updatePaletteButton(qNumber);
+  if (activePaletteFilter !== 'all') setPaletteFilter(activePaletteFilter);
 }
 
 // --- NAVIGATION ---
@@ -541,7 +618,7 @@ function renderWorkspacePage() {
       <header class="workspace-header glass">
         <div class="workspace-header__left">
           <a href="${currentSession.backHref}" class="workspace-header__home">
-            <i data-lucide="arrow-left"></i> <span class="btn-label">Home</span>
+            <i data-lucide="arrow-left"></i> <span class="btn-label">${currentSession.backLabel}</span>
           </a>
           <span class="workspace-header__divider"></span>
           <h1 class="workspace-header__paper">${currentSession.title}</h1>
@@ -561,6 +638,8 @@ function renderWorkspacePage() {
         <button type="button" id="next-btn" class="btn btn-nav" onclick="navigateQuestion(1)">
           Next <i data-lucide="chevron-right"></i>
         </button>
+        <div class="workspace-timer" aria-label="Practice timer"><i data-lucide="timer"></i><span id="workspace-timer">00:00:00</span></div>
+        <button type="button" id="logic-sheet-toggle" class="btn" onclick="toggleLogicSheet()" aria-controls="logic-sheet-drawer" aria-expanded="false"><i data-lucide="notebook-pen"></i> Logic Sheet</button>
       </nav>
 
       <div class="workspace-body">
@@ -570,6 +649,7 @@ function renderWorkspacePage() {
             <span>Question Palette (1–${n})</span>
             <i data-lucide="chevron-down" class="panel-toggle__icon"></i>
           </button>
+          ${paletteFilterHTML()}
           <div id="question-grid">
             ${paletteHTML}
           </div>
@@ -599,10 +679,16 @@ function renderWorkspacePage() {
           </article>
         </main>
       </div>
+      <aside id="logic-sheet-drawer" class="logic-sheet-drawer" aria-hidden="true" aria-label="Logic sheet">
+        <div class="logic-sheet-drawer__header"><h2>Logic Sheet</h2><button type="button" class="btn btn-ghost" onclick="toggleLogicSheet()" aria-label="Close logic sheet">×</button></div>
+        <textarea id="logic-sheet-input" oninput="saveLogicSheet()" placeholder="Write your working, formulas, or revision notes here..."></textarea>
+      </aside>
     </div>
   `;
 
   refreshActivePaletteBadges();
+  try { document.getElementById('logic-sheet-input').value = sessionStorage.getItem(logicSheetStorageKey()) || ''; } catch (_) { /* Storage is optional. */ }
+  setPaletteFilter(activePaletteFilter);
   refreshChrome();
   loadQuestion(1);
 }
@@ -631,11 +717,16 @@ async function loadQuestion(qNumber) {
   actionFooter.classList.add('hidden');
 
   try {
-    const filePath = `./${entry.filePath}`;
-    const response = await fetch(filePath);
-    if (!response.ok) throw new Error("Question JSON file not found");
-
-    currentQuestionData = await response.json();
+    if (entry.questionData) {
+      // Dedicated views can resolve question JSON up front while the regular
+      // year and subject workspaces retain their manifest-based lazy loading.
+      currentQuestionData = entry.questionData;
+    } else {
+      const filePath = `./${entry.filePath}`;
+      const response = await fetch(filePath);
+      if (!response.ok) throw new Error("Question JSON file not found");
+      currentQuestionData = await response.json();
+    }
     const qData = currentQuestionData;
     qNumHeading.innerText = formatQuestionHeading(qData);
     refreshTrackingUI();

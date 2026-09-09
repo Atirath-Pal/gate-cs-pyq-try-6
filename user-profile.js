@@ -6,6 +6,7 @@
   const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:3000' : '';
   const GAUGE_CIRCUMFERENCE = 2 * Math.PI * 68;
+  let totalBookmarked = 0;
 
   function readUser() {
     try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); } catch (_) { return null; }
@@ -165,6 +166,21 @@
       }
     });
   }
+  function showBookmarkNotice(message) {
+    let toast = document.getElementById('profile-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'profile-toast';
+      toast.className = 'profile-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('is-visible');
+    window.clearTimeout(showBookmarkNotice.timeoutId);
+    showBookmarkNotice.timeoutId = window.setTimeout(() => toast.classList.remove('is-visible'), 2800);
+  }
   async function loadProfile() {
     const token = localStorage.getItem(TOKEN_KEY);
     let user = readUser();
@@ -183,7 +199,8 @@
       }
       const solvedQuestions = Array.isArray(stats.solvedQuestions) ? stats.solvedQuestions : [];
       document.getElementById('total-solved').textContent = solvedQuestions.length;
-      document.getElementById('total-bookmarked').textContent = Array.isArray(stats.bookmarks) ? stats.bookmarks.length : Number(stats.totalBookmarked) || 0;
+      totalBookmarked = Array.isArray(stats.bookmarks) ? stats.bookmarks.length : Number(stats.totalBookmarked) || 0;
+      document.getElementById('total-bookmarked').textContent = totalBookmarked;
       renderMainProgress(solvedQuestions.length, catalog.totalQuestions);
       renderSubjectProgress(solvedQuestions, catalog); renderYearProgress(solvedQuestions, catalog); renderActivity(solvedQuestions);
       document.getElementById('progress-status').textContent = 'Up to date';
@@ -205,6 +222,13 @@
     document.getElementById('change-password-btn').addEventListener('click', () => {
       const user = readUser();
       if (user && typeof window.openPasswordResetModal === 'function') window.openPasswordResetModal(user.email);
+    });
+    document.getElementById('view-bookmarked-questions-btn').addEventListener('click', () => {
+      if (totalBookmarked === 0) {
+        showBookmarkNotice("You haven't bookmarked any questions yet!");
+        return;
+      }
+      window.location.assign('./bookmarks.html');
     });
     loadProfile();
   });
