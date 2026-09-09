@@ -35,7 +35,12 @@ let currentSession = {
 };
 let activeSetQuestionIds = [];
 let workspaceTimerHandle = null;
-let workspaceElapsedSeconds = 0;
+const QUESTION_TIMES_STORAGE_KEY = 'gate_pyq_question_times';
+let questionTimes = loadQuestionTimes();
+let currentQuestionId = null;
+let accumulatedSeconds = 0;
+let currentQuestionStartTime = null;
+let questionLoadRequestId = 0;
 
 function sessionLength() {
   return currentSession.questions.length;
@@ -274,8 +279,17 @@ async function flushSyncQueue() {
 
 window.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden') {
+    saveCurrentQuestionTime();
+    stopWorkspaceTimer();
     flushSyncQueue();
+  } else if (document.visibilityState === 'visible') {
+    resumeCurrentQuestionTimer();
   }
+});
+
+window.addEventListener('beforeunload', () => {
+  saveCurrentQuestionTime();
+  stopWorkspaceTimer();
 });
 
 function syncTrackingButtons() {
@@ -412,6 +426,11 @@ function yearCardHTML(title, count, href, tag) {
 }
 
 function startSession(questions, title, backHref, headerExtraHTML, backLabel) {
+  saveCurrentQuestionTime();
+  stopWorkspaceTimer();
+  currentQuestionId = null;
+  accumulatedSeconds = 0;
+  currentQuestionStartTime = null;
   activeSetQuestionIds = questions.map(getCanonicalQuestionId);
   currentSession = {
     questions,
@@ -422,11 +441,8 @@ function startSession(questions, title, backHref, headerExtraHTML, backLabel) {
     backLabel: backLabel || 'Home'
   };
   currentQuestionNumber = 1;
-  workspaceElapsedSeconds = 0;
-  if (workspaceTimerHandle) window.clearInterval(workspaceTimerHandle);
   Object.keys(questionStatuses).forEach(k => delete questionStatuses[k]);
   renderWorkspacePage();
-  startWorkspaceTimer();
 }
 
 function formatElapsedTime(totalSeconds) {
@@ -436,18 +452,59 @@ function formatElapsedTime(totalSeconds) {
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
-function updateWorkspaceTimer() {
-  const timer = document.getElementById('workspace-timer');
-  if (timer) timer.textContent = formatElapsedTime(workspaceElapsedSeconds);
+function loadQuestionTimes() {
+  try {
+    const savedTimes = JSON.parse(localStorage.getItem(QUESTION_TIMES_STORAGE_KEY) || '{}');
+    if (!savedTimes || typeof savedTimes !== 'object' || Array.isArray(savedTimes)) return {};
+    return Object.fromEntries(Object.entries(savedTimes).filter(([, seconds]) => Number.isFinite(seconds) && seconds >= 0)
+      .map(([questionId, seconds]) => [questionId, Math.floor(seconds)]));
+  } catch (_) {
+    return {};
+  }
 }
 
-function startWorkspaceTimer() {
+function persistQuestionTimes() {
+  try { localStorage.setItem(QUESTION_TIMES_STORAGE_KEY, JSON.stringify(questionTimes)); } catch (_) { /* Storage is optional. */ }
+}
+
+function stopWorkspaceTimer() {
   if (workspaceTimerHandle) window.clearInterval(workspaceTimerHandle);
+  workspaceTimerHandle = null;
+}
+
+function displayedQuestionSeconds() {
+  const runningSeconds = currentQuestionStartTime == null
+    ? 0 : Math.floor((Date.now() - currentQuestionStartTime) / 1000);
+  return accumulatedSeconds + Math.max(0, runningSeconds);
+}
+
+function updateWorkspaceTimer() {
+  const timer = document.getElementById('workspace-timer');
+  if (timer) timer.textContent = formatElapsedTime(displayedQuestionSeconds());
+}
+
+function startQuestionTimer(questionId) {
+  stopWorkspaceTimer();
+  currentQuestionId = questionId;
+  accumulatedSeconds = Number(questionTimes[questionId]) || 0;
+  currentQuestionStartTime = Date.now();
   updateWorkspaceTimer();
-  workspaceTimerHandle = window.setInterval(() => {
-    workspaceElapsedSeconds += 1;
-    updateWorkspaceTimer();
-  }, 1000);
+  workspaceTimerHandle = window.setInterval(updateWorkspaceTimer, 1000);
+}
+
+function saveCurrentQuestionTime() {
+  if (!currentQuestionId || currentQuestionStartTime == null) return;
+  questionTimes[currentQuestionId] = displayedQuestionSeconds();
+  accumulatedSeconds = questionTimes[currentQuestionId];
+  currentQuestionStartTime = null;
+  persistQuestionTimes();
+}
+
+function resumeCurrentQuestionTimer() {
+  if (!currentQuestionId || currentQuestionStartTime != null || document.visibilityState !== 'visible') return;
+  currentQuestionStartTime = Date.now();
+  updateWorkspaceTimer();
+  workspaceTimerHandle = window.setInterval(updateWorkspaceTimer, 1000);
 }
 
 // --- PALETTE STATUS ---
@@ -464,7 +521,7 @@ function updatePaletteButton(qNumber) {
     'palette-btn--done'
   );
 
-  const questionId = activeSetQuestionIds[qNumber - 1];
+  const questionId = activeSetQuestionIds[qNumber - 1] || getCanonicalQuestionId(entry.questionData || entry);
   const isDone = Boolean(questionId && window.userState.completed.has(questionId));
   const isBookmarked = Boolean(questionId && window.userState.bookmarks.has(questionId));
   btn.classList.toggle('palette-btn--done', isDone);
@@ -642,9 +699,14 @@ async function loadQuestion(qNumber) {
   const entry = currentSession.questions[qNumber - 1];
   if (!entry) return;
 
+  saveCurrentQuestionTime();
+  stopWorkspaceTimer();
+  const requestId = ++questionLoadRequestId;
+  const questionId = activeSetQuestionIds[qNumber - 1];
   const folderName = entry.paperFolder;
   currentFolderName = folderName;
   currentQuestionNumber = qNumber;
+  startQuestionTimer(questionId);
 
   const stage = document.getElementById('question-stage');
   const qNumHeading = document.getElementById('q-number');
@@ -661,17 +723,19 @@ async function loadQuestion(qNumber) {
   actionFooter.classList.add('hidden');
 
   try {
+    let qData;
     if (entry.questionData) {
       // Dedicated views can resolve question JSON up front while the regular
       // year and subject workspaces retain their manifest-based lazy loading.
-      currentQuestionData = entry.questionData;
+      qData = entry.questionData;
     } else {
       const filePath = `./${entry.filePath}`;
       const response = await fetch(filePath);
       if (!response.ok) throw new Error("Question JSON file not found");
-      currentQuestionData = await response.json();
+      qData = await response.json();
     }
-    const qData = currentQuestionData;
+    if (requestId !== questionLoadRequestId) return;
+    currentQuestionData = qData;
     qNumHeading.innerText = formatQuestionHeading(qData);
     refreshTrackingUI();
 
@@ -765,6 +829,7 @@ async function loadQuestion(qNumber) {
     actionFooter.classList.remove('hidden');
 
   } catch (error) {
+    if (requestId !== questionLoadRequestId) return;
     stage.innerHTML = `<div class="question-error">Error loading question: ${error.message}</div>`;
   }
 }
