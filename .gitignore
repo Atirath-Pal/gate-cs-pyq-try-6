@@ -6,6 +6,4 @@ commands.txt
 node_modules/
 .env
 .env.*
-.clerk/
 .vscode/
-.agents/
