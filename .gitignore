@@ -1,0 +1,12 @@
+find_exact.js
+generate_manifest.js
+prompt.txt
+topics.txt
+commands.txt
+node_modules/
+.env
+.env.*
+.vscode/
+info.txt
+package-lock.json
+.gitignore
