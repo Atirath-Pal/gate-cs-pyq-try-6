@@ -9,4 +9,3 @@ node_modules/
 .vscode/
 info.txt
 package-lock.json
-.gitignore
